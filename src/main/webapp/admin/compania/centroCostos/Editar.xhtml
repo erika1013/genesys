@@ -1,0 +1,121 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.CentroCostosTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{centroCostosMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+                <div  >
+                    <div  ></div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CentroCostosLabel_codigo}"
+                                   for="codigo"   />
+
+                    <div  >
+
+                        <p:inputText id="codigo"
+                                     value="#{centroCostosMB.itemSeleccionado.codigo}"
+                                     title="#{bundle.CentroCostosTitle_codigo}" class="form-control" 
+                                     required="true"
+                                     requiredMessage="#{bundle.CentroCostosRequiredMessage_codigo}" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CentroCostosLabel_nombre}"
+                                   for="nombre"   />
+
+                    <div  >
+
+                        <p:inputText id="nombre"
+                                     value="#{centroCostosMB.itemSeleccionado.nombre}"
+                                     title="#{bundle.CentroCostosTitle_nombre}" class="form-control" 
+                                     required="true"
+                                     requiredMessage="#{bundle.CentroCostosRequiredMessage_nombre}" />
+                    </div>
+                </div>
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CentroCostosLabel_compania}"
+                                   for="compania"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="compania"
+                                          value="#{centroCostosMB.companiaid}"
+                                          title="#{bundle.CentroCostosTitle_compania}" class="form-control" 
+                                          required="true"
+                                          requiredMessage="#{bundle.CentroCostosRequiredMessage_compania}">
+                            <f:selectItem itemLabel="--Seleccionar--" />
+                            <f:selectItems value="#{centroCostosMB.companiaItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{centroCostosMB.actualizar}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

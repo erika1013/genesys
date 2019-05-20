@@ -1,0 +1,73 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="Generación de Cobros Fijos para un Periodo"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">
+
+        <h:form>
+            <div >
+                <div>
+                    <div  >
+                        <ul class="nav">
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home"></i>
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+            <h:form >
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CobroMensualLabel_periodo}"
+                                   for="calendarioid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="calendarioid"
+                                          value="#{cobroMensualMB.calendarioid}"
+                                          title="#{bundle.CobroMensualTitle_perido}" class="form-control" 
+                                          required="true">
+                            <f:selectItem itemLabel="--Seleccionar--" />
+                            <f:selectItems value="#{cobroMensualMB.cobroCalendarioItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{cobroMensualMB.generarCobroMensual}"
+                                       value="Generar Cobros" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

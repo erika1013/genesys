@@ -1,0 +1,93 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.ImpuestoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">
+        <h:form>
+            <div>
+                <div>
+                    <div  >
+                        <ul class="nav">
+                            <li><h:commandLink
+                                    action="#{companiaMB.prepararCreacionImpuesto}"
+                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                    <i class="fa fa-plus" />
+                                </h:commandLink></li>
+                            <li><h:commandLink
+                                    action="#{companiaMB.prepararEdicionImpuesto}"
+                                    value="#{bundle.EditLink}" rendered="#{LoginMB.autModificar}">
+                                    <i class="fa fa-edit" />
+                                </h:commandLink></li>
+                            <li><h:commandLink action="#{companiaMB.eliminarImpuesto}"
+                                               value="#{bundle.DestroyLink}"
+                                               rendered="#{LoginMB.autEliminar}">
+                                    <i class="fa fa-trash" />
+                                </h:commandLink></li>
+                            <li><h:commandLink action="#{companiaMB.prepararConsulta}"
+                                               value="#{bundle.ShowAllLink}">
+                                    <i class="fa fa-list" />
+                                </h:commandLink></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home" />
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+
+
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_codigo}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.codigo}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_autorizacion}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.autorizacion}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_fechaAutorizacion}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.fechaAutorizacion}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_letra}" for="letra" />
+                    <h:outputText id="letra" value="#{companiaMB.itemImpuesto.letra}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_numeroInicial}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.numeroInicial}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_numeroFinal}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.numeroFinal}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_numeroActual}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.numeroActual}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_actividadPrincipal}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.actividadPrincipal}" />
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_porcentajeIca}" />
+                    <h:outputText value="#{companiaMB.itemImpuesto.porcentajeIca}" />
+                </h:panelGrid>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

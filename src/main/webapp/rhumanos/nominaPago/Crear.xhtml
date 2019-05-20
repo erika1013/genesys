@@ -1,0 +1,90 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+
+	<ui:define name="title">
+		<h:outputText value="#{bundle.NominaPagoTitulo}"></h:outputText>
+	</ui:define>
+
+	<ui:define name="barmenu">
+		<h:form>
+
+			<ul class="nav">
+
+				<li><h:commandLink action="#{nominaPagoMB.prepararLista}"
+						value="#{bundle.ShowAllLink}" immediate="true">
+						<i class="fa fa-list"></i>
+					</h:commandLink></li>
+				<li><h:commandLink value="#{bundle.IndexLink}" action="/index"
+						immediate="true">
+						<i class="fa fa-home"></i>
+					</h:commandLink></li>
+			</ul>
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="body">
+		<div class="card-body">
+
+
+
+			<h:form>
+
+
+
+
+				<div>
+
+					<p:outputLabel value="Periodo (Año-mes)" for="ano" />
+
+					<div>
+						<p:inputText id="ano" value="#{nominaPagoMB.itemSeleccionado.ano}"
+							title="#{bundle.NominaNovedadTitle_Ano}" class="span3"
+							required="true"
+							requiredMessage="#{bundle.NominaNovedadRequiredMessage_ano}" />
+
+
+
+
+						<p:selectOneMenu id="mes"
+							value="#{nominaPagoMB.itemSeleccionado.mes}" title="Mes"
+							class="span3">
+							<f:selectItem itemLabel="--Mes-- " />
+							<f:selectItem itemValue="01" itemLabel="Enero" />
+							<f:selectItem itemValue="02" itemLabel="Febrero" />
+							<f:selectItem itemValue="03" itemLabel="Marzo" />
+							<f:selectItem itemValue="04" itemLabel="Abril" />
+							<f:selectItem itemValue="05" itemLabel="Mayo" />
+							<f:selectItem itemValue="06" itemLabel="Junio" />
+							<f:selectItem itemValue="07" itemLabel="Julio" />
+							<f:selectItem itemValue="08" itemLabel="Agosto" />
+							<f:selectItem itemValue="09" itemLabel="Septiembre" />
+							<f:selectItem itemValue="10" itemLabel="Octubre" />
+							<f:selectItem itemValue="11" itemLabel="Noviembre" />
+							<f:selectItem itemValue="12" itemLabel="Diciembre" />
+
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+				<div>
+					<div>
+						<h:commandLink action="#{nominaPagoMB.crear}"
+							value="#{bundle.SaveLink}" class="btn btn-secondary" />
+					</div>
+				</div>
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+

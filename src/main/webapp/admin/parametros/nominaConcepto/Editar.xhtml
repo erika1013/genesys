@@ -1,0 +1,141 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="#{bundle.NominaConceptoTitulo}"></h:outputText>
+	</ui:define>
+	<ui:define name="barmenu">
+		<h:form>
+
+			<ul class="nav">
+				<li><h:commandLink
+						action="#{nominaConceptoMB.prepararConsulta}"
+						value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}"
+						immediate="true">
+						<i class="fa fa-eye"></i>
+					</h:commandLink></li>
+				<li><h:commandLink action="#{nominaConceptoMB.prepararLista}"
+						value="#{bundle.ShowAllLink}" immediate="true">
+						<i class="fa fa-list"></i>
+					</h:commandLink></li>
+				<li><h:commandLink value="#{bundle.IndexLink}" action="/index"
+						immediate="true">
+						<i class="fa fa-home"></i>
+					</h:commandLink></li>
+			</ul>
+
+
+
+
+		</h:form>
+	</ui:define>
+	<ui:define name="body">
+		<div class="card-body">
+
+
+			<h:form>
+
+
+
+				<div>
+
+					<p:outputLabel
+						value="#{bundle.NominaConceptoLabel_nominaconceptocodigo}"
+						for="nominaconceptocodigo" />
+
+					<div>
+
+						<p:inputText id="nominaconceptocodigo"
+							value="#{nominaConceptoMB.itemSeleccionado.nominaconceptocodigo}"
+							title="#{bundle.NominaConceptoTitle_nominaconceptocodigo}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.NominaConceptoRequiredMessage_nominaconceptocodigo}" />
+					</div>
+				</div>
+
+
+				<div>
+
+					<p:outputLabel
+						value="#{bundle.NominaConceptoLabel_nominaconceptonombre}"
+						for="nominaconceptonombre" />
+
+					<div>
+
+						<p:inputText id="nominaconceptonombre"
+							value="#{nominaConceptoMB.itemSeleccionado.nominaconceptonombre}"
+							title="#{bundle.NominaConceptoTitle_nominaconceptonombre}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.NominaConceptoRequiredMessage_nominaconceptonombre}" />
+					</div>
+				</div>
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.NominaConceptoLabel_conceptotipoid}"
+						for="conceptoTipoid" />
+
+					<div>
+
+						<p:selectOneMenu id="conceptoTipoid"
+							value="#{nominaConceptoMB.conceptoTipoid}"
+							title="#{bundle.NominaConceptoTitle_conceptotipoid}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.NominaConceptoRequiredMessage_conceptotipoid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{nominaConceptoMB.conceptoTipoItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+
+				<div>
+
+
+					<div>
+
+						<label class="checkbox"> <h:selectBooleanCheckbox
+								value="#{nominaConceptoMB.itemSeleccionado.nominaconceptofactor}" />
+							<h:outputText value="Factor " />
+						</label>
+					</div>
+				</div>
+
+
+				<div>
+
+					<p:outputLabel
+						value="#{bundle.NominaConceptoLabel_nominaconceptoValor}"
+						for="nominaconceptoValor" />
+					<div>
+
+						<p:inputText id="nominaconceptoValor"
+							value="#{nominaConceptoMB.itemSeleccionado.nominaconceptoValor}"
+							title="#{bundle.NominaConceptoTitle_nominaconceptoValor}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.NominaConceptoRequiredMessage_nominaconceptoValor}" />
+					</div>
+				</div>
+
+
+				<div>
+					<div>
+						<h:commandLink action="#{nominaConceptoMB.actualizar}"
+							value="#{bundle.SaveLink}" class="btn btn-secondary" />
+					</div>
+				</div>
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+

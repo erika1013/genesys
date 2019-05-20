@@ -1,0 +1,743 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{AspiranteMB.prepararCreacion}"
+                                                   value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                        <i class="fa fa-plus"></i>
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink action="#{AspiranteMB.prepararEdicion}"
+                                                   value="#{bundle.EditLink}" rendered="#{ LoginMB.autModificar}">
+                                        <i class="fa fa-edit" />
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink action="#{AspiranteMB.eliminar}"
+                                                   value="#{bundle.DestroyLink}" rendered="#{LoginMB.autEliminar}">
+                                        <i class="fa fa-trash" />
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink action="#{AspiranteMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form>
+                    <h:panelGrid columns="2">
+
+                        <h:outputText value="#{bundle.AspiranteLabel_nombres}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.nombres}"
+                                      title="#{bundle.AspiranteTitle_nombres}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_apellidos}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.apellidos}"
+                                      title="#{bundle.AspiranteTitle_apellidos}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_identificacion}" />
+                        <h:outputText
+                            value="#{AspiranteMB.itemSeleccionado.identificacion}"
+                            title="#{bundle.AspiranteTitle_identificacion}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_fechaNacimiento}" />
+                        <h:outputText
+                            value="#{AspiranteMB.itemSeleccionado.fechaNacimiento}"
+                            title="#{bundle.AspiranteTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.AspiranteLabel_edad}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.edad}"
+                                      title="#{bundle.AspiranteTitle_edad}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_sexo}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.sexo}"
+                                      title="#{bundle.AspiranteTitle_sexo}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_telefono}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.telefono}"
+                                      title="#{bundle.AspiranteTitle_telefono}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_celular}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.celular}"
+                                      title="#{bundle.AspiranteTitle_celular}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_correo}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.correo}"
+                                      title="#{bundle.AspiranteTitle_correo}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_direccion}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.direccion}"
+                                      title="#{bundle.AspiranteTitle_direccion}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_perfil}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.perfil}"
+                                      title="#{bundle.AspiranteTitle_perfil}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_estadoCivil}" />
+                        <h:outputText
+                            value="#{AspiranteMB.itemSeleccionado.estadoCivil.nombre}"
+                            title="#{bundle.AspiranteTitle_estadoCivil}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_estado}" />
+                        <h:outputText value="#{AspiranteMB.itemSeleccionado.estado.nombre}"
+                                      title="#{bundle.AspiranteTitle_estado}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_lugarNacimiento}" />
+                        <h:outputText
+                            value="#{AspiranteMB.itemSeleccionado.lugarNacimiento.nombre}"
+                            title="#{bundle.AspiranteTitle_lugarNacimiento}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_ciudadResidencia}" />
+                        <h:outputText
+                            value="#{AspiranteMB.itemSeleccionado.ciudadResidencia.nombre}"
+                            title="#{bundle.AspiranteTitle_ciudadResidencia}" />
+                        <h:outputText value="#{bundle.AspiranteLabel_ciudadIdentificacion}" />
+                        <h:outputText
+                            value="#{AspiranteMB.itemSeleccionado.ciudadIdentificacion.nombre}"
+                            title="#{bundle.AspiranteTitle_ciudadIdentificacion}" />
+                    </h:panelGrid>
+
+
+                </h:form>
+
+            </div>
+        </ui:define>
+
+
+        <!-- cosas adicionales-->
+
+        <ui:define name="modulos">
+
+            <!-- formacion-->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>
+                        <h:outputText value=" #{bundle.AspiranteFormacionTitulo}"></h:outputText>
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <h:form>
+                        <div >
+                            <div>
+                                <div  >
+                                    <ul class="nav">
+
+                                        <li><h:commandLink
+                                                action="#{AspiranteMB.prepararCreacionFormacion}"
+                                                value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                <i class="fa fa-plus"></i>
+                                            </h:commandLink></li>
+                                        <li><h:commandLink value="#{bundle.IndexLink}"
+                                                           action="/index" immediate="true">
+                                                <i class="fa fa-home"></i>
+                                            </h:commandLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <h:form>
+
+                        <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{AspiranteMB.listaFormacion}" var="item">
+
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteFormacionTitle_institucion}" />
+                                </f:facet>
+                                <h:outputText value="#{item.institucion.nombre}" />
+                            </p:column>
+
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteFormacionTitle_programaAcademico}" />
+                                </f:facet>
+                                <h:outputText value="#{item.programaAcademico.nombre}" />
+                            </p:column>
+
+
+
+
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteFormacionTitle_fechaFinal}" />
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFinal}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column 
+                                >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteFormacionTitle_estado}" />
+                                </f:facet>
+                                <h:outputText value="#{item.estado.nombre}" />
+                            </p:column>
+
+
+                            <p:column>
+
+
+                                <f:facet name="header">
+                                    <h:outputText value="Operacion" />
+                                </f:facet>
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{AspiranteMB.prepararConsultaFormacion}"
+                                            value="#{bundle.ViewLink}" rendered="#{ LoginMB.autConsultar}">
+                                            <i class="fa fa-eye" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{AspiranteMB.itemFormacion}" />
+                                        </h:commandLink></li>
+
+
+
+
+
+                                </ul>
+
+                            </p:column>
+                        </p:dataTable >
+
+                    </h:form>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- formacion-->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>
+                        <h:outputText value=" #{bundle.AspiranteCompetenciaTitulo}"></h:outputText>
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <h:form>
+                        <div >
+                            <div>
+                                <div  >
+                                    <ul class="nav">
+
+                                        <li><h:commandLink
+                                                action="#{AspiranteMB.prepararCreacionCompetencia}"
+                                                value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                <i class="fa fa-plus"></i>
+                                            </h:commandLink></li>
+                                        <li><h:commandLink value="#{bundle.IndexLink}"
+                                                           action="/index" immediate="true">
+                                                <i class="fa fa-home"></i>
+                                            </h:commandLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <h:form>
+
+                        <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{AspiranteMB.listaCompetencia}" var="item">
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteCompetenciaTitle_competencia}" />
+                                </f:facet>
+                                <h:outputText value="#{item.competencia.nombre}" />
+                            </p:column>
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteCompetenciaTitle_nivel}" />
+                                </f:facet>
+                                <h:outputText value="#{item.nivel}" />
+                            </p:column>
+
+
+                            <p:column>
+
+
+                                <f:facet name="header">
+                                    <h:outputText value="Operacion" />
+                                </f:facet>
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{AspiranteMB.prepararConsultaCompetencia}"
+                                            value="#{bundle.ViewLink}" rendered="#{ LoginMB.autConsultar}">
+                                            <i class="fa fa-eye" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{AspiranteMB.itemCompetencia}" />
+                                        </h:commandLink></li>
+
+
+
+
+
+                                </ul>
+
+                            </p:column>
+                        </p:dataTable >
+
+                    </h:form>
+
+                </div>
+
+
+            </div>
+
+            <!-- Experiencia-->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>
+                        <h:outputText value=" #{bundle.AspiranteExperienciaTitulo}"></h:outputText>
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+                    <h:form>
+                        <div >
+                            <div>
+                                <div  >
+                                    <ul class="nav">
+
+                                        <li><h:commandLink
+                                                action="#{AspiranteMB.prepararCreacionExperiencia}"
+                                                value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                <i class="fa fa-plus"></i>
+                                            </h:commandLink></li>
+                                        <li><h:commandLink value="#{bundle.IndexLink}"
+                                                           action="/index" immediate="true">
+                                                <i class="fa fa-home"></i>
+                                            </h:commandLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <h:form>
+
+                        <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{AspiranteMB.listaExperiencia}" var="item">
+
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteExperienciaTitle_empresa}" />
+                                </f:facet>
+                                <h:outputText value="#{item.empresa}" />
+                            </p:column>
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteExperienciaTitle_cargo}" />
+                                </f:facet>
+                                <h:outputText value="#{item.cargo}" />
+                            </p:column>
+
+                            <p:column 
+                                >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteExperienciaTitle_fechaIncial}" />
+                                </f:facet>
+                                <h:outputText value="#{item.fechaIncial}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteExperienciaTitle_fechaFinal}" />
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFinal}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+
+
+
+
+                            <p:column 
+                                >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteExperienciaTitle_ciudad}" />
+                                </f:facet>
+                                <h:outputText value="#{item.ciudad.nombre}" />
+                            </p:column>
+                            <p:column>
+
+
+                                <f:facet name="header">
+                                    <h:outputText value="Operacion" />
+                                </f:facet>
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{AspiranteMB.prepararConsultaExperiencia}"
+                                            value="#{bundle.ViewLink}" rendered="#{ LoginMB.autConsultar}">
+                                            <i class="fa fa-eye" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{AspiranteMB.itemExperiencia}" />
+                                        </h:commandLink></li>
+
+
+
+
+
+                                </ul>
+
+                            </p:column>
+                        </p:dataTable >
+
+                    </h:form>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Referencia-->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>
+                        <h:outputText value=" #{bundle.AspiranteReferenciaTitulo}"></h:outputText>
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+                    <h:form>
+                        <div >
+                            <div>
+                                <div  >
+                                    <ul class="nav">
+
+                                        <li><h:commandLink
+                                                action="#{AspiranteMB.prepararCreacionReferencia}"
+                                                value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                <i class="fa fa-plus"></i>
+                                            </h:commandLink></li>
+                                        <li><h:commandLink value="#{bundle.IndexLink}"
+                                                           action="/index" immediate="true">
+                                                <i class="fa fa-home"></i>
+                                            </h:commandLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <h:form>
+
+                        <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{AspiranteMB.listaReferencia}" var="item">
+
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteReferenciaTitle_nombres}" />
+                                </f:facet>
+                                <h:outputText value="#{item.nombres}" />
+                            </p:column>
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteReferenciaTitle_apellidos}" />
+                                </f:facet>
+                                <h:outputText value="#{item.apellidos}" />
+                            </p:column>
+
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteReferenciaTitle_celular}" />
+                                </f:facet>
+                                <h:outputText value="#{item.celular}" />
+                            </p:column>
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteReferenciaTitle_ciudad}" />
+                                </f:facet>
+                                <h:outputText value="#{item.ciudad.nombre}" />
+                            </p:column>
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteReferenciaTitle_tipo}" />
+                                </f:facet>
+                                <h:outputText value="#{item.tipo.nombre}" />
+                            </p:column>
+                            <p:column>
+
+
+                                <f:facet name="header">
+                                    <h:outputText value="Operacion" />
+                                </f:facet>
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{AspiranteMB.prepararConsultaReferencia}"
+                                            value="#{bundle.ViewLink}" rendered="#{ LoginMB.autConsultar}">
+                                            <i class="fa fa-eye" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{AspiranteMB.itemReferencia}" />
+                                        </h:commandLink></li>
+
+
+
+
+
+                                </ul>
+
+                            </p:column>
+                        </p:dataTable >
+
+                    </h:form>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Observaciones-->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>
+                        <h:outputText value=" #{bundle.AspiranteObservacionTitulo}"></h:outputText>
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+                    <h:form>
+                        <div >
+                            <div>
+                                <div  >
+                                    <ul class="nav">
+
+                                        <li><h:commandLink
+                                                action="#{AspiranteMB.prepararCreacionObservacion}"
+                                                value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                <i class="fa fa-plus"></i>
+                                            </h:commandLink></li>
+                                        <li><h:commandLink value="#{bundle.IndexLink}"
+                                                           action="/index" immediate="true">
+                                                <i class="fa fa-home"></i>
+                                            </h:commandLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <h:form>
+
+                        <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{AspiranteMB.listaObservacion}" var="item">
+
+
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText
+                                        value="#{bundle.AspiranteObservacionTitle_observacion}" />
+                                </f:facet>
+                                <h:outputText value="#{item.observacion}" />
+                            </p:column>
+
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteObservacionTitle_fecha}" />
+                                </f:facet>
+                                <h:outputText value="#{item.fecha}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+                            </p:column>
+
+
+
+
+
+                            <p:column>
+
+
+                                <f:facet name="header">
+                                    <h:outputText value="Operacion" />
+                                </f:facet>
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{AspiranteMB.prepararConsultaObservacion}"
+                                            value="#{bundle.ViewLink}" rendered="#{ LoginMB.autConsultar}">
+                                            <i class="fa fa-eye" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{AspiranteMB.itemObservacion}" />
+                                        </h:commandLink></li>
+
+
+
+
+
+                                </ul>
+
+                            </p:column>
+                        </p:dataTable >
+
+                    </h:form>
+
+                </div>
+
+
+            </div>
+
+            <!-- Idiomas-->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>
+                        <h:outputText value=" #{bundle.AspiranteIdiomaTitulo}"></h:outputText>
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+                    <h:form>
+                        <div >
+                            <div>
+                                <div  >
+                                    <ul class="nav">
+
+                                        <li><h:commandLink
+                                                action="#{AspiranteMB.prepararCreacionIdioma}"
+                                                value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                <i class="fa fa-plus"></i>
+                                            </h:commandLink></li>
+                                        <li><h:commandLink value="#{bundle.IndexLink}"
+                                                           action="/index" immediate="true">
+                                                <i class="fa fa-home"></i>
+                                            </h:commandLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <h:form>
+
+                        <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{AspiranteMB.listaIdioma}" var="item">
+
+
+
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteIdiomaTitle_idioma}" />
+                                </f:facet>
+                                <h:outputText value="#{item.idioma.nombre}" />
+                            </p:column>
+
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteIdiomaTitle_nivel}" />
+                                </f:facet>
+                                <h:outputText value="#{item.nivel}" />
+                            </p:column>
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.AspiranteIdiomaTitle_observacion}" />
+                                </f:facet>
+                                <h:outputText value="#{item.observacion}" />
+                            </p:column>
+
+
+                            <p:column>
+
+
+                                <f:facet name="header">
+                                    <h:outputText value="Operacion" />
+                                </f:facet>
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{AspiranteMB.prepararConsultaIdioma}"
+                                            value="#{bundle.ViewLink}" rendered="#{ LoginMB.autConsultar}">
+                                            <i class="fa fa-eye" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{AspiranteMB.itemIdioma}" />
+                                        </h:commandLink></li>
+
+
+
+
+                                </ul>
+
+                            </p:column>
+                        </p:dataTable >
+
+                    </h:form>
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </ui:define>
+
+
+
+
+
+</ui:composition>
+
+

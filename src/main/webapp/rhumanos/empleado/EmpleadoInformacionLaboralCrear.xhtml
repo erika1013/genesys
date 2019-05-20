@@ -1,0 +1,120 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.InformacionLaboralTitulo }"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <div class="card-body">
+                <h:form >
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionLaboralLabel_cargo}"
+                            for="cargo"   />
+
+                        <div  >
+                            <p:inputText id="cargo"
+                                         value="#{empleadoMB.itemInformacionLaboral.cargo}"
+                                         title="#{bundle.EmpleadoInformacionLaboralTitle_cargo }"
+                                         required="true"
+                                         requiredMessage="#{bundle.EmpleadoInformacionLaboralRequiredMessage_cargo}"
+                                         class="form-control"  />
+
+
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionLaboralLabel_empresa}"
+                            for="empresa"   />
+
+                        <div  >
+
+                            <p:inputText id="empresa"
+                                         value="#{empleadoMB.itemInformacionLaboral.empresa}"
+                                         title="#{bundle.EmpleadoInformacionLaboralTitle_empresa }"
+                                         class="form-control"  
+                                         required="true"
+                                         requiredMessage="#{bundle.EmpleadoInformacionLaboralRequiredMessage_empresa}"/>
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionLaboralLabel_fechaInicio}"
+                            for="fechaInicio"   />
+
+                        <div  >
+
+                           <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button" id="fechaInicio"
+                                          value="#{empleadoMB.itemInformacionLaboral.fechaInicio}"
+                                          required="true"
+                                          requiredMessage="#{bundle.EmpleadoInformacionLaboralRequiredMessage_fechaInicio}"/>
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionLaboralLabel_fechaRetiro}"
+                            for="fechaRetiro"   />
+
+                        <div  >
+
+                            <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button" id="fechaRetiro"
+                                          value="#{empleadoMB.itemInformacionLaboral.fechaRetiro}"
+                                          />
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionLaboralLabel_jefe}" for="jefe"
+                            />
+
+
+                        <div  >
+
+                            <p:inputText id="jefe"
+                                         value="#{empleadoMB.itemInformacionLaboral.jefe}"
+                                         title="#{bundle.EmpleadoInformacionLaboralTitle_jefe }"
+                                         class="form-control"  
+                                         required="true"
+                                         requiredMessage="#{bundle.EmpleadoInformacionLaboralRequiredMessage_jefe}"/>
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{empleadoMB.crearInformacionLaboral}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

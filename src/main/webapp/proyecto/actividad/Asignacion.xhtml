@@ -1,0 +1,92 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content"></ui:define>
+	<ui:define name="title">
+		<h:outputText value="#{bundle.AsignacionTitulo}"></h:outputText>
+	</ui:define>
+	<ui:define name="barmenu">
+	</ui:define>
+	<ui:define name="body">
+		<div class="card-body">
+
+
+
+
+			<h:form>
+
+
+
+				<p:dataTable paginator="true" rows="10" reflow="true"
+					value="#{actividadMB.listaAsignacionUsuario}" var="item">
+
+
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.TareaTitle_requerimiento}" />
+						</f:facet>
+						<h:outputText value="#{item.tarea.requerimiento.nombre}" />
+					</p:column>
+
+
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.TareaTitle_detalle}" />
+						</f:facet>
+						<h:outputText value="#{item.tarea.detalle}" />
+					</p:column>
+
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Operacion" />
+						</f:facet>
+						
+						
+						<ul class="nav">
+							<li><h:commandLink action="#{actividadMB.prepararCreacion}"
+									value="Registrar Actividad" rendered="#{LoginMB.autCrear}"
+									class="btn btn-outline-success mr-3">
+									<i class="fa fa-edit" />
+									<f:setPropertyActionListener value="#{item}"
+										target="#{actividadMB.asignacionSeleccionada}" />
+								</h:commandLink></li>
+							<h:outputText value=" " />
+
+							<li><h:commandLink
+									action="#{actividadMB.finalizarAsignacion}" value="Finalizar"
+									rendered="#{LoginMB.autEliminar}">
+									<i class="fa fa-check" />
+									<f:setPropertyActionListener value="#{item}"
+										target="#{actividadMB.asignacionSeleccionada}" />
+								</h:commandLink></li>
+							<h:outputText value=" " />
+
+
+
+						</ul>
+					</p:column>
+				</p:dataTable>
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="script1">
+		<script>
+			
+		</script>
+	</ui:define>
+</ui:composition>
+
+
+

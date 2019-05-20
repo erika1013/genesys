@@ -1,0 +1,308 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="modulos">
+
+            <div class="tab-content"> 
+                <div  class="container tab-pane fade" id="Actividad">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.ActividadTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+                        <div class="card-body">
+                            <h:form>
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                    <h:outputText value="#{bundle.ActividadLabel_descripcion}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.descripcion}"
+                                                  title="#{bundle.ActividadTitle_descripcion}" />
+
+
+
+                                    <h:outputText value="#{bundle.ActividadLabel_fecha}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.fecha}"
+                                        title="#{bundle.ActividadTitle_fecha}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+
+
+                                    <h:outputText value="#{bundle.ActividadLabel_actividadFechaCreacion}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.actividadFechaCreacion}"
+                                        title="#{bundle.ActividadTitle_actividadFechaCreacion}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+
+                                    <h:outputText value="#{bundle.ActividadLabel_actividadfechaModificacion}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.actividadFechaModificacion}"
+                                        title="#{bundle.ActividadTitle_actividadfechaModificacion}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+
+                                    <h:outputText value="#{bundle.ActividadLabel_tiempoempleado}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.tiempoempleado}"
+                                        title="#{bundle.ActividadTitle_tiempoempleado}">
+                                    </h:outputText>	
+
+                                    <h:outputText value="#{bundle.ActividadLabel_periodo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.periodo}"
+                                        title="#{bundle.ActividadTitle_periodo}">
+                                    </h:outputText>	
+
+                                    <h:outputText value="#{bundle.ActividadLabel_tiempo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.tiempo.nombre}"
+                                        title="#{bundle.ActividadTitle_tiempo}">
+                                    </h:outputText>	
+
+
+                                    <h:outputText value="#{bundle.ActividadLabel_tipo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.tipo.nombre}"
+                                        title="#{bundle.ActividadTitle_tipo}">
+                                    </h:outputText>	
+                                </h:panelGrid>
+
+
+
+
+                            </h:form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Proyecto -->
+                <div  class="container tab-pane fade" id="Proyecto">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.ProyectoTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h:form>
+
+
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_nombre}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.nombre}"
+                                                  title="#{bundle.ProyectoTitle_nombre}" />
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_objetivo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.objetivo}"
+                                                  title="#{bundle.ProyectoTitle_objetivo}" />
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_alcance}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.alcance}"
+                                                  title="#{bundle.ProyectoTitle_alcance}" />
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_avance}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.avance}"
+                                                  title="#{bundle.ProyectoTitle_avance}" />
+
+
+
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_compania}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.compania.companianombre} / NIT: #{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.compania.companianit}"
+                                        title="#{bundle.ProyectoTitle_compania}" />
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_centroCostos}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.centroCostos.nombre} / Código #{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.centroCostos.codigo}"
+                                        title="#{bundle.ProyectoTitle_centroCostos}" />
+
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_cliente}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.cliente.clientenombre} / Identificación: #{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.cliente.clienteidentificacion}"
+                                        title="#{bundle.ProyectoTitle_cliente}" />
+
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_etapa}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.etapa.nombre} / Código: #{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.etapa.etapaid}"
+                                        title="#{bundle.ProyectoTitle_etapa}" />
+
+                                    <h:outputText value="#{bundle.ProyectoLabel_tipo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.tipo.nombre} / Código: #{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.proyecto.tipo.tipoid}"
+                                        title="#{bundle.ProyectoTitle_etapa}" />
+
+                                </h:panelGrid>
+
+
+
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--  requerimiento-->
+                <div  class="container tab-pane fade" id="Requerimiento">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.RequerimientoTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h:form>
+
+
+
+
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_numero}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.numero}"
+                                                  title="#{bundle.RequerimientoTitle_numero}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_prioridad}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.prioridad}"
+                                                  title="#{bundle.RequerimientoTitle_prioridad}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_nombre}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.nombre}"
+                                                  title="#{bundle.RequerimientoTitle_nombre}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_descripcion}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.descripcion}"
+                                        title="#{bundle.RequerimientoTitle_descripcion}" />
+
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_tipo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.tipo.nombre} / Código: #{actividadMB.itemSeleccionado.asignacion.tarea.requerimiento.tipo.tipoid}"
+                                        title="#{bundle.RequerimientoTitle_tipo}" />
+
+                                </h:panelGrid>
+
+
+
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ********** -->
+
+                <!--  Tarea-->
+                <div  class="container tab-pane fade" id="Tarea">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.TareaTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h:form>
+
+
+
+
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+                                    <h:outputText value="#{bundle.TareaLabel_estado}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.estado.nombre}"
+                                                  title="#{bundle.TareaTitle_estado}" />
+
+
+
+                                    <h:outputText value="#{bundle.TareaLabel_tiempo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.tiempo.nombre}"
+                                                  title="#{bundle.TareaTitle_tiempo}" />
+
+
+                                    <h:outputText value="#{bundle.TareaLabel_prioridad}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.prioridad}"
+                                                  title="#{bundle.TareaTitle_prioridad}" />
+
+                                    <h:outputText value="#{bundle.TareaLabel_detalle}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{actividadMB.itemSeleccionado.asignacion.tarea.detalle}"
+                                                  title="#{bundle.TareaTitle_detalle}" />
+
+                                    <h:outputText value="#{bundle.TareaLabel_tiempoEstimado}"
+                                                  styleClass="titulo" />
+
+                                    <h:outputText
+                                        value="#{actividadMB.itemSeleccionado.asignacion.tarea.tiempoEstimado}"
+                                        title="#{bundle.TareaTitle_tiempoEstimado}" />
+
+                                </h:panelGrid>
+
+
+
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ********** -->
+
+
+            </div>
+        </ui:define>
+</ui:composition>
+

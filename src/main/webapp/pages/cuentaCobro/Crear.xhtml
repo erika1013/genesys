@@ -1,0 +1,160 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content"></ui:define>
+	<ui:define name="title">
+		<h:outputText value="#{bundle.CuentaCobroTitulo}"></h:outputText>
+	</ui:define>
+
+	<ui:define name="barmenu">
+	</ui:define>
+	<ui:define name="body">
+		<div class="card-body">
+
+			<h:form>
+
+				<ul class="nav">
+
+					<li><h:commandLink action="#{cuentaCobroMB.prepararLista}"
+							value="#{bundle.ShowAllLink}" immediate="true">
+							<i class="fa fa-list"></i>
+						</h:commandLink></li>
+					<li><h:commandLink value="#{bundle.IndexLink}" action="/index"
+							immediate="true">
+							<i class="fa fa-home"></i>
+						</h:commandLink></li>
+				</ul>
+
+			</h:form>
+
+			<h:form>
+
+
+				<p:panelGrid columns="1" layout="grid"
+					styleClass="ui-panelgrid-blank grid-pad" style="margin-top:10px">
+
+
+
+					<p:outputLabel value="#{bundle.CuentaCobroLabel_proveedor}"
+						for="proveedor" />
+
+
+					<p:selectOneMenu id="proveedor"
+						value="#{cuentaCobroMB.proveedorid}"
+						title="#{bundle.CuentaCobroLabel_proveedor}" class="form-control"
+						required="true"
+						requiredMessage="#{bundle.CuentaCobroMessage_proveedor}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{cuentaCobroMB.proveedorItems}" />
+					</p:selectOneMenu>
+
+
+
+					<p:outputLabel value="#{bundle.CuentaCobroLabel_fecha}" for="fecha" />
+
+
+					<p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button"
+						id="fecha" value="#{cuentaCobroMB.itemSeleccionado.fecha}"
+						required="true"
+						requiredMessage="#{bundle.CuentaCobroRequiredMessage_fecha}" />
+
+					<p:outputLabel value="#{bundle.CuentaCobroLabel_ciudad}"
+						for="ciudad" />
+
+
+					<p:inputText id="ciudad"
+						value="#{cuentaCobroMB.itemSeleccionado.ciudad}"
+						title="#{bundle.CuentaCobroTitle_ciudad}"
+						class="form-control" required="true"
+						requiredMessage="#{bundle.CuentaCobroRequiredMessage_ciudad}" />
+
+
+
+
+
+
+
+					<p:outputLabel value="#{bundle.CuentaCobroLabel_concepto}"
+						for="concepto" />
+
+
+					<p:inputTextarea id="concepto"
+						value="#{cuentaCobroMB.itemSeleccionado.concepto}"
+						title="#{bundle.CuentaCobroTitle_concepto}"
+						class="form-control" required="true"
+						requiredMessage="#{bundle.CuentaCobroRequiredMessage_concepto}" />
+
+
+
+
+
+
+
+
+					<p:outputLabel value="#{bundle.CuentaCobroLabel_valor}" for="valor" />
+
+
+
+
+
+
+
+					<p:inputText id="valor"
+						value="#{cuentaCobroMB.itemSeleccionado.valor}"
+						title="#{bundle.CuentaCobroTitle_cuentaCobroid}" required="true"
+						requiredMessage="#{bundle.CuentaCobroRequiredMessage_valor}"
+						class="form-control" />
+
+
+					<p:outputLabel value="#{bundle.CuentaCobroLabel_moneda}"
+						for="moneda" />
+
+
+					<p:selectOneMenu id="moneda" value="#{cuentaCobroMB.monedaid}"
+						title="#{bundle.CuentaCobroLabel_moneda}" class="form-control"
+						required="true"
+						requiredMessage="#{bundle.CuentaCobroMessage_moneda}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{cuentaCobroMB.monedaItems}" />
+					</p:selectOneMenu>
+
+
+
+
+
+
+
+
+
+					<p:outputLabel value="#{bundle.CuentaCobroLabel_cuentaCobroEstado}"
+						for="cuentaCobroEstado" />
+
+
+					<p:selectOneMenu id="cuentaCobroEstado"
+						value="#{cuentaCobroMB.estadoid}"
+						title="#{bundle.CuentaCobroLabel_cuentaCobroEstado}"
+						class="form-control" required="true"
+						requiredMessage="#{bundle.CuentaCobroMessage_cuentaCobroEstado}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{cuentaCobroMB.estadoItems}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+
+				<h:commandLink action="#{cuentaCobroMB.crear}"
+					value="#{bundle.SaveLink}" class="btn btn-secondary" />
+
+
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+

@@ -1,0 +1,99 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.RolProyectoTitulo}"></h:outputText>
+        </ui:define>
+        <ui:define name="barmenu">
+
+            <h:form>
+
+                <div>
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{rolProyectoMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+        </ui:define>
+
+        <ui:define name="body">
+            <div class="card-body">
+
+
+
+                <h:form>
+
+                    <div  >
+                        <div></div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.RolProyectoLabel_rolid}" for="id" />
+
+                        <div  >
+
+                            <p:inputText id="id"
+                                         value="#{rolProyectoMB.itemSeleccionado.rolid}"
+                                         title="#{bundle.RolProyectoTitle_rolid}" required="true"
+                                         requiredMessage="#{bundle.RolProyectoRequiredMessage_rolid}"
+                                         class="form-control" />
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.RolProyectoLabel_nombre}"
+                                       for="nombre" />
+
+                        <div  >
+
+                            <p:inputText id="nombre"
+                                         value="#{rolProyectoMB.itemSeleccionado.nombre}"
+                                         title="#{bundle.RolProyectoTitle_nombre}" required="true"
+                                         requiredMessage="#{bundle.RolProyectoRequiredMessage_nombre}"
+                                         class="form-control" />
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{rolProyectoMB.crear}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

@@ -1,0 +1,207 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.CompaniaImpuesto_Titulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">
+        <h:form>
+
+            <div>
+                <div>
+                    <div  >
+                        <ul class="nav">
+
+                            <li><h:commandLink action="#{companiaMB.prepararConsulta}"
+                                               value="#{bundle.ShowAllLink}" immediate="true">
+                                    <i class="fa fa-list"></i>
+                                </h:commandLink></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home"></i>
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </h:form>
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+            <h:form>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_codigo}" for="codigo" />
+
+                    <div>
+
+                        <p:inputText id="codigo" value="#{companiaMB.itemImpuesto.codigo}"
+                                     title="#{bundle.ImpuestoTitle_codigo}" required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_codigo}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_autorizacion}"
+                                   for="acutorizacion" />
+
+                    <div>
+
+                        <p:inputText id="autorizacion"
+                                     value="#{companiaMB.itemImpuesto.autorizacion}"
+                                     title="#{bundle.ImpuestoTitle_autorizacion}" required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_autorizacion}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_fechaAutorizacion}"
+                                   for="fechaAutorizacion" />
+
+                    <div>
+
+                        <p:inputText id="fechaAutorizacion"
+                                     value="#{companiaMB.itemImpuesto.fechaAutorizacion}"
+                                     title="#{bundle.ImpuestoTitle_fechaAutorizacion}" required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_fechaAutorizacion}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_letra}" for="letra" />
+
+                    <div>
+
+                        <p:inputText id="letra" value="#{companiaMB.itemImpuesto.letra}"
+                                     title="#{bundle.ImpuestoTitle_letra}" class="form-control" />
+                    </div>
+                </div>
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_numeroInicial}"
+                                   for="numeroInicial" />
+
+                    <div>
+
+                        <p:inputText id="numeroInicial"
+                                     value="#{companiaMB.itemImpuesto.numeroInicial}"
+                                     title="#{bundle.ImpuestoTitle_numeroInicial}" required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_numeroInicial}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_numeroFinal}"
+                                   for="numeroFinal" />
+
+                    <div>
+
+                        <p:inputText id="numeroFinal"
+                                     value="#{companiaMB.itemImpuesto.numeroFinal}"
+                                     title="#{bundle.ImpuestoTitle_numeroFinal}" required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_numeroFinal}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_numeroActual}"
+                                   for="numeroActual" />
+
+                    <div>
+
+                        <p:inputText id="numeroActual"
+                                     value="#{companiaMB.itemImpuesto.numeroActual}"
+                                     title="#{bundle.ImpuestoTitle_numeroActual}" required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_numeroActual}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_actividadPrincipal}"
+                                   for="actividadPrincipal" />
+
+                    <div>
+
+                        <p:inputText id="actividadPrincipal"
+                                     value="#{companiaMB.itemImpuesto.actividadPrincipal}"
+                                     title="#{bundle.ImpuestoTitle_actividadPrincipal}"
+                                     required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_actividadPrincipal}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ImpuestoLabel_porcentajeIca}"
+                                   for="porcentajeIca" />
+
+                    <div>
+
+                        <p:inputText id="porcentajeIca"
+                                     value="#{companiaMB.itemImpuesto.porcentajeIca}"
+                                     title="#{bundle.ImpuestoTitle_porcentajeIca}" required="true"
+                                     requiredMessage="#{bundle.ImpuestoRequiredMessage_porcentajeIca}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <div  >
+                    <div>
+                        <h:commandLink action="#{companiaMB.crearImpuesto}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

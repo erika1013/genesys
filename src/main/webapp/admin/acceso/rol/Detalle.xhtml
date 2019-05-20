@@ -1,0 +1,202 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content"></ui:define>
+	<ui:define name="title">
+		<h:outputText value="#{bundle.RolTitulo}"></h:outputText>
+	</ui:define>
+	<ui:define name="barmenu">
+
+		<h:form>
+			<div>
+				<ul class="nav">
+					<li><h:commandLink action="#{rolMB.prepararCreacion}"
+							value="#{bundle.CreateLink}">
+							<i class="fa fa-plus" />
+						</h:commandLink></li>
+					<li><h:commandLink action="Editar" value="#{bundle.EditLink}">
+							<i class="fa fa-edit" />
+						</h:commandLink></li>
+					<li><h:commandLink action="#{rolMB.eliminar}"
+							value="#{bundle.DestroyLink}">
+							<i class="fa fa-trash" />
+						</h:commandLink></li>
+					<li><h:commandLink action="#{rolMB.prepararLista}"
+							value="#{bundle.ShowAllLink}">
+							<i class="fa fa-list" />
+						</h:commandLink></li>
+					<li><h:commandLink value="#{bundle.IndexLink}" action="/index"
+							immediate="true">
+							<i class="fa fa-home" />
+						</h:commandLink></li>
+				</ul>
+			</div>
+		</h:form>
+
+	</ui:define>
+	<ui:define name="body">
+		<div class="card-body">
+			<h:form>
+
+
+
+
+				<h:panelGrid columns="2" paginator="true" rows="10" reflow="true">
+					<h:outputText value="#{bundle.RolLabel_rolnombre}"
+						styleClass="titulo" />
+					<h:outputText value="#{rolMB.itemSeleccionado.rolnombre}"
+						title="#{bundle.RolTitle_rolnombre}" />
+					<h:outputText value="#{bundle.RolLabel_roldescripcion}"
+						styleClass="titulo" />
+					<h:outputText value="#{rolMB.itemSeleccionado.roldescripcion}"
+						title="#{bundle.RolTitle_roldescripcion}" />
+				</h:panelGrid>
+
+			</h:form>
+		</div>
+
+
+
+
+
+
+	</ui:define>
+
+	<!-- cosas adicionales-->
+
+	<ui:define name="modulos">
+
+		<!-- Listas de Menus Autorizados-->
+
+		<div class="card">
+			<div class="card-header">
+				<h3>
+					<h:outputText value="Menus Autorizados" />
+				</h3>
+
+			</div>
+
+
+			<div class="card-body">
+
+
+
+				<h:form>
+					<div>
+						<div>
+							<div>
+								<ul class="nav">
+									<li><h:commandLink action="#{rolMB.autorizarMenu}"
+											value="Autorizar Menu">
+											<i class="fa fa-plus" />
+										</h:commandLink></li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+
+					<p:dataTable paginator="true" rows="10" reflow="true"
+						id="dataTable" var="acceso" value="#{rolMB.listaAcceso}" >
+
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Menu" styleClass="lbl" />
+							</f:facet>
+							<h:outputText value="#{acceso.menu.menunombre}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Operacion" />
+							</f:facet>
+
+							<ul class="nav">
+								<li><h:commandLink action="#{rolMB.eliminarAcceso}"
+										value="#{bundle.DestroyLink}">
+										<i class="fa fa-trash" />
+										<f:setPropertyActionListener value="#{acceso}"
+											target="#{rolMB.accesoSeleccionado}" />
+									</h:commandLink></li>
+							</ul>
+
+
+						</p:column>
+
+
+					</p:dataTable>
+
+
+
+				</h:form>
+			</div>
+
+
+
+		</div>
+
+		<!-- Autorzar Un nuevo Menu-->
+
+		<h:panelGroup rendered="#{rolMB.autorizar}">
+			<div class="card">
+				<div class="card-header">
+					<h3>
+						<h:outputText value="Autorizar Menu" />
+					</h3>
+
+				</div>
+
+				<div class="card-body">
+
+
+
+					<h:form>
+
+						<div>
+
+							<p:outputLabel value="#{bundle.AccesoLabel_menu}" for="menuid" />
+
+							<div>
+
+
+
+								<p:selectOneMenu id="menuid" value="#{rolMB.menuid}"
+									required="true" requiredMessage="Menu es requerido"
+									class="form-control">
+									<f:selectItem itemValue="0" itemLabel="---Seleccione---" />
+									<f:selectItems value="#{rolMB.menuItems}" />
+								</p:selectOneMenu>
+
+							</div>
+						</div>
+
+						<div>
+							<div>
+								<h:commandLink action="#{rolMB.crearAcceso}"
+									value="#{bundle.SaveLink}" class="btn btn-secondary" />
+							</div>
+						</div>
+
+					</h:form>
+
+				</div>
+
+
+			</div>
+		</h:panelGroup>
+
+
+
+	</ui:define>
+
+</ui:composition>
+
+
+

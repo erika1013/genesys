@@ -1,0 +1,262 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.BancoPagoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">
+        <h:form>
+            <div >
+                <div>
+                    <div  >
+                        <ul class="nav">
+
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home" />
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </h:form>
+
+
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form >
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoPagoLabel_tipo}"
+                                   for="tipoMovimiento"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="tipoMovimiento"
+                                          value="#{bancoPagoMB.tipoMovimiento}" required="true"
+                                          class="form-control" 
+                                          requiredMessage="#{bundle.BancoRequiredMessage_tipoMovimiento}">
+                            <f:selectItem itemLabel="--Seleccionar-- " />
+                            <f:selectItem itemLabel="Transferencias" itemValue="34" />
+                            <f:selectItem itemLabel="Recaudo" itemValue="36" />
+                            <f:selectItem itemLabel="Retiros Cajero" itemValue="46" />
+                            <f:selectItem itemLabel="Otros Descuentos" itemValue="55" />
+
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoPagoLabel_estado}"
+                                   for="estadoid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="estadoid" value="#{bancoPagoMB.estadoid}"
+                                          title="#{bundle.BancoPagoTitle_estado}" class="form-control" 
+                                          required="true"
+                                          requiredMessage="#{bundle.BancoRequiredMessage_estado}">
+                            <f:selectItem itemLabel="--Seleccionar-- " />
+                            <f:selectItems value="#{bancoPagoMB.estadoItems}" />
+
+
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{bancoPagoMB.buscarTipoMovimiento}"
+                                       value="Buscar" class="btn btn-secondary" />
+                        <h:commandLink action="#{bancoPagoMB.exportarMovimiento}"
+                                       value="Exportar" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+
+
+
+
+        </div>
+    </ui:define>
+
+
+    <!-- Listas Movimiento-->
+
+
+
+    <ui:define name="modulos">
+
+        <h:panelGroup rendered="#{bancoPagoMB.listarMovimientos}">
+
+
+
+
+            <!-- Listas de Servicios-->
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        <span class="azul"><h:outputText value="Lista Movimientos" />
+                        </span>
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+
+
+                    <h:form>
+
+
+
+                        <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{bancoPagoMB.listaItems}" var="item"
+
+
+                                      >
+
+                            <p:column  >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.BancoPagoTitle_tipo}" />
+                                </f:facet>
+                                <h:outputText value="#{item.tipo}" />
+                            </p:column>
+
+
+
+                            <p:column 
+                                >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.BancoPagoTitle_fechaProceso}" />
+                                </f:facet>
+                                <h:outputText value="#{item.fechaProceso}" />
+                            </p:column>
+
+
+                            <p:column 
+                                >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.BancoPagoTitle_referencia1}" />
+                                </f:facet>
+                                <h:outputText value="#{item.referencia1}" />
+                            </p:column>
+
+                            <p:column 
+                                >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.BancoPagoTitle_referencia2}" />
+                                </f:facet>
+                                <h:outputText value="#{item.referencia2}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.BancoPagoTitle_valorTotalSigno}" />
+                                </f:facet>
+                                <h:outputText value="#{item.valorTotalSigno}" />
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.BancoPagoTitle_valorTotal}" />
+                                </f:facet>
+                                <h:outputText value="#{item.valorTotal}">
+                                    <f:convertNumber type="currency" currencySymbol="$" />
+                                </h:outputText>
+                            </p:column>
+
+                            <p:column 
+                                >
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.BancoPagoTitle_estado}" />
+                                </f:facet>
+                                <h:outputText value="#{item.estado.bancoPagoEstadonombre}" />
+                            </p:column>
+
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Operacion" />
+                                </f:facet>
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{bancoPagoMB.prepararConsulta}"
+                                            value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}">
+                                            <i class="fa fa-eye" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{bancoPagoMB.itemSeleccionado}" />
+                                        </h:commandLink></li>
+                                    <h:outputText value=" " />
+                                    <li><h:commandLink
+                                            action="#{bancoPagoMB.prepararConciliacion}"
+                                            value="Conciliar" rendered="#{LoginMB.autModificar}">
+                                            <i class="fa fa-edit" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{bancoPagoMB.itemSeleccionado}" />
+                                        </h:commandLink></li>
+                                    <h:outputText value=" " />
+                                    <li><h:commandLink action="#{bancoPagoMB.eliminar}"
+                                                       value="#{bundle.DestroyLink}"
+                                                       rendered="#{LoginMB.autEliminar}">
+                                            <i class="fa fa-trash" />
+                                            <f:setPropertyActionListener value="#{item}"
+                                                                         target="#{bancoPagoMB.itemSeleccionado}" />
+                                        </h:commandLink></li>
+                                </ul>
+                            </p:column>
+                        </p:dataTable >
+
+
+
+                    </h:form>
+                </div>
+            </div>
+        </h:panelGroup>
+    </ui:define>
+
+    <ui:define name="script1">
+        <script>
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </ui:define>
+</ui:composition>
+
+
+

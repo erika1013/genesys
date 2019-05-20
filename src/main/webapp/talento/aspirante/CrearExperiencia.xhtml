@@ -1,0 +1,201 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteExperienciaTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{AspiranteMB.prepararConsulta}"
+                                                   value="#{bundle.BackLink}" immediate="true">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form >
+
+
+
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteExperienciaLabel_empresa}"
+                                       for="empresa"   />
+                        <div  >
+                            <p:inputText id="empresa"
+                                         value="#{AspiranteMB.itemExperiencia.empresa}"
+                                         title="#{bundle.AspiranteExperienciaTitle_empresa}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AspiranteExperienciaLabel_descripcion}"
+                            for="descripcion"   />
+                        <div  >
+                            <p:inputTextarea id="descripcion"
+                                             value="#{AspiranteMB.itemExperiencia.descripcion}"
+                                             title="#{bundle.AspiranteExperienciaTitle_descripcion}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AspiranteExperienciaLabel_fechaIncial}"
+                            for="fechaIncial"   />
+                        <div  >
+                            <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button" id="fechaIncial"
+                                          value="#{AspiranteMB.itemExperiencia.fechaIncial}"
+                                          />
+                        </div>
+
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AspiranteExperienciaLabel_fechaFinal}"
+                            for="fechaFinal"   />
+                        <div  >
+                            <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button"  id="fechaFinal"
+                                          value="#{AspiranteMB.itemExperiencia.fechaFinal}"
+                                          />
+                        </div>
+
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteExperienciaLabel_cargo}"
+                                       for="cargo"   />
+                        <div  >
+                            <p:inputText id="cargo"
+                                         value="#{AspiranteMB.itemExperiencia.cargo}"
+                                         title="#{bundle.AspiranteExperienciaTitle_cargo}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteExperienciaLabel_jefe}"
+                                       for="jefe"   />
+                        <div  >
+                            <p:inputText id="jefe" value="#{AspiranteMB.itemExperiencia.jefe}"
+                                         title="#{bundle.AspiranteExperienciaTitle_jefe}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteExperienciaLabel_telefono}"
+                                       for="telefono"   />
+                        <div  >
+                            <p:inputText id="telefono"
+                                         value="#{AspiranteMB.itemExperiencia.telefono}"
+                                         title="#{bundle.AspiranteExperienciaTitle_telefono}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AspiranteExperienciaLabel_extension}"
+                            for="extension"   />
+                        <div  >
+                            <p:inputText id="extension"
+                                         value="#{AspiranteMB.itemExperiencia.extension}"
+                                         title="#{bundle.AspiranteExperienciaTitle_extension}" />
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteExperienciaLabel_ciudad}"
+                                       for="ciudad"   />
+                        <div  >
+
+                            <p:selectOneMenu  id="departamentoExperiencia"
+                                              value="#{AspiranteMB.departamentoId}"
+                                              title="#{bundle.AspiranteTitle_departamento}">
+                                <f:selectItems value="#{AspiranteMB.departamentoItems}" />
+                                <f:ajax render="ciudad"
+                                        listener="#{AspiranteMB.cargarCiudadesDepartamento}" />
+                            </p:selectOneMenu >
+
+                            <p:selectOneMenu  id="ciudad" value="#{AspiranteMB.ciudadId}"
+                                              title="#{bundle.AspiranteExperienciaTitle_ciudad}">
+                                <f:selectItems value="#{AspiranteMB.ciudadItems}" />
+                            </p:selectOneMenu >
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+                        <div  >
+
+                            <h:commandLink action="#{AspiranteMB.crearExperiencia}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+            </div>
+
+
+        </ui:define>
+</ui:composition>
+
+

@@ -1,0 +1,51 @@
+ul.nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+ul.nav li {
+	display: inline;
+	float: left;
+}
+
+ul.nav li a {
+	display: block;
+	color: white;
+	background-color: #111;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.nav li a:hover {
+	background-color: #B7D666;
+}
+
+.btn {
+	display: block;
+	color: white;
+	background-color: #8EC792; 
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.btn:hover {
+	background-color: #B7D666;
+}
+
+
+.btn-secondary {
+	
+}
+
+.containerLogin {
+	     background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #8EC792), color-stop(100%, #51b795)); 
+		 background: -webkit-linear-gradient(125deg, #8EC792 0%, #51b795 100%); 	
+		 background: linear-gradient(125deg, #8EC792 0%, #51b795 100%); 
+
+	}
+	

@@ -1,0 +1,114 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.EstudianteEvaluacionTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+
+
+            <h:form>
+
+
+
+                <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{cursoMB.listaestudianteEvaluacion}" var="item"
+
+
+                              >
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.EvaluacionTitle_year}" />
+                        </f:facet>
+                        <h:outputText value="#{item.year}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.EvaluacionTitle_periodo}" />
+                        </f:facet>
+                        <h:outputText value="#{item.periodo}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.EvaluacionTitle_mes}" />
+                        </f:facet>
+                        <h:outputText value="#{item.mes}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.EvaluacionTitle_estado}" />
+                        </f:facet>
+                        <h:outputText value="#{item.estado.nombre}" />
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Operacion" />
+                        </f:facet>
+                        <ul class="nav">
+                            <li><h:commandLink
+                                    action="#{cursoMB.abrirFormularioCalificacionEstudiante}"
+                                    value="Calificar">
+                                    <f:setPropertyActionListener value="#{item}"
+                                                                 target="#{cursoMB.itemEstudianteEvaluacion}" />
+                                </h:commandLink></li>
+                            <h:outputText value=" " />
+
+                        </ul>
+                    </p:column>
+                </p:dataTable >
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+
+    <ui:define name="script1">
+        <script>
+
+
+
+
+
+
+
+        </script>
+    </ui:define>
+</ui:composition>
+
+
+

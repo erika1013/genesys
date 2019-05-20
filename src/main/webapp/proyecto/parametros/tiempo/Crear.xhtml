@@ -1,0 +1,136 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.TiempoTitulo}"></h:outputText>
+        </ui:define>
+        <ui:define name="barmenu">
+            <h:form>
+
+                <div>
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{tiempoMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+
+
+
+                <h:form>
+
+                    <div  >
+                        <div></div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.TiempoLabel_tiempoid}" for="id" />
+
+                        <div  >
+
+                            <p:inputText id="tiempoid"
+                                         value="#{tiempoMB.itemSeleccionado.tiempoid}"
+                                         title="#{bundle.TiempoTitle_tiempoid}" required="true"
+                                         requiredMessage="#{bundle.TiempoRequiredMessage_tiempoid}"
+                                         class="form-control" />
+                        </div>
+                    </div>
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.TiempoLabel_codigo}" for="id" />
+
+                        <div  >
+
+                            <p:inputText id="id" value="#{tiempoMB.itemSeleccionado.codigo}"
+                                         title="#{bundle.TiempoTitle_codigo}" required="true"
+                                         requiredMessage="#{bundle.TiempoRequiredMessage_codigo}"
+                                         class="form-control" />
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.TiempoLabel_nombre}" for="nombre" />
+
+                        <div  >
+
+                            <p:inputText id="nombre"
+                                         value="#{tiempoMB.itemSeleccionado.nombre}"
+                                         title="#{bundle.TiempoTitle_nombre}" required="true"
+                                         requiredMessage="#{bundle.TiempoRequiredMessage_nombre}"
+                                         class="form-control" />
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.TiempoLabel_codigo1}" for="codigo1" />
+
+                        <div  >
+
+                            <p:inputText id="codigo1"
+                                         value="#{tiempoMB.itemSeleccionado.codigo1}"
+                                         title="#{bundle.TiempoTitle_codigo1}" required="true"
+                                         requiredMessage="#{bundle.TiempoRequiredMessage_codigo1}"
+                                         class="form-control" />
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.TiempoLabel_numero1}" for="numero1" />
+
+                        <div  >
+
+                            <p:inputText id="numero1"
+                                         value="#{tiempoMB.itemSeleccionado.numero1}"
+                                         title="#{bundle.TiempoTitle_numero1}" required="true"
+                                         requiredMessage="#{bundle.TiempoRequiredMessage_numero1}"
+                                         class="form-control" />
+                        </div>
+                    </div>
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{tiempoMB.crear}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

@@ -1,0 +1,636 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="modulos">
+
+        <div class="tab-content"> 
+            <div  class="container tab-pane fade" id=" Curso">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3>
+                            <h:outputText value="#{bundle.CursoTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink action="#{cursoMB.prepararCreacion}"
+                                                               value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+
+                                            <li><h:commandLink action="Editar"
+                                                               value="#{bundle.EditLink}"
+                                                               rendered="#{LoginMB.autModificar}">
+                                                    <i class="fa fa-edit" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{cursoMB.eliminar}"
+                                                               value="#{bundle.DestroyLink}"
+                                                               rendered="#{LoginMB.autEliminar}">
+                                                    <i class="fa fa-trash" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{cursoMB.prepararLista}"
+                                                               value="#{bundle.ShowAllLink}">
+                                                    <i class="fa fa-list" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                <h:outputText value="#{bundle.CursoLabel_sedeid}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{cursoMB.itemSeleccionado.cursonombre}"
+                                              title="#{bundle.CursoTitle_sedeid}" />
+
+
+                                <h:outputText value="#{bundle.CursoLabel_sedeid}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{cursoMB.itemSeleccionado.sede.sedenombre}"
+                                    title="#{bundle.CursoTitle_sedeid}" />
+
+                                <h:outputText value="#{bundle.CursoLabel_gradoid}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{cursoMB.itemSeleccionado.grado.gradonombre}"
+                                    title="#{bundle.CursoTitle_gradoid}" />
+
+
+                                <h:outputText value="#{bundle.CursoLabel_fechaincial}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{cursoMB.itemSeleccionado.fechaincial}"
+                                              title="#{bundle.CursoTitle_fechaincial}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+
+
+                                <h:outputText value="#{bundle.CursoLabel_directorid}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{cursoMB.itemSeleccionado.director.primernombre}"
+                                    title="#{bundle.CursoTitle_estadoid}" />
+
+
+                                <h:outputText value="#{bundle.CursoLabel_codirectorid}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{cursoMB.itemSeleccionado.coDirector.primernombre}"
+                                    title="#{bundle.CursoTitle_estadoid}" />
+
+
+                                <h:outputText value="#{bundle.CursoLabel_estadoid}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{cursoMB.itemSeleccionado.cursoEstado.nombre}"
+                                    title="#{bundle.CursoTitle_estadoid}" />
+
+                            </h:panelGrid>
+
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Lista estudiantes curso-->
+
+
+            <div  class="container tab-pane fade" id="Estudiantes">
+                <div class="card">
+                    <div class="card-header">
+
+
+                        <h3>
+                            <h:outputText value="#{bundle.CursoEstudianteTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </h:form>
+                        <h:form>
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{cursoMB.listacursoestudiante}" var="item"
+
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.CursoEstudianteLabel_estudianteNombreApellido}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.estudiante.apellidoNombre}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.CursoEstudianteTitle_cursoestudianteid}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.estudiante.estudiantecodigo}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+
+                                        <li><h:commandLink
+                                                action="#{cursoMB.abrirFormularioCalificacionEstudiante}"
+                                                value="Evaluar Estudiante">
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemCursoEstudiante}" />
+                                            </h:commandLink></li>
+
+                                    </ul>
+
+
+                                </p:column>
+
+                            </p:dataTable >
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Curso Tarea -->
+
+            <div  class="container tab-pane fade" id="Tarea">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <h:outputText value="Tarea"></h:outputText>
+                        </h3>
+
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{cursoMB.prepararCreacionCursoTarea}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </h:form>
+
+
+                        <h:form>
+
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{cursoMB.listaCursoTarea}" var="item"
+
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.CursoTareaTile_nombreTarea}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombreTarea}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.CursoTareaTile_contenidoTarea}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.contenidoTarea}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.CursoTareaTitle_fechaCreacion}"
+                                                      styleClass="titulo" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaCreacion}"
+                                                  title="#{bundle.CursoTareaTitle_fechaCreacion}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.CursoTareaTile_fechaEntrega}"
+                                                      styleClass="titulo" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaEntrega}"
+                                                  title="#{bundle.CursoTareaTitle_fechaEntrega}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararConsultaCursoTarea}"
+                                                value="#{bundle.ViewLink}"
+                                                rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemCursoTarea}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararEdicionCursoTarea}"
+                                                value="#{bundle.EditLink}"
+                                                rendered="#{LoginMB.autModificar}">
+                                                <i class="fa fa-edit" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemCursoTarea}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink action="#{cursoMB.eliminarCursoTarea}"
+                                                           value="#{bundle.DestroyLink}"
+                                                           rendered="#{LoginMB.autEliminar}">
+                                                <i class="fa fa-trash" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemCursoTarea}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+                            </p:dataTable >
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            <!--     *******************  Curso Comunicado                      -->
+
+
+
+            <div  class="container tab-pane fade" id="Comunicado">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <h:outputText value="#{bundle.CursoComunicadoTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{cursoMB.prepararCreacionCursoComunicado}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </h:form>
+
+
+                        <h:form>
+
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{cursoMB.listaCursoComunicado}" var="item"
+
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.CursoComunicadoTile_asunto}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.asunto}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.CursoComunicadoTile_contenidoComunicado}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.contenidoComunicado}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.CursoComunicadoTitle_fechaCreacion}"
+                                            styleClass="titulo" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaCreacion}"
+                                                  title="#{bundle.CursoComunicadoTitle_fechaCreacion}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararConsultaCursoComunicado}"
+                                                value="#{bundle.ViewLink}"
+                                                rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemCursoComunicado}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararEdicionCursoComunicado}"
+                                                value="#{bundle.EditLink}"
+                                                rendered="#{LoginMB.autModificar}">
+                                                <i class="fa fa-edit" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemCursoComunicado}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{cursoMB.eliminarCursoComunicado}"
+                                                value="#{bundle.DestroyLink}"
+                                                rendered="#{LoginMB.autEliminar}">
+                                                <i class="fa fa-trash" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemCursoComunicado}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+                            </p:dataTable >
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- **************************Horario********************** -->
+
+
+            <div  class="container tab-pane fade" id="Horario">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <h:outputText value="#{bundle.HorarioTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+                    <div class="card-body">
+
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{cursoMB.prepararCreacionHorario}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+
+                                            <li><h:commandLink
+                                                    action="#{cursoMB.prepararBusquedaHorarioProfesor}"
+                                                    value="Horario Profesor">
+                                                    <i class="fa fa-search" />
+                                                </h:commandLink></li>
+
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </h:form>
+
+
+                        <h:form>
+
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{cursoMB.listaHorario}" var="item"
+
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.HorarioTitle_horariodia}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.dia.nombre}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.HorarioTitle_horainicial}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.horainicial}">
+                                        <f:convertDateTime pattern="HH:mm:ss" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.HorarioTitle_horafinal}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.horafinal}">
+                                        <f:convertDateTime pattern="HH:mm:ss" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.HorarioTitle_materiaid}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.materia.materianombre}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararConsultaHorario}"
+                                                value="#{bundle.ViewLink}"
+                                                rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemHorario}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararEdicionHorario}"
+                                                value="#{bundle.EditLink}"
+                                                rendered="#{LoginMB.autModificar}">
+                                                <i class="fa fa-edit" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemHorario}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink action="#{cursoMB.eliminarHorario}"
+                                                           value="#{bundle.DestroyLink}"
+                                                           rendered="#{LoginMB.autEliminar}">
+                                                <i class="fa fa-trash" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemHorario}" />
+                                            </h:commandLink></li>
+                                        <li><h:commandLink
+                                                action="#{cursoMB.PrepararListaProfesores}"
+                                                value="Ver profesores">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemHorario}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+                            </p:dataTable >
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Opciones -->
+            <div  class="container tab-pane fade" id="Opciones">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <h:outputText value="Opciones"></h:outputText>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{cursoMB.anadirCursoEstudiante}"
+                                                    value="Añadir Estudiantes" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+
+
+
+
+
+
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{cursoMB.prepararEvaluacion}"
+                                                    value="Cargar Evaluación">
+                                                    <i class="fa fa-book" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+
+                                    <div  >
+                                        <ul class="nav">
+
+                                            <li><h:commandLink action="#{cursoMB.imprimirPDF}"
+                                                               value="Imprimir Listado Estudiantes" target="_blank">
+                                                    <i class="fa fa-print" />
+                                                    <i class="" />
+                                                </h:commandLink></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </ui:define>
+</ui:composition>
+

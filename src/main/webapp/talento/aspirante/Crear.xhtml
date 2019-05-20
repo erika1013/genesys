@@ -1,0 +1,367 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+
+	
+	
+
+	<ui:define name="title">
+		<h:outputText value="#{bundle.AspiranteTitulo}"></h:outputText>
+	</ui:define>
+
+	<ui:define name="barmenu">
+
+		<h:form>
+
+			<ul class="nav">
+
+				<li><h:commandLink action="#{AspiranteMB.prepararLista}"
+						value="#{bundle.ShowAllLink}" immediate="true"
+						class="btn btn-outline-primary">
+						<i class="fa fa-list"></i>
+					</h:commandLink></li>
+				<li><h:commandLink value="#{bundle.IndexLink}" action="/index"
+						immediate="true" class="btn btn-outline-primary">
+						<i class="fa fa-home verde"></i>
+					</h:commandLink></li>
+			</ul>
+		</h:form>
+	</ui:define>
+
+
+	<ui:define name="body">
+
+
+		<div class="card-body ">
+
+			<h:form>
+
+
+
+
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_nombres}"
+						for="nombres" />
+
+					<p:inputText id="nombres"
+						value="#{AspiranteMB.itemSeleccionado.nombres}"
+						title="#{bundle.AspiranteTitle_nombres}" class="form-control" />
+
+				</div>
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_apellidos}"
+						for="apellidos" />
+
+					<p:inputText id="apellidos"
+						value="#{AspiranteMB.itemSeleccionado.apellidos}"
+						title="#{bundle.AspiranteTitle_apellidos}" class="form-control" />
+
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_identificacion}"
+						for="identificacion" />
+
+					<p:inputText id="identificacion"
+						value="#{AspiranteMB.itemSeleccionado.identificacion}"
+						title="#{bundle.AspiranteTitle_identificacion}"
+						class="form-control" />
+
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel
+						value="#{bundle.AspiranteLabel_ciudadIdentificacion}"
+						for="ciudadIdentificacion" />
+					<div>
+
+						<p:selectOneMenu id="departamentoIdentificacion"
+							value="#{AspiranteMB.departamentoIdentificacionId}"
+							title="#{bundle.AspiranteTitle_departamento}">
+							<f:selectItems value="#{AspiranteMB.departamentoItems}" />
+							<f:ajax render="ciudadIdentificacion"
+								listener="#{AspiranteMB.cargarCiudadesDepartamentoIdentificacion}" />
+
+						</p:selectOneMenu>
+
+
+						<p:selectOneMenu id="ciudadIdentificacion"
+							value="#{AspiranteMB.ciudadIdentificacionId}"
+							title="#{bundle.AspiranteTitle_ciudadIdentificacion}">
+							<f:selectItems value="#{AspiranteMB.ciudadItems1}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_fechaNacimiento}"
+						for="fechaNacimiento" />
+					<div>
+					
+						<p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button"
+							id="fechaNacimiento"
+							value="#{AspiranteMB.itemSeleccionado.fechaNacimiento}" />
+
+
+
+					</div>
+
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_fechaNacimiento}"
+						for="fechaNacimiento" />
+					<div>
+
+
+
+						<h:commandLink>
+							<h:outputText value="Calcular Edad"
+								class="btn btn-secondary btn-danger" />
+							<f:ajax event="click" render="edad"
+								listener="#{AspiranteMB.calcularEdad}" />
+						</h:commandLink>
+
+
+					</div>
+
+
+				</div>
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_lugarNacimiento}"
+						for="lugarNacimiento" />
+					<div>
+
+						<p:selectOneMenu id="departamentoNacimiento"
+							value="#{AspiranteMB.departamentoNacimientoId}"
+							title="#{bundle.AspiranteTitle_departamento}">
+							<f:selectItems value="#{AspiranteMB.departamentoItems}" />
+							<f:ajax render="lugarNacimiento"
+								listener="#{AspiranteMB.cargarCiudadesDepartamentoNacimiento}" />
+
+						</p:selectOneMenu>
+
+						<p:selectOneMenu id="lugarNacimiento"
+							value="#{AspiranteMB.lugarNacimientoId}"
+							title="#{bundle.AspiranteTitle_lugarNacimiento}">
+							<f:selectItems value="#{AspiranteMB.ciudadItems2}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_edad}" for="edad" />
+					<div>
+						<p:inputText id="edad"
+							value="#{AspiranteMB.itemSeleccionado.edad}"
+							title="#{bundle.AspiranteTitle_edad}" />
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_sexo}" for="sexo" />
+					<div>
+
+
+						<p:selectOneMenu id="sexo"
+							value="#{AspiranteMB.itemSeleccionado.sexo}" required="true"
+							class="form-control"
+							requiredMessage="!Seleccione el sexo de el estudiante¡">
+							<f:selectItem itemLabel="--Seleccionar-- " />
+							<f:selectItem itemLabel="M" itemValue="M" />
+							<f:selectItem itemLabel="F" itemValue="F" />
+						</p:selectOneMenu>
+
+
+					</div>
+
+				</div>
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_estadoCivil}"
+						for="estadoCivil" />
+					<div>
+						<p:selectOneMenu id="estadoCivil"
+							value="#{AspiranteMB.estadoCivilId}"
+							title="#{bundle.AspiranteTitle_estadoCivil}">
+							<f:selectItems value="#{AspiranteMB.estadoCivilItems}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_telefono}"
+						for="telefono" />
+					<div>
+						<p:inputText id="telefono"
+							value="#{AspiranteMB.itemSeleccionado.telefono}"
+							title="#{bundle.AspiranteTitle_telefono}" />
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_celular}"
+						for="celular" />
+					<div>
+						<p:inputText id="celular"
+							value="#{AspiranteMB.itemSeleccionado.celular}"
+							title="#{bundle.AspiranteTitle_celular}" />
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_correo}" for="correo" />
+					<div>
+						<p:inputText id="correo"
+							value="#{AspiranteMB.itemSeleccionado.correo}"
+							title="#{bundle.AspiranteTitle_correo}" />
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_direccion}"
+						for="direccion" />
+					<div>
+						<p:inputText id="direccion"
+							value="#{AspiranteMB.itemSeleccionado.direccion}"
+							title="#{bundle.AspiranteTitle_direccion}" />
+					</div>
+
+				</div>
+
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_ciudadResidencia}"
+						for="ciudadResidencia" />
+					<div>
+
+						<p:selectOneMenu id="departamentoResidencia"
+							value="#{AspiranteMB.departamentoResidenciaId}"
+							title="#{bundle.AspiranteTitle_departamento}">
+							<f:selectItems value="#{AspiranteMB.departamentoItems}" />
+							<f:ajax render="ciudadResidencia"
+								listener="#{AspiranteMB.cargarCiudadesDepartamentoResidencia}" />
+
+						</p:selectOneMenu>
+
+
+						<p:selectOneMenu id="ciudadResidencia"
+							value="#{AspiranteMB.ciudadResidenciaId}"
+							title="#{bundle.AspiranteTitle_ciudadResidencia}">
+							<f:selectItems value="#{AspiranteMB.ciudadItems3}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_perfil}" for="perfil" />
+					<div>
+						<p:inputTextarea id="perfil"
+							value="#{AspiranteMB.itemSeleccionado.perfil}"
+							title="#{bundle.AspiranteTitle_perfil}" rows="10"
+							class="form-control" />
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.AspiranteLabel_estado}" for="estado" />
+					<div>
+						<p:selectOneMenu id="estado" value="#{AspiranteMB.estadoId}"
+							title="#{bundle.AspiranteTitle_estado}">
+							<f:selectItems value="#{AspiranteMB.aspiranteEstadoItems}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+				<div class="form-group">
+
+
+					<h:commandLink action="#{AspiranteMB.crear}"
+						value="#{bundle.SaveLink}" class="btn btn-primary" />
+
+				</div>
+
+
+
+			</h:form>
+		</div>
+
+
+	</ui:define>
+</ui:composition>
+
+

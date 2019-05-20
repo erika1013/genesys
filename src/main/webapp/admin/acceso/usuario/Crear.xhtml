@@ -1,0 +1,184 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"   
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content">
+    <div class="container">
+        <div class="ui-g">
+            <div class="ui-g-12">
+
+
+
+
+
+
+
+                <div class="card">
+
+                    <h:form>
+
+
+
+
+
+
+                        <p:toolbar>
+                            <f:facet name="left">
+
+
+                                <p:commandLink action="#{usuarioMB.prepararLista}" immediate="true">
+                                    <i class="fa fa-list"></i>
+                                    <h:outputText value="#{bundle.ShowAllLink}" />
+                                </p:commandLink>
+
+
+                                <p:commandLink action="/index" immediate="true">
+                                    <i class="fa fa-home"></i>
+                                    <h:outputText value="#{bundle.IndexLink}" />
+                                </p:commandLink>
+
+
+
+
+
+
+                            </f:facet>
+
+
+                        </p:toolbar>
+                    </h:form>
+
+
+
+
+
+
+                </div>
+
+                <div class="card">
+                    <h1>
+                        <h:outputText value="#{bundle.UsuarioTitulo}"></h:outputText>
+                    </h1>
+                    <h:form>
+
+                        <p:panelGrid columns="1" styleClass="ui-panelgrid-blank"
+                                     layout="grid">
+
+
+
+                            <p:outputLabel value="#{bundle.UsuarioLabel_usuariousuario}"
+                                           for="usuariousuario" />
+
+
+                            <p:inputText id="usuariousuario"
+                                         value="#{usuarioMB.itemSeleccionado.usuariousuario}"
+                                         title="#{bundle.UsuarioTitle_usuariousuario}" required="true"
+                                         requiredMessage="#{bundle.UsuarioRequiredMessage_usuariousuario}" />
+
+
+
+                            <p:outputLabel value="#{bundle.UsuarioLabel_usuarioclave}"
+                                           for="usuarioclave" />
+
+
+                            <p:password id="usuarioclave"
+                                        value="#{usuarioMB.itemSeleccionado.usuarioclave}"
+                                        title="#{bundle.UsuarioTitle_usuarioclave}"
+                                        class="form-control" />
+
+
+
+                            <p:outputLabel value="#{bundle.UsuarioLabel_usuarioemail}"
+                                           for="usuarioemail" />
+
+
+                            <p:inputText id="usuarioemail"
+                                         value="#{usuarioMB.itemSeleccionado.usuarioemail}"
+                                         title="#{bundle.UsuarioTitle_usuarioemail}"
+                                         class="form-control" />
+
+
+
+                            <p:outputLabel value="#{bundle.UsuarioLabel_usuarionombre}"
+                                           for="usuarionombre" />
+
+
+                            <p:inputText id="usuarionombre"
+                                         value="#{usuarioMB.itemSeleccionado.usuarionombre}"
+                                         title="#{bundle.UsuarioTitle_usuarionombre}"
+                                         class="form-control" />
+
+                            <p:outputLabel value="#{bundle.UsuarioLabel_usuarioapellido}"
+                                           for="usuarioapellido" />
+
+
+                            <p:inputText id="usuarioapellido"
+                                         value="#{usuarioMB.itemSeleccionado.usuarioapellido}"
+                                         title="#{bundle.UsuarioTitle_usuarioapellido}"
+                                         class="form-control" />
+
+
+
+
+                            <p:outputLabel value="#{bundle.UsuarioLabel_rolid}" for="rolid" />
+
+
+                            <p:selectOneMenu id="rolid" value="#{usuarioMB.rolid}"
+                                             title="#{bundle.UsuarioTitle_rolid}" required="true"
+                                             requiredMessage="#{bundle.UsuarioRequiredMessage_rolid}"
+                                             class="form-control">
+                                <f:selectItems value="#{usuarioMB.rolItems}" />
+                            </p:selectOneMenu>
+
+
+
+                            <p:selectBooleanCheckbox
+                                value="#{usuarioMB.itemSeleccionado.crear}" />
+                            <h:outputText value="Crear " />
+
+
+                            <p:selectBooleanCheckbox
+                                value="#{usuarioMB.itemSeleccionado.modificar}" />
+                            <h:outputText value="Modificar " />
+                            <p:selectBooleanCheckbox
+                                value="#{usuarioMB.itemSeleccionado.consultar}" />
+                            <h:outputText value="Consultar " />
+                            <p:selectBooleanCheckbox
+                                value="#{usuarioMB.itemSeleccionado.eliminar}" />
+                            <h:outputText value="Eliminar " />
+                            <p:selectBooleanCheckbox
+                                value="#{usuarioMB.itemSeleccionado.imprimir}" />
+                            <h:outputText value="Imprimir " />
+                            <p:selectBooleanCheckbox
+                                value="#{usuarioMB.itemSeleccionado.exportar}" />
+                            <h:outputText value="Exportar " />
+                            <p:selectBooleanCheckbox
+                                value="#{usuarioMB.itemSeleccionado.importar}" />
+                            <h:outputText value="Importar " />
+
+
+
+
+
+
+
+
+
+                            <p:commandLink action="#{usuarioMB.crear}"
+                                           value="#{bundle.SaveLink}" />
+
+
+
+                            <p:growl id="messages" showDetail="true" />
+                        </p:panelGrid>
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</ui:define>
+
+</ui:composition>

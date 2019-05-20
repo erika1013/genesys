@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<datastore-indexes autoGenerate="true">
+
+
+	<datastore-index kind="Submenu" ancestor="false">
+		<property name="menu" direction="asc" />
+		<property name="submenuorden" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Servicio" ancestor="false">
+		<property name="sede" direction="asc" />
+		<property name="tipoServicio" direction="asc" />
+		<property name="codigoTarifa" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Servicio" ancestor="false">
+		<property name="tipoServicio" direction="asc" />
+		<property name="codigoTarifa" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="Servicio" ancestor="false">
+		<property name="tipoServicio" direction="asc" />
+		<property name="sede" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="ReciboPagoDetalle" ancestor="false">
+		<property name="reciboPago" direction="asc" />
+		<property name="cobro" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="ReciboPagoDetalle" ancestor="false">
+		<property name="reciboPago" direction="asc" />
+		<property name="periodo" direction="asc" />
+		<property name="ordenAplicacion" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="ReciboPagoDetalle" ancestor="false">
+		<property name="periodo" direction="asc" />
+		<property name="ordenAplicacion" direction="asc" />
+	</datastore-index>
+
+
+
+	<datastore-index kind="CuentaCobro" ancestor="false">
+		<property name="proveedor" direction="asc" />
+		<property name="numeroCuenta" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Sede" ancestor="false">
+		<property name="compania" direction="asc" />
+		<property name="sedecodigo" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="EstudianteContratoDetalle"
+		ancestor="false">
+		<property name="contrato" direction="asc" />
+		<property name="tipoCobro" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="EstudianteContratoDetalle"
+		ancestor="false">
+		<property name="contrato" direction="asc" />
+		<property name="servicio" direction="asc" />
+	</datastore-index>
+
+
+
+	<datastore-index kind="EstudianteContrato" ancestor="false">
+		<property name="estado" direction="asc" />
+		<property name="estudiante" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="EstudianteContrato" ancestor="false">
+
+		<property name="estudiante" direction="asc" />
+		<property name="grado" direction="asc" />
+		<property name="estado" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="EstudianteContrato" ancestor="false">
+		<property name="sede" direction="asc" />
+		<property name="grado" direction="asc" />
+		<property name="estado" direction="asc" />
+	</datastore-index>
+
+
+
+	<datastore-index kind="Cobro" ancestor="false">
+		<property name="servicio" direction="asc" />
+		<property name="estado" direction="asc" />
+		<property name="estudiante" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Cobro" ancestor="false">
+		<property name="periodo" direction="asc" />
+		<property name="servicio" direction="asc" />
+		<property name="estado" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Cobro" ancestor="false">
+		<property name="estudiante" direction="asc" />
+		<property name="estado" direction="asc" />
+		<property name="servicio" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Cobro" ancestor="false">
+		<property name="periodo" direction="asc" />
+		<property name="estudiante" direction="asc" />
+		<property name="servicio" direction="asc" />
+		<property name="estado" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Cobro" ancestor="false">
+		<property name="periodo" direction="asc" />
+		<property name="estudiante" direction="asc" />
+		<property name="estado" direction="asc" />
+	</datastore-index>
+
+
+
+
+	<datastore-index kind="ReciboPago" ancestor="false">
+		<property name="estudiante" direction="asc" />
+		<property name="numero" direction="asc" />
+		<property name="estado" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="ReciboPago" ancestor="false">
+		<property name="estudiante" direction="asc" />
+		<property name="numero" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="ReciboPago" ancestor="false">
+		<property name="numero" direction="asc" />
+		<property name="estado" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="ReciboPago" ancestor="false">
+		<property name="periodo" direction="asc" />
+		<property name="sede" direction="asc" />
+		<property name="grado" direction="asc" />
+		<property name="estado" direction="asc" />
+		<property name="numero" direction="asc" />
+	</datastore-index>
+
+
+
+	<datastore-index kind="BancoPago" ancestor="false">
+		<property name="referencia1" direction="asc" />
+		<property name="referencia2" direction="asc" />
+		<property name="fechaSistema" direction="asc" />
+		<property name="horaSistema" direction="asc" />
+		<property name="terminal" direction="asc" />
+		<property name="talon" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="BancoPago" ancestor="false">
+		<property name="tipo" direction="asc" />
+		<property name="estado" direction="asc" />
+		<property name="fechaproceso" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="BancoPago" ancestor="false">
+		<property name="estado" direction="asc" />
+		<property name="tipo" direction="asc" />
+		<property name="fechaProceso" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="ControlMensual" ancestor="false">
+		<property name="periodo" direction="desc" />
+		<property name="sede" direction="asc" />
+		<property name="grado" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="BancoConciliacionDetalle"
+		ancestor="false">
+		<property name="bancoConciliacion" direction="asc" />
+		<property name="numeroRecibo" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="Ciudad" ancestor="false">
+		<property name="departamento" direction="desc" />
+		<property name="codigo" direction="asc" />
+
+	</datastore-index>
+
+
+	<datastore-index kind="Actividad" ancestor="false">
+		<property name="usuario" direction="asc" />
+		<property name="periodo" direction="asc" />
+		<property name="actividadNumero" direction="asc" />		 
+	</datastore-index>
+	
+	<datastore-index kind="Actividad" ancestor="false" >
+        <property name="periodo" direction="asc"/>
+        <property name="usuario" direction="asc"/>
+        <property name="actividadNumero" direction="desc"/>
+    </datastore-index>
+	
+	
+
+	<datastore-index kind="Requerimiento" ancestor="false">
+		<property name="proyecto" direction="asc" />
+		<property name="requerimientoNumero" direction="desc" />
+	</datastore-index>
+
+
+	<datastore-index kind="Proyecto" ancestor="false">
+		<property name="cliente" direction="asc" />
+		<property name="etapa" direction="asc" />
+	</datastore-index>
+
+
+	<datastore-index kind="Requerimiento" ancestor="false">
+		<property name="proyecto" direction="asc" />
+		<property name="tipo" direction="asc" />
+		<property name="estado" direction="asc" />
+		<property name="requerimientoNumero" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Requerimiento" ancestor="false">
+		<property name="tipo" direction="asc" />
+		<property name="estado" direction="asc" />
+		<property name="requerimientoNumero" direction="asc" />
+	</datastore-index>
+
+	<datastore-index kind="Asignacion" ancestor="false">
+		<property name="usuario" direction="asc" />
+		<property name="estado" direction="asc" />  
+		<property name="asignacionNumero" direction="asc" />
+	</datastore-index>
+
+
+ <datastore-index kind="Tarea" ancestor="false" >
+        <property name="requerimiento" direction="asc"/>
+        <property name="tareaNumero" direction="asc"/>
+    </datastore-index>
+
+
+
+</datastore-indexes>

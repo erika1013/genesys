@@ -1,0 +1,87 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.NominaNovedadTitulo}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+                <h:form>
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{empleadoContratoMB.prepararCreacionNominaNovedad}"
+                                            value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                            <i class="fa fa-plus" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink
+                                            action="#{empleadoContratoMB.prepararEdicion}"
+                                            value="#{bundle.EditLink}" rendered="#{LoginMB.autModificarNominaNovedad}">
+                                            <i class="fa fa-edit" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink action="#{empleadoContratoMB.eliminarNominaNovedad}"
+                                                       value="#{bundle.DestroyLink}"
+                                                       rendered="#{LoginMB.autEliminar}">
+                                            <i class="fa fa-trash" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink
+                                            action="#{empleadoContratoMB.prepararConsulta}"
+                                            value="#{bundle.ShowAllLink}">
+                                            <i class="fa fa-list" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink value="#{bundle.IndexLink}"
+                                                       action="/index" immediate="true">
+                                            <i class="fa fa-home" />
+                                        </h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+                        <h:outputText
+                            value="#{bundle.NominaNovedadLabel_nominanovedadcodigo}"
+                            styleClass="titulo" />
+                        <h:outputText
+                            value="#{empleadoContratoMB.itemNominaNovedad.nominanovedadcodigo}"
+                            title="#{bundle.NominaNovedadTitle_nominanovedadcodigo}" />
+
+                        <h:outputText
+                            value="#{bundle.NominaNovedadLabel_nominanovedadnombre}"
+                            styleClass="titulo" />
+                        <h:outputText
+                            value="#{empleadoContratoMB.itemNominaNovedad.nominanovedadnombre}"
+                            title="#{bundle.NominaNovedadTitle_nominanovedadnombre}" />
+                        <h:outputText
+                            value="#{bundle.NominaNovedadLabel_nominanovedadvalor}"
+                            styleClass="titulo" />
+                        <h:outputText
+                            value="#{empleadoContratoMB.itemNominaNovedad.nominanovedadvalor}"
+                            title="#{bundle.NominaNovedadTitle_nominanovedadvalor}" />
+                        <h:outputText value="#{bundle.NominaNovedadLabel_nominanovedadobservacion}"
+                                      styleClass="titulo" />
+                        <h:outputText
+                            value="#{empleadoContratoMB.itemNominaNovedad.nominanovedadobservacion}"
+                            title="#{bundle.NominaNovedadTitle_nominanovedadobservacion}" />
+                    </h:panelGrid>
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<h:form>
+
+
+
+		<div class="collapse navbar-collapse"	id="nav-opciones">
+
+			<ul class="nav flex-column">
+
+				<ui:repeat var="opcion" value="#{LoginMB.listaOpcion}"
+					varStatus="status">
+
+					<li class="nav-item"><h:outputLink
+							value="#{opcion.opcionvalor}"
+							class="btn btn-lg btn-outline-secondary">
+							<h:outputText value="#{opcion.opcionnombre}" />
+						</h:outputLink></li>
+
+
+
+				</ui:repeat>
+
+			</ul>
+
+
+		</div>
+
+
+	</h:form>
+
+
+
+
+
+</h:body>
+</html>
+

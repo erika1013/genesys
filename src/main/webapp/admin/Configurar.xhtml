@@ -1,0 +1,72 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="Configuración Aplicacion"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form >
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul >
+
+                                <li><h:commandLink action="#{configurarMB.actualizarTipoServicio}" value="Actualizar Tipo Servicio" immediate="true"></h:commandLink></li>
+                                <li><h:commandLink action="#{configurarMB.actualizarNombreEmpleado}" value="Actualizar Nombre Empleado" immediate="true"></h:commandLink></li>
+                                <li><h:commandLink action="#{configurarMB.actualizarCodigoSede}" value="Actualizar Codigo Sede" immediate="true"></h:commandLink></li>
+                                <li><h:commandLink action="#{configurarMB.actualizarServicio}" value="Actualizar Servicio" immediate="true"></h:commandLink></li>
+                                <li><h:commandLink action="#{configurarMB.actualizarContrato}" value="Actualizar Contrato" immediate="true"></h:commandLink></li>
+
+                                <li><h:commandLink action="#{configurarMB.actualizarReciboPago}" value="Actualizar Recibo Pago" immediate="true"></h:commandLink></li>
+                                <li><h:commandLink action="#{configurarMB.actualizarReciboPagoAbono}" value="Actualizar Abono" immediate="true"></h:commandLink></li>
+
+                                <li><h:commandLink action="#{configurarMB.actualizarCodigoServicio}" value="Actualizar Codigo Servicio" immediate="true"></h:commandLink></li>
+
+
+                                <li><h:commandLink action="#{configurarMB.actualizarContratoSede}" value="Actualizar Sede Contrato" immediate="true"></h:commandLink></li>
+
+
+                                <li><h:commandLink action="#{configurarMB.mora201702}" value="Calcular Mora 201702" immediate="true" ></h:commandLink></li>
+                                <li><h:commandLink action="#{configurarMB.mora201703}" value="Calcular Mora 201703" immediate="true"></h:commandLink></li>
+
+                                <li><h:commandLink action="#{configurarMB.actualizarDetalleRecibo}" value="Actualizar Detalle Recibo" immediate="true"></h:commandLink></li>
+
+
+                                <li><h:commandLink action="#{configurarMB.eliminarMora05}" value="Eliminar Mora del Periodo 05" immediate="true"></h:commandLink></li>
+
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+
+
+
+
+            </h:form>
+        </div> 
+    </ui:define>
+</ui:composition>
+
+

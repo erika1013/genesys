@@ -1,0 +1,235 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="Lista de Pagos recibidos"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home" />
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink
+                                        action="#{reciboPagoMB.prepararExportacion}" value="Exportar"
+                                        rendered="#{LoginMB.autExportar}">
+                                        <i class="fa fa-cloud-download-alt" />
+                                    </h:commandLink></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </h:form>
+
+        </ui:define>
+
+
+        <ui:define name="barmenu">       
+        </ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+
+                <h:form >
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AplicarPagoLabel_codigoEstudiante}"
+                                       for="codigoEstudiante"   />
+
+                        <div  >
+
+                            <p:inputText id="codigoEstudiante"
+                                         value="#{reciboPagoMB.codigoEstudiante}"
+                                         title="#{bundle.AplicarPagoTitle_codigoEstudiante}" class="form-control"  />
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{reciboPagoMB.buscarAbonosEstudiante}"
+                                           value="Buscar" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+                </h:form>
+
+            </div>
+        </ui:define>
+
+
+        <ui:define name="modulos">
+
+            <h:panelGroup rendered="#{reciboPagoMB.listarAbonos}">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <span class="azul"><h:outputText
+                                    value="Lista de pagos recibidos del Estudiante" /> </span>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+
+
+
+
+                        <h:form>
+
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{reciboPagoMB.listaAbonoItems}" var="item"
+
+
+                                          >
+
+                                <p:column filterBy="#{item.reciboPago.periodo}"
+                                          >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ReciboPagoTitle_periodo}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.reciboPago.periodo}" />
+                                </p:column>
+
+                                <p:column
+                                    filterBy="#{item.reciboPago.estudiante.estudiantecodigo}"
+                                    >
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.ReciboPagoTitle_estudiantecodigo}" />
+                                    </f:facet>
+                                    <h:outputText
+                                        value="#{item.reciboPago.estudiante.estudiantecodigo}" />
+                                </p:column>
+
+                                <p:column filterBy="#{item.reciboPago.numero}"
+                                          >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ReciboPagoTitle_numero}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.reciboPago.numero}" />
+                                </p:column>
+
+
+                                <p:column filterBy="#{item.reciboPago.estudiante.nombreApellido}"
+                                          >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ReciboPagoTitle_nombreApellido}" />
+                                    </f:facet>
+                                    <h:outputText
+                                        value="#{item.reciboPago.estudiante.nombreApellido}" />
+                                </p:column>
+
+
+
+
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ReciboPagoAbonoTitle_valorPago}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.valorPago}">
+                                        <f:convertNumber type="currency" currencySymbol="$" />
+                                    </h:outputText>
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ReciboPagoAboboTitle_fechaPago}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.fechaPago}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </p:column>
+
+
+                                <p:column filterBy="#{item.tipoPago.tipoPagonombre}"
+                                          >
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ReciboPagoAbonoTitle_Tipo}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.tipoPago.tipoPagonombre}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{reciboPagoMB.prepararConsulta}"
+                                                value="Consultar Recibo" rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item.reciboPago}"
+                                                                             target="#{reciboPagoMB.itemSeleccionado}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+
+                                    </ul>
+                                </p:column>
+
+
+
+
+
+                            </p:dataTable >
+
+
+
+                        </h:form>
+                    </div>
+
+                </div>
+
+            </h:panelGroup>
+
+        </ui:define>
+
+        <ui:define name="script1">
+            <script>
+
+
+
+
+
+
+
+
+
+
+
+            </script>
+        </ui:define>
+</ui:composition>
+
+
+

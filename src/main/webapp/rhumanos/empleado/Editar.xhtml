@@ -1,0 +1,310 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+
+	<ui:define name="content"></ui:define>
+	<ui:define name="title">
+		<h:outputText value="#{bundle.EmpleadoTitulo}"></h:outputText>
+	</ui:define>
+	<ui:define name="barmenu">
+		<h:form>
+
+			<ul class="nav">
+
+				<li><h:commandLink action="#{empleadoMB.prepararLista}"
+						value="#{bundle.ShowAllLink}" immediate="true">
+						<i class="fa fa-list"></i>
+					</h:commandLink></li>
+				<li><h:commandLink value="#{bundle.IndexLink}" action="/index"
+						immediate="true">
+						<i class="fa fa-home"></i>
+					</h:commandLink></li>
+			</ul>
+
+		</h:form>
+
+	</ui:define>
+
+	<ui:define name="body">
+		<div class="card-body">
+
+
+
+			<h:form>
+
+				
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_sedeid}" for="sedeid" />
+
+					<div>
+
+						<p:selectOneMenu id="sedeid" value="#{empleadoMB.sedeid}"
+							title="#{bundle.EmpleadoTitle_sedeid}" class="form-control"
+							required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_sedeid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{empleadoMB.sedeItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_primernombre}"
+						for="primernombre" />
+
+					<div>
+
+						<p:inputText id="primernombre"
+							value="#{empleadoMB.itemSeleccionado.primernombre}"
+							title="#{bundle.PersonaTitle_primernombre}" class="form-control"
+							required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_primernombre}" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_segundonombre}"
+						for="segundonombre" />
+
+					<div>
+
+						<p:inputText id="segundonombre"
+							value="#{empleadoMB.itemSeleccionado.segundonombre}"
+							title="#{bundle.PersonaTitle_segundonombre}" class="form-control"
+							required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_segundonombre}" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_primerapellido}"
+						for="primerapellido" />
+
+					<div>
+
+						<p:inputText id="primerapellido"
+							value="#{empleadoMB.itemSeleccionado.primerapellido}"
+							title="#{bundle.PersonaTitle_primerapellido}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_primerapellido}" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_segundoapellido}"
+						for="segundoapellido" />
+
+					<div>
+
+						<p:inputText id="segundoapellido"
+							value="#{empleadoMB.itemSeleccionado.segundoapellido}"
+							title="#{bundle.PersonaTitle_segundoapellido}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_segundoapellido}" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_tipoidentificacionid}"
+						for="tipoidentificacionid" />
+
+					<div>
+
+						<p:selectOneMenu id="tipoidentificacionid"
+							value="#{empleadoMB.tipoidentificacionid}"
+							title="#{bundle.PersonaTitle_tipoidentificacionid}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_tipoidentificacionid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{empleadoMB.tipoIdentificacionItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_numeroidentificacion}"
+						for="numeroidentificacion" />
+
+					<div>
+
+						<p:inputText id="numeroidentificacion"
+							value="#{empleadoMB.itemSeleccionado.numeroidentificacion}"
+							title="#{bundle.PersonaTitle_numeroidentificacion}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_numeroidentificacion}" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_fechanacimiento}"
+						for="fechanacimiento" />
+
+
+
+
+
+					<p:calendar id="fechanacimiento"
+						value="#{empleadoMB.itemSeleccionado.fechanacimiento}"
+						pattern="yyyy-MM-dd" navigator="true" showOn="button"
+						required="true"
+						requiredMessage="#{bundle.EmpleadoRequiredMessage_fechanacimiento}" />
+
+
+
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_fechaingreso}"
+						for="fechaingreso" />
+
+					<div>
+
+						<p:calendar id="fechaingreso"
+							value="#{empleadoMB.itemSeleccionado.fechaingreso}"
+							pattern="yyyy-MM-dd" navigator="true" showOn="button"
+							required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_fechaingreso}" />
+
+
+					</div>
+				</div>
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_fecharetiro}"
+						for="fecharetiro" />
+
+					<div>
+
+						<p:calendar id="fecharetiro" pattern="yyyy-MM-dd" navigator="true"
+							showOn="button"
+							value="#{empleadoMB.itemSeleccionado.fecharetiro}" />
+
+					</div>
+				</div>
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_empleadoemail}"
+						for="empleadoemail" />
+
+					<div>
+
+						<p:inputText id="empleadoemail"
+							value="#{empleadoMB.itemSeleccionado.empleadoemail}"
+							title="#{bundle.EmpleadoTitle_empleadoemail}"
+							class="form-control" />
+					</div>
+				</div>
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_empleadocelular}"
+						for="empleadocelular" />
+
+					<div>
+
+						<p:inputText id="empleadocelular"
+							value="#{empleadoMB.itemSeleccionado.empleadocelular}"
+							title="#{bundle.EmpleadoTitle_empleadocelular}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_empleadocelular}" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_empleadotelefono}"
+						for="empleadotelefono" />
+
+					<div>
+
+						<p:inputText id="empleadotelefono"
+							value="#{empleadoMB.itemSeleccionado.empleadotelefono}"
+							title="#{bundle.EmpleadoTitle_empleadotelefono}"
+							class="form-control" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_companiacargoid}"
+						for="companiacargoid" />
+
+					<div>
+
+						<p:selectOneMenu id="companiacargoid"
+							value="#{empleadoMB.cargoid}"
+							title="#{bundle.EmpleadoTitle_companiacargoid}" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_cargoid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{empleadoMB.cargoItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_tipoEmpleadoid}"
+						for="tipoEmpleadoid" />
+
+					<div>
+
+						<p:selectOneMenu id="tipoEmpleadoid"
+							value="#{empleadoMB.tipoEmpleadoid}"
+							title="#{bundle.EmpleadoTitle_tipoEmpleadoid}" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_tipoEmpleadoid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{empleadoMB.tipoEmpleadoItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_empleadoEstadoid}"
+						for="empleadoEstadoid" />
+
+					<div>
+
+						<p:selectOneMenu id="empleadoEstadoid"
+							value="#{empleadoMB.empleadoEstadoid}"
+							title="#{bundle.EmpleadoTitle_empleadoEstadoid}" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_empleadoEstadoid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{empleadoMB.empleadoEstadoItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+
+
+
+
+
+				<div>
+					<div>
+						<h:commandLink action="#{empleadoMB.actualizar}"
+							value="#{bundle.SaveLink}" class="btn btn-secondary" />
+					</div>
+				</div>
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+

@@ -1,0 +1,153 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.BancoConciliacionTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{bancoConciliacionMB.prepararConsulta}"
+                                        value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}"
+                                        immediate="true">
+                                        <i class="fa fa-eye"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink
+                                        action="#{bancoConciliacionMB.prepararLista}"
+                                        value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+
+                    <h:outputText value="#{bundle.BancoConciliacionLabel_fechaPago}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoConciliacionMB.itemSeleccionado.fechaPago}"
+                        title="#{bundle.BancoConciliacionTitle_fechaPago}" />
+
+
+                    <h:outputText
+                        value="#{bundle.BancoConciliacionLabel_estudianteCodigo}"
+                        styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoConciliacionMB.itemSeleccionado.estudianteCodigo}"
+                        title="#{bundle.BancoConciliacionTitle_estudianteCodigo}" />
+
+                    <h:outputText value="#{bundle.BancoConciliacionLabel_valorTotal}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoConciliacionMB.itemSeleccionado.valorTotal}"
+                        title="#{bundle.BancoConciliacionTitle_valorTotal}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+                    <h:outputText
+                        value="#{bundle.BancoConciliacionLabel_valorConciliado}"
+                        styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoConciliacionMB.itemSeleccionado.valorConciliado}"
+                        title="#{bundle.BancoConciliacionTitle_valorConciliado}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+                    <h:outputText
+                        value="#{bundle.BancoConciliacionLabel_valorPendiente}"
+                        styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoConciliacionMB.itemSeleccionado.valorPendiente}"
+                        title="#{bundle.BancoConciliacionTitle_valorPendiente}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+
+
+
+
+                </h:panelGrid>
+
+
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.BancoConciliacionLabel_nombreOrigen}"
+                        for="nombreOrigen"   />
+
+                    <div  >
+
+                        <p:inputText id="nombreOrigen"
+                                     value="#{bancoConciliacionMB.itemSeleccionado.nombreOrigen}"
+                                     title="#{bundle.BancoConciliacionTitle_nombreOrigen}"
+                                     class="form-control"  required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionRequiredMessage_nombreOrigen}" />
+                    </div>
+                </div>
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoConciliacionLabel_observacion}"
+                                   for="observacion"   />
+                    <div  >
+
+                        <p:inputTextarea id="observacion"
+                                         value="#{bancoConciliacionMB.itemSeleccionado.observacion}"
+                                         title="#{bundle.BancoConciliacionTitle_observacion}" class="form-control"  />
+                    </div>
+                </div>
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{bancoConciliacionMB.actualizar}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

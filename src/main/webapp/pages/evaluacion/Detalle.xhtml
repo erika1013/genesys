@@ -1,0 +1,196 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.EvaluacionTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{evaluacionMB.prepararCreacion}"
+                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                        <i class="fa fa-plus" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="Editar"
+                                                   value="#{bundle.EditLink}" rendered="#{LoginMB.autModificar}">
+                                        <i class="fa fa-edit" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{evaluacionMB.eliminar}"
+                                                   value="#{bundle.DestroyLink}"
+                                                   rendered="#{LoginMB.autEliminar}">
+                                        <i class="fa fa-trash" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{evaluacionMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}">
+                                        <i class="fa fa-list" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+                    <h:outputText value="#{bundle.EvaluacionLabel_year}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{evaluacionMB.itemSeleccionado.year}"
+                                  title="#{bundle.EvaluacionTitle_year}">
+                    </h:outputText>
+
+                    <h:outputText value="#{bundle.EvaluacionLabel_mes}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{evaluacionMB.itemSeleccionado.mes}"
+                                  title="#{bundle.EvaluacionTitle_periodo}" />
+
+                    <h:outputText value="#{bundle.EvaluacionLabel_periodo}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{evaluacionMB.itemSeleccionado.periodo}"
+                                  title="#{bundle.EvaluacionTitle_periodo}" />
+
+
+                    <h:outputText value="#{bundle.EvaluacionLabel_gradoid}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{evaluacionMB.itemSeleccionado.grado.gradonombre}"
+                        title="#{bundle.EvaluacionTitle_gradoid}" />
+                </h:panelGrid>
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+
+    <!-- Evaluacion Detalle-->
+
+    <ui:define name="modulos">
+
+
+
+        <!-- Listas de Opciones-->
+
+        <div class="card">
+            <div class="card-header">
+                <h3>
+                    <h:outputText value="#{bundle.EvaluacionDetalleTitulo}"></h:outputText>
+                </h3>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <h:form>
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{evaluacionMB.prepararCreacionEvaluacionDetalle}"
+                                            value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                            <i class="fa fa-plus" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink value="#{bundle.IndexLink}"
+                                                       action="/index" immediate="true">
+                                            <i class="fa fa-home" />
+                                        </h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+
+
+                <h:form>
+
+
+
+                    <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{evaluacionMB.listaEvaluacionDetalleItems}"
+                                  var="item" 
+
+                                  >
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.EvaluacionTitle_indicadorid}" />
+                            </f:facet>
+                            <h:outputText value="#{item.indicador.indicadordescripcion}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.EvaluacionTitle_dimensionid}" />
+                            </f:facet>
+                            <h:outputText value="#{item.dimension.dimensionnombre}" />
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Operacion" />
+                            </f:facet>
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{evaluacionMB.prepararEdicionEvaluacionDetalle}"
+                                        value="#{bundle.EditLink}" rendered="#{LoginMB.autModificar}">
+
+                                        <i class="fa fa-edit" />
+                                        <f:setPropertyActionListener value="#{item}"
+                                                                     target="#{evaluacionMB.itemEvaluacionDetalle}" />
+                                    </h:commandLink></li>
+                                <h:outputText value=" " />
+                                <li><h:commandLink
+                                        action="#{evaluacionMB.eliminarEvaluacionDetalle}"
+                                        value="#{bundle.DestroyLink}"
+                                        rendered="#{LoginMB.autEliminar}">
+                                        <i class="fa fa-trash" />
+                                        <f:setPropertyActionListener value="#{item}"
+                                                                     target="#{evaluacionMB.itemEvaluacionDetalle}" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </p:column>
+                    </p:dataTable >
+
+
+                </h:form>
+
+
+            </div>
+        </div>
+
+
+    </ui:define>
+
+
+</ui:composition>
+
+
+

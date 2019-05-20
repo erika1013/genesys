@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no ,initial-scale=1.0, shrink-to-fit=no" />
+	<title>#{bundle.NombreAplicacion}</title>
+
+	<h:outputStylesheet library="bootstrap"
+		name="4.0.0/css/bootstrap.min.css" />
+	<h:outputStylesheet library="awesome" name="all.css" />
+	<h:outputStylesheet library="css" name="guandera.css" />
+</h:head>
+
+<h:body>
+
+
+	<nav class="navbar   navbar-expand-sm navbar-light colorBackground20">
+
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#nav-content" aria-controls="nav-content"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<a class="navbar-brand" href="www.guandera.com"><img
+				src="/resources/images/gverde.png" height="56" width="66" /></a>
+
+			<div>
+				<h4>Genesys: Sistema Integral de Administración Empresarial</h4>
+			</div>
+
+			<div class="collapse navbar-collapse justify-content-end"
+				id="nav-content">
+
+				<h:form>
+					<ul class="navbar-nav">
+
+						<li class="nav-item"><i class="fas fa-user"></i> <h:outputText
+								value="#{LoginMB.usuario.usuarionombre}" /></li>
+
+						<li class="nav-item"><h:commandLink
+								action="#{LoginMB.logout()}" value="Salir"
+								class="btn btn-outline-secondary">
+								<i class="fas fa-sign-out-alt"></i>
+
+							</h:commandLink></li>
+
+					</ul>
+
+				</h:form>
+
+			</div>
+
+		</div>
+
+	</nav>
+
+
+	<div class="container-fluid">
+
+		<div
+			class="row bg-dark align-items-center justify-content-between pt-2 pb-2">
+
+			<div class="col-12 col-md-2  ">
+				<h:form>
+
+					<h:selectOneMenu id="menuid" value="#{LoginMB.menuid}"
+						required="true" requiredMessage="Seleccione un Modulo"
+						class="custom-select">
+						<f:selectItem itemLabel="--Seleccionar Modulo-- " />
+						<f:selectItems value="#{LoginMB.menuItems}" />
+
+						<f:ajax listener="#{LoginMB.cargarOpcionesMenu}"
+							render="opcionesMenu" />
+
+					</h:selectOneMenu>
+
+				</h:form>
+			</div>
+
+			<div class="col"></div>
+
+
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+	<div class="container-fluid">
+
+
+		<div class="row ">
+
+
+			<!-- Opciones de Menu -->
+
+			<div class="col-12 col-md-2 bg-light">
+
+				<a href="#opcionesDeMenu" data-toggle="collapse" rol="button"
+					aria-expanded="false" aria-controls="opcionesDeMenu"
+					class="btn btn-sm btn-outline-success btn-block"><i
+					class="fas fa-arrow-down"></i> Ver Opciones <i
+					class="fas fa-arrow-up"></i> </a>
+
+				<div id="opcionesDeMenu">
+					<h:panelGroup id="opcionesMenu">
+
+
+						<ui:include src="/plantillas/menu.xhtml" />
+
+
+
+					</h:panelGroup>
+
+				</div>
+			</div>
+
+
+
+			<!-- Pagina principal -->
+
+
+			<main role="main" class="col-12 col-md-10 ">
+
+
+			<div
+				class="row  align-items-center justify-content-between colorBackground20">
+
+				<div class="col-12 col-md-6">
+					<h1>
+						<ui:insert name="title" />
+					</h1>
+				</div>
+
+				<div class="col-12 col-md-6">
+
+					<ui:insert name="barmenu" />
+				</div>
+
+
+			</div>
+
+
+			<div class="row">
+				<div class="col-12">
+					<h:form>
+						<h:messages />
+					</h:form>
+				</div>
+			</div>
+
+
+
+
+
+
+
+			<div class="row pt-4 pb-4">
+				<div class="col-12">
+
+					<div class="card">
+						<ui:insert name="body" />
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="row pt-4 pb-4">
+				<div class="col-12">
+
+					<ui:insert name="modulos" />
+
+				</div>
+			</div>
+
+
+
+			</main>
+
+
+
+		</div>
+
+
+
+
+
+	</div>
+
+
+
+
+
+	<!-- fin del cuerpo -->
+
+
+
+
+	<div class="container-fluid">
+
+
+		<footer class="row pt-2 pb-2">
+			<div class="col">
+
+				<b class="copyright"> 2018 Guandera</b> Todos los derechos
+				reservados.
+
+			</div>
+
+		</footer>
+	</div>
+
+
+
+	<h:outputScript library="jquery" name="3.3.0/jquery-3.3.0.slim.min.js" />
+	<h:outputScript library="popper" name="1.14.3/popper.min.js" />
+	<h:outputScript library="bootstrap" name="4.0.0/js/bootstrap.min.js" />
+
+
+	<ui:insert name="script1" />
+</h:body>
+</html>
+

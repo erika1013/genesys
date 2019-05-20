@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<title><ui:insert name="windowTitle" />Sistema Integral
+		Administración Escolar</title>
+
+	<h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css" />
+	<h:outputStylesheet library="bootstrap"
+		name="css/bootstrap-responsive.min.css" />
+	<h:outputStylesheet library="css" name="theme.css" />
+	<h:outputStylesheet library="images" name="icons/css/font-awesome.css" />
+	<link
+		href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+		rel="stylesheet" type="text/css" />
+
+
+</h:head>
+
+<h:body>
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Sistema
+					Integral Administración Escolar </a>
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<h:form>
+						<ul class="nav pull-right">
+
+							<li><h:outputText value="#{LoginMB.usuario.usuarionombre}" />
+							</li>
+
+							<li><h:commandLink action="#{LoginMB.logout()}"
+									value="Salir" title="Salir del sistema" /></li>
+
+						</ul>
+
+					</h:form>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</div>
+		<!-- /navbar-inner -->
+	</div>
+
+
+
+	<!-- Cuerpo de la pagina -->
+
+
+	<div class="wrapper">
+		<div class="container">
+
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<ui:insert name="sidebarLeft">
+							<ui:include src="/plantillas/menu.xhtml" />
+						</ui:insert>
+					</div>
+				</div>
+
+				<div class="span9">
+					<div class="content">
+
+						<div class="module">
+
+							<div class="module-head">
+								<h3>
+									<ui:insert name="title" />
+								</h3>
+							</div>
+
+
+
+							<ui:insert name="body" />
+
+
+						</div>
+
+						<ui:insert name="modulos" />
+
+
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- fin del cuerpo -->
+
+
+	<!-- inicio pie de pagina -->
+
+	<div class="footer">
+		<div class="container">
+
+			<b class="copyright"> 2016 Guandera</b> Todos los derechos
+			reservados.
+		</div>
+	</div>
+
+	<h:outputScript library="scripts" name="jquery-1.9.1.min.js" />
+	<h:outputScript library="scripts" name="jquery-ui-1.10.1.custom.min.js" />
+	<h:outputScript library="bootstrap" name="js/bootstrap.min.js" />
+	<h:outputScript library="scripts" name="flot/jquery.flot.js" />
+	<h:outputScript library="scripts" name="flot/jquery.flot.resize.js" />
+	<h:outputScript library="scripts"
+		name="datatables/jquery.dataTables.js" />
+	<h:outputScript library="scripts" name="common.js" />
+
+	<ui:insert name="script1" />
+
+</h:body>
+</html>
+

@@ -1,0 +1,382 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+
+
+
+
+    <ui:define name="modulos">
+
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active"  data-toggle="tab" href="#cliente">Detalle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#contactos">Contactos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  data-toggle="tab" href="#cargos">Cargos</a>
+            </li>
+
+        </ul>
+
+
+
+
+
+
+        <div class="tab-content"> 
+            <!-- *****************************************-->
+            <!-- Informacion empleado-->
+            <div  class="container tab-pane active" id="cliente">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3>
+                            <h:outputText value="#{bundle.ClienteTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{clienteMB.prepararCreacion}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{clienteMB.prepararEdicion}"
+                                                               value="#{bundle.EditLink}"
+                                                               rendered="#{LoginMB.autModificar}">
+                                                    <i class="fa fa-edit" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{clienteMB.eliminar}"
+                                                               value="#{bundle.DestroyLink}"
+                                                               rendered="#{LoginMB.autEliminar}">
+                                                    <i class="fa fa-trash" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{clienteMB.prepararLista}"
+                                                               value="#{bundle.ShowAllLink}">
+                                                    <i class="fa fa-list" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                <h:outputText value="#{bundle.ClienteLabel_clientenombre}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{clienteMB.itemSeleccionado.clientenombre}"
+                                    title="#{bundle.ClienteTitle_clientenombre}" />
+
+                                <h:outputText
+                                    value="#{bundle.ClienteLabel_clienteidentificacion}"
+                                    styleClass="titulo" />
+                                <h:outputText
+                                    value="#{clienteMB.itemSeleccionado.tipoIdentificacion.tipoidentificacionnombre}   #{clienteMB.itemSeleccionado.clienteidentificacion}"
+                                    title="#{bundle.ClienteTitle_clienteidentificacion}" />
+
+                                <h:outputText value="#{bundle.ClienteLabel_digitoVerificacion}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{clienteMB.itemSeleccionado.digitoVerificacion}"
+                                    title="#{bundle.ClienteTitle_digitoVerificacion}" />
+
+
+                                <h:outputText value="#{bundle.ClienteLabel_clientepais}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{clienteMB.itemSeleccionado.clientepais}"
+                                              title="#{bundle.ClienteTitle_clientepais}" />
+
+                                <h:outputText value="#{bundle.ClienteLabel_clienteciudad}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{clienteMB.itemSeleccionado.clienteciudad}"
+                                    title="#{bundle.ClienteTitle_clienteciudad}" />
+
+                                <h:outputText value="#{bundle.ClienteLabel_clientedireccion}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{clienteMB.itemSeleccionado.clientedireccion}"
+                                    title="#{bundle.ClienteTitle_clientedireccion}" />
+
+
+                                <h:outputText value="#{bundle.ClienteLabel_clientetelefono}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{clienteMB.itemSeleccionado.clientetelefono}"
+                                    title="#{bundle.ClienteTitle_clientetelefono}" />
+
+                                <h:outputText value="#{bundle.ClienteLabel_director}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{clienteMB.itemSeleccionado.director}"
+                                              title="#{bundle.ClienteTitle_director}" />
+
+                            </h:panelGrid>
+
+
+
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            <!-- Cliente Contacto -->
+
+            <div  class="container tab-pane fade" id="contactos">
+
+
+
+
+                <!-- Listas de Opciones-->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <h:outputText value="#{bundle.ClienteContactoTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{clienteMB.prepararCreacionClienteContacto}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </h:form>
+
+
+                        <h:form>
+
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{clienteMB.listaClienteContactoItems}"
+                                          var="item" 
+
+                                          >
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.PersonaTitle_nombreApellido}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombreApellido}" />
+                                </p:column>
+
+
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ClienteCargoLabel_nombre}" />
+                                    </f:facet>
+                                    <h:outputText
+                                        value="#{item.cargo.nombre}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{clienteMB.prepararConsultaClienteContacto}"
+                                                value="#{bundle.ViewLink}"
+                                                rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{clienteMB.itemClienteContacto}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{clienteMB.prepararEdicionClienteContacto}"
+                                                value="#{bundle.EditLink}"
+                                                rendered="#{LoginMB.autModificar}">
+                                                <i class="fa fa-edit" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{clienteMB.itemClienteContacto}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{clienteMB.eliminarClienteContacto}"
+                                                value="#{bundle.DestroyLink}"
+                                                rendered="#{LoginMB.autEliminar}">
+                                                <i class="fa fa-trash" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{clienteMB.itemClienteContacto}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+                            </p:dataTable >
+                        </h:form>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- ************************ -->
+
+
+            <div  class="container tab-pane fade" id="cargos">
+
+
+
+
+                <!-- Listas de Opciones-->
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            <h:outputText value="#{bundle.ClienteCargoTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+
+
+                    <div class="card-body">
+
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{clienteMB.prepararCreacionCargo}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </h:form>
+
+
+                        <h:form>
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{clienteMB.listaClienteCargoItems}"
+                                          var="item" 
+
+                                          >
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ClienteCargoTitle_nombre}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombre}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ClienteCargoTitle_descripcion}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.descripcion}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{clienteMB.prepararConsultaCargo}"
+                                                value="#{bundle.ViewLink}"
+                                                rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{clienteMB.itemCargo}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{clienteMB.prepararEdicionCargo}"
+                                                value="#{bundle.EditLink}"
+                                                rendered="#{LoginMB.autModificar}">
+                                                <i class="fa fa-edit" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{clienteMB.itemCargo}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink action="#{clienteMB.eliminarCargo}"
+                                                           value="#{bundle.DestroyLink}"
+                                                           rendered="#{LoginMB.autEliminar}">
+                                                <i class="fa fa-trash" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{clienteMB.itemCargo}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+                            </p:dataTable >
+                        </h:form>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <!--  -->
+
+        </div>
+    </ui:define>
+</ui:composition>
+

@@ -1,0 +1,110 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.DetalleContratoTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <div class="card-body">
+
+                <h:form>
+
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+
+                                    <li><h:commandLink
+                                            action="#{empleadoContratoMB.prepararListaDetalleContrato}"
+                                            value="#{bundle.ShowAllLink}" immediate="true">
+                                            <i class="fa fa-list"></i>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink value="#{bundle.IndexLink}"
+                                                       action="/index" immediate="true">
+                                            <i class="fa fa-home"></i>
+                                        </h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+
+                <h:form >
+
+
+                    <div  ></div>
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.DetalleContratoLabel_nominaconcepto}"
+                            for="nominaconcepto"   />
+                        <div  >
+
+                            <p:selectOneMenu  id="nominaconcepto"
+                                              value="#{empleadoContratoMB.nominaConceptoId}"
+                                              title="#{bundle.DetalleContratoTitle_nominaconcepto}"
+                                              class="form-control"  required="true"
+                                              requiredMessage="#{bundle.DetalleContratoRequiredMessage_nominaconcepto}">
+                                <f:selectItem itemLabel="--Seleccionar--" />
+                                <f:selectItems value="#{empleadoContratoMB.nominaConceptoItems}" />
+                            </p:selectOneMenu >
+                        </div>
+                    </div>
+
+                    <div  >
+
+
+                        <div  >
+
+                            <label class="checkbox"> <h:selectBooleanCheckbox
+                                    value="#{empleadoContratoMB.itemDetalleContrato.factor}" /> <h:outputText
+                                    value="Factor " />
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.DetalleContratoLabel_detallecontratovalor}"
+                            for="detallecontratovalor"   />
+                        <div  >
+
+                            <p:inputText id="detallecontratovalor"
+                                         value="#{empleadoContratoMB.itemDetalleContrato.valor}"
+                                         title="#{bundle.DetalleContratoTitle_detallecontratovalor}"
+                                         class="form-control"  required="true"
+                                         requiredMessage="#{bundle.DetalleContratoRequiredMessage_detallecontratovalor}" />
+                        </div>
+                    </div>
+
+
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{empleadoContratoMB.crearDetalleContrato}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

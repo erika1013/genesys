@@ -1,0 +1,100 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteExperienciaTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{AspiranteMB.prepararConsulta}"
+                                                   value="#{bundle.BackLink}" immediate="true">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </h:commandLink></li>
+
+
+                                <li><h:commandLink
+                                        action="#{AspiranteMB.prepararEdicionExperiencia}"
+                                        value="#{bundle.EditLink}" rendered="#{ LoginMB.autModificar}">
+                                        <i class="fa fa-edit" />
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink
+                                        action="#{AspiranteMB.eliminarExperiencia}"
+                                        value="#{bundle.DestroyLink}"
+                                        rendered="#{ LoginMB.autEliminar}">
+                                        <i class="fa fa-trash" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form>
+                    <h:panelGrid columns="2">
+
+                        <h:outputText value="#{bundle.AspiranteExperienciaLabel_empresa}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.empresa}"
+                                      title="#{bundle.AspiranteExperienciaTitle_empresa}" />
+                        <h:outputText
+                            value="#{bundle.AspiranteExperienciaLabel_descripcion}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.descripcion}"
+                                      title="#{bundle.AspiranteExperienciaTitle_descripcion}" />
+                        <h:outputText
+                            value="#{bundle.AspiranteExperienciaLabel_fechaIncial}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.fechaIncial}"
+                                      title="#{bundle.AspiranteExperienciaTitle_fechaIncial}">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                        <h:outputText
+                            value="#{bundle.AspiranteExperienciaLabel_fechaFinal}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.fechaFinal}"
+                                      title="#{bundle.AspiranteExperienciaTitle_fechaFinal}">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.AspiranteExperienciaLabel_cargo}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.cargo}"
+                                      title="#{bundle.AspiranteExperienciaTitle_cargo}" />
+                        <h:outputText value="#{bundle.AspiranteExperienciaLabel_jefe}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.jefe}"
+                                      title="#{bundle.AspiranteExperienciaTitle_jefe}" />
+                        <h:outputText value="#{bundle.AspiranteExperienciaLabel_telefono}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.telefono}"
+                                      title="#{bundle.AspiranteExperienciaTitle_telefono}" />
+                        <h:outputText value="#{bundle.AspiranteExperienciaLabel_extension}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.extension}"
+                                      title="#{bundle.AspiranteExperienciaTitle_extension}" />
+                        <h:outputText value="#{bundle.AspiranteExperienciaLabel_aspirante}" />
+                        <h:outputText value="#{AspiranteMB.itemExperiencia.aspirante}"
+                                      title="#{bundle.AspiranteExperienciaTitle_aspirante}" />
+                        <h:outputText value="#{bundle.AspiranteExperienciaLabel_ciudad}" />
+                        <h:outputText
+                            value="#{AspiranteMB.itemExperiencia.ciudad.nombre} -#{AspiranteMB.itemExperiencia.ciudad.departamento.nombre} "
+                            title="#{bundle.AspiranteExperienciaTitle_ciudad}" />
+                    </h:panelGrid>
+
+
+                </h:form>
+
+            </div>
+        </ui:define>
+</ui:composition>
+
+

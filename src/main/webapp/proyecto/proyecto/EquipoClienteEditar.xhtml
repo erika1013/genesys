@@ -1,0 +1,100 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EquipoClienteTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <div class="card-body">
+
+                <h:form>
+
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+
+                                    <li><h:commandLink action="#{proyectoMB.prepararConsulta}"
+                                                       value="#{bundle.ShowAllLink}" immediate="true">
+                                            <i class="fa fa-list"></i>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink value="#{bundle.IndexLink}"
+                                                       action="/index" immediate="true">
+                                            <i class="fa fa-home"></i>
+                                        </h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+
+                <h:form >
+
+
+
+                    <div  >
+                        <div  ></div>
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EquipoClienteLabel_contacto}" for="contacto"
+                                       />
+
+                        <div  >
+
+                            <p:selectOneMenu  id="contacto" value="#{proyectoMB.clienteContactoid}"
+                                              title="#{bundle.EquipoClienteTitle_contacto}" class="form-control" 
+                                              required="true"
+                                              requiredMessage="#{bundle.EquipoClienteRequiredMessage_contacto}">
+                                <f:selectItem itemLabel="--Seleccionar--" />
+                                <f:selectItems value="#{proyectoMB.clienteContactoItems}" />
+                            </p:selectOneMenu >
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EquipoClienteLabel_rol}" for="rol"
+                                       />
+
+                        <div  >
+
+                            <p:selectOneMenu  id="rol" value="#{proyectoMB.rolProyectoid}"
+                                              title="#{bundle.EquipoClienteTitle_rol}" class="form-control" 
+                                              required="true"
+                                              requiredMessage="#{bundle.EquipoClienteRequiredMessage_rol}">
+                                <f:selectItem itemLabel="--Seleccionar--" />
+                                <f:selectItems value="#{proyectoMB.rolProyectoItems}" />
+                            </p:selectOneMenu >
+                        </div>
+                    </div>
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{proyectoMB.actualizarEquipoCliente}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

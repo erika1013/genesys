@@ -1,0 +1,375 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    
+      <ui:define name="content"></ui:define>
+        <ui:define name="modulos">
+
+            <div class="tab-content"> 
+
+                <div  class="container tab-pane fade" id="Información Básica">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.EmpleadoContratoTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+                        <div class="card-body">
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+                                                <li><h:commandLink
+                                                        action="#{nominaPagoMB.prepararCreacion}"
+                                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                        <i class="fa fa-plus" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{nominaPagoMB.prepararEdicion}"
+                                                        value="#{bundle.EditLink}"
+                                                        rendered="#{LoginMB.autModificar}">
+                                                        <i class="fa fa-edit" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{nominaPagoMB.eliminar}"
+                                                        value="#{bundle.DestroyLink}"
+                                                        rendered="#{LoginMB.autEliminar}">
+                                                        <i class="fa fa-trash" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{nominaPagoMB.prepararLista}"
+                                                        value="#{bundle.ShowAllLink}">
+                                                        <i class="fa fa-list" />
+                                                    </h:commandLink></li>
+
+
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                    <h:outputText value="#{bundle.PersonaLabel_nombreApellido}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{nominaPagoMB.nominaPago.empleadoContrato.empleado.nombreApellido}"
+                                        title="#{bundle.PersonaTitle_nombreApellido}" />
+
+
+                                    <h:outputText
+                                        value="#{bundle.EmpleadoContratoLabel_contratosalario}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{nominaPagoMB.nominaPago.empleadoContrato.contratosalario}"
+                                        title="#{bundle.EmpleadoContratoTitle_contratosalario}" >
+                                        <f:convertNumber type="currency" currencySymbol="$" />
+                                    </h:outputText>
+                                    <h:outputText
+                                        value="#{bundle.NominaPagoLabel_periodo}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{nominaPagoMB.nominaPago.periodo}"
+                                        title="#{bundle.EmpleadoContratoTitle_periodo}">
+                                    </h:outputText>
+
+                                    <h:outputText
+                                        value="#{bundle.TipoContratoLabel_tipocontratonombre}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{nominaPagoMB.nominaPago.empleadoContrato.tipoContrato.tipocontratonombre}"
+                                        title="#{bundle.TipoContratoTitle_tipocontratonombre}" />
+
+
+                                    <h:outputText
+                                        value="#{bundle.PersonaLabel_numeroidentificacion}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{nominaPagoMB.nominaPago.empleadoContrato.empleado.numeroidentificacion}"
+                                        title="#{bundle.PersonaTitle_numeroidentificacion}" />
+
+                                </h:panelGrid>
+
+                            </h:form>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Listas Adicionales-->
+
+                <div  class="container tab-pane fade" id="Conceptos">
+                    <div class="card">
+                        <div class="card-header">
+
+
+                            <h3>
+                                <h:outputText value="#{bundle.nominaPagoDetalleTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+
+                        <div class="card-body">
+
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </h:form>
+
+
+                            <h:form>
+
+
+
+                                <p:dataTable  paginator="true" rows="10" reflow="true" 
+                                              value="#{nominaPagoMB.listaNominaDetalle}"
+                                              var="item" 
+
+                                              >
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaConceptoTipoTitle_conceptotipoid}" />
+                                        </f:facet>
+                                        <h:outputText
+                                            value="#{item.nominaConcepto.nominaconceptocodigo}" />
+                                    </p:column>
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaPagoDetalleTitle_nominaConceptoNombre}" />
+                                        </f:facet>
+                                        <h:outputText
+                                            value="#{item.nominaConcepto.nominaconceptonombre}" />
+                                    </p:column>
+
+
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaPagoDetalleTitle_valordevengado}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.valordevengado}">
+                                            <f:convertNumber type="currency" currencySymbol="$" />
+                                        </h:outputText>
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaPagoDetalleTitle_valordeduccion}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.valordeduccion}">
+                                            <f:convertNumber type="currency" currencySymbol="$" />
+                                        </h:outputText>
+                                    </p:column>
+
+
+
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Operacion" />
+                                        </f:facet>
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{nominaPagoMB.prepararConsultanominaPagoDetalle}"
+                                                    value="#{bundle.ViewLink}"
+                                                    rendered="#{LoginMB.autConsultar}">
+                                                    <i class="fa fa-eye" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{nominaPagoMB.itemnominaPagoDetalle}" />
+                                                </h:commandLink></li>
+                                            <h:outputText value=" " />
+
+
+                                        </ul>
+                                    </p:column>
+                                </p:dataTable >
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <div  class="container tab-pane fade" id="Novedades">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>
+                                <h:outputText value="#{bundle.NominaNovedadTitulo}"></h:outputText>
+                            </h3>
+                        </div>
+                        <div class="card-body">
+
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </h:form>
+
+
+                            <h:form>
+
+
+
+                                <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{nominaPagoMB.listaNominaNovedad}" var="item"
+
+
+                                              >
+
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaNovedadTitle_nominanovedadcodigo}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.nominaNovedad.nominanovedadcodigo}" />
+                                    </p:column>
+
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaNovedadTitle_nominanovedadnombre}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.nominaNovedad.nominanovedadnombre}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText 
+                                                value="#{bundle.NominaPagoDetalleTitle_valordevengado}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.valorDevengado}" >
+                                            <f:convertNumber type="currency" currencySymbol="$" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText 
+                                                value="#{bundle.NominaPagoDetalleTitle_valordeduccion}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.valorDeduccion}" >
+                                            <f:convertNumber type="currency" currencySymbol="$" />
+                                        </h:outputText>
+                                    </p:column>
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaNovedadTitle_nominanovedadobservacion}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.nominaNovedad.nominanovedadobservacion}" />
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Operacion" />
+                                        </f:facet>
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{nominaPagoMB.prepararConsultaNominaPagoNovedad}"
+                                                    value="#{bundle.ViewLink}"
+                                                    rendered="#{LoginMB.autConsultar}">
+                                                    <i class="fa fa-eye" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{nominaPagoMB.itemNominaPagoNovedad}" />
+                                                </h:commandLink></li>
+                                            <h:outputText value=" " />
+
+                                        </ul>
+                                    </p:column>
+                                </p:dataTable >
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Opciones -->
+                <div  class="container tab-pane fade" id="Opciones">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>
+                                <h:outputText value="Opciones"></h:outputText>
+                            </h3>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h:form>
+                                <div >
+                                    <div>
+
+
+                                        <div  >
+                                            <ul class="nav">
+
+                                                <li><h:commandLink action="#{nominaPagoMB.imprimirNomina}"
+                                                                   value="Imprimir Desprendible pago" target="_blank">
+                                                        <i class="fa fa-print" />
+                                                        <i class="" />
+                                                    </h:commandLink></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </ui:define>
+</ui:composition>
+

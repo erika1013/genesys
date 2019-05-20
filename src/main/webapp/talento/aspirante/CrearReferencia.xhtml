@@ -1,0 +1,198 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteReferenciaTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{AspiranteMB.prepararConsulta}"
+                                                   value="#{bundle.BackLink}" immediate="true">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form >
+
+
+
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_nombres}"
+                                       for="nombres"   />
+                        <div  >
+                            <p:inputText id="nombres"
+                                         value="#{AspiranteMB.itemReferencia.nombres}"
+                                         title="#{bundle.AspiranteReferenciaTitle_nombres}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_apellidos}"
+                                       for="apellidos"   />
+                        <div  >
+                            <p:inputText id="apellidos"
+                                         value="#{AspiranteMB.itemReferencia.apellidos}"
+                                         title="#{bundle.AspiranteReferenciaTitle_apellidos}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_profesion}"
+                                       for="profesion"   />
+                        <div  >
+                            <p:inputText id="profesion"
+                                         value="#{AspiranteMB.itemReferencia.profesion}"
+                                         title="#{bundle.AspiranteReferenciaTitle_profesion}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_cargo}"
+                                       for="cargo"   />
+                        <div  >
+                            <p:inputText id="cargo"
+                                         value="#{AspiranteMB.itemReferencia.cargo}"
+                                         title="#{bundle.AspiranteReferenciaTitle_cargo}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_celular}"
+                                       for="celular"   />
+                        <div  >
+                            <p:inputText id="celular"
+                                         value="#{AspiranteMB.itemReferencia.celular}"
+                                         title="#{bundle.AspiranteReferenciaTitle_celular}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_telefono}"
+                                       for="telefono"   />
+                        <div  >
+                            <p:inputText id="telefono"
+                                         value="#{AspiranteMB.itemReferencia.telefono}"
+                                         title="#{bundle.AspiranteReferenciaTitle_telefono}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_extension}"
+                                       for="extension"   />
+                        <div  >
+                            <p:inputText id="extension"
+                                         value="#{AspiranteMB.itemReferencia.extension}"
+                                         title="#{bundle.AspiranteReferenciaTitle_extension}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_ciudad}"
+                                       for="ciudad"   />
+                        <div  >
+
+                            <p:selectOneMenu  id="departamentoExperiencia"
+                                              value="#{AspiranteMB.departamentoId}"
+                                              title="#{bundle.AspiranteTitle_departamento}">
+                                <f:selectItems value="#{AspiranteMB.departamentoItems}" />
+                                <f:ajax render="ciudad"
+                                        listener="#{AspiranteMB.cargarCiudadesDepartamento}" />
+                            </p:selectOneMenu >
+
+
+                            <p:selectOneMenu  id="ciudad" value="#{AspiranteMB.ciudadId}"
+                                              title="#{bundle.AspiranteReferenciaTitle_ciudad}">
+                                <f:selectItems value="#{AspiranteMB.ciudadItems}" />
+                            </p:selectOneMenu >
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteReferenciaLabel_tipo}"
+                                       for="tipo"   />
+                        <div  >
+                            <p:selectOneMenu  id="tipo" value="#{AspiranteMB.referenciaTipoId}"
+                                              title="#{bundle.AspiranteReferenciaTitle_tipo}">
+                                <f:selectItems value="#{AspiranteMB.referenciaTipoItems}" />
+                            </p:selectOneMenu >
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+                        <div  >
+
+                            <h:commandLink action="#{AspiranteMB.crearReferencia}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+            </div>
+
+
+        </ui:define>
+</ui:composition>
+
+

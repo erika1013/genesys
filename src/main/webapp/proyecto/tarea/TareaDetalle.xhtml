@@ -1,0 +1,242 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+      <ui:define name="content"></ui:define>
+
+        <ui:define name="body">
+            <div class="card-body">
+                <h:form>
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{proyectoMB.prepararConsultaRequerimiento}"
+                                            value="Regresar"
+                                            rendered="#{LoginMB.autConsultar}">
+                                            <i class="fa fa-reply" />
+                                        </h:commandLink></li>
+                                </ul>
+                            </div></div></div></h:form></div></ui:define>
+        <ui:define name="modulos">
+
+            <div class="tab-content"> 
+                <div  class="container tab-pane fade" id="Tarea">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.TareaTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.prepararCreacionTarea}"
+                                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                        <i class="fa fa-plus" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.prepararEdicionTarea}"
+                                                        value="#{bundle.EditLink}"
+                                                        rendered="#{LoginMB.autModificar}">
+                                                        <i class="fa fa-edit" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.eliminarTarea}"
+                                                        value="#{bundle.DestroyLink}"
+                                                        rendered="#{LoginMB.autEliminar}">
+                                                        <i class="fa fa-trash" />
+                                                    </h:commandLink></li>
+
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+                                    <h:outputText value="#{bundle.TareaLabel_estado}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemTarea.estado.nombre}"
+                                                  title="#{bundle.TareaTitle_estado}" />
+
+
+
+                                    <h:outputText value="#{bundle.TareaLabel_tiempo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemTarea.tiempo.nombre}"
+                                                  title="#{bundle.TareaTitle_tiempo}" />
+
+
+                                    <h:outputText value="#{bundle.TareaLabel_prioridad}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemTarea.prioridad}"
+                                                  title="#{bundle.TareaTitle_prioridad}" />
+
+                                    <h:outputText value="#{bundle.TareaLabel_detalle}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemTarea.detalle}"
+                                                  title="#{bundle.TareaTitle_detalle}" />
+
+                                    <h:outputText value="#{bundle.TareaLabel_tiempoEstimado}"
+                                                  styleClass="titulo" />
+
+                                    <h:outputText
+                                        value="#{proyectoMB.itemTarea.tiempoEstimado}"
+                                        title="#{bundle.TareaTitle_tiempoEstimado}" />
+
+                                    <h:outputText value="#{bundle.TareaLabel_fechaInicio}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemTarea.fechaInicio}"
+                                                  title="#{bundle.TareaTitle_fechaInicio}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+
+                                    <h:outputText value="#{bundle.TareaLabel_fechaFinal}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemTarea.fechaFinal}"
+                                                  title="#{bundle.TareaTitle_fechaFinal}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+
+                                    <h:outputText
+                                        value="#{bundle.TareaLabel_fechaActualizacion}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{proyectoMB.itemTarea.fechaActualizacion}"
+                                        title="#{bundle.TareaTitle_fechaActualizacion}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+                                </h:panelGrid>
+
+
+
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Asignacion -->
+
+
+                <div  class="container tab-pane fade" id="Asignaciones">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>
+                                <h:outputText value="#{bundle.AsignacionTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+
+                        <div class="card-body">
+
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.prepararCreacionAsignacion}"
+                                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                        <i class="fa fa-plus" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                            <h:form>
+                                <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{proyectoMB.listaAsignacion}" var="item"
+
+
+                                              >
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.AsignacionTitle_usuario}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.usuario.usuarionombre} #{item.usuario.usuarioapellido}" />
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.AsignacionTitle_estado}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.estado.nombre}" />
+                                    </p:column>
+
+
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Operacion" />
+                                        </f:facet>
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{proyectoMB.prepararConsultaAsignacion}"
+                                                    value="#{bundle.ViewLink}"
+                                                    rendered="#{LoginMB.autConsultar}">
+                                                    <i class="fa fa-eye" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{proyectoMB.itemAsignacion}" />
+                                                </h:commandLink></li>
+                                            <h:outputText value=" " />
+                                            <li><h:commandLink
+                                                    action="#{proyectoMB.prepararEdicionAsignacion}"
+                                                    value="#{bundle.EditLink}"
+                                                    rendered="#{LoginMB.autModificar}">
+                                                    <i class="fa fa-edit" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{proyectoMB.itemAsignacion}" />
+                                                </h:commandLink></li>
+                                            <h:outputText value=" " />
+                                            <li><h:commandLink
+                                                    action="#{proyectoMB.eliminarAsignacion}"
+                                                    value="#{bundle.DestroyLink}"
+                                                    rendered="#{LoginMB.autEliminar}">
+                                                    <i class="fa fa-trash" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{proyectoMB.itemAsignacion}" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </p:column>
+                                </p:dataTable >
+                            </h:form>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <!-- ************************ -->
+            </div>
+        </ui:define>
+</ui:composition>
+
+
+

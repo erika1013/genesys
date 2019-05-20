@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CorePymes-GUANDERA-Sistema Integral Administracion</title>
+
+	<h:outputStylesheet library="bootstrap" name="css/bootstrap.min.css" />
+	<h:outputStylesheet library="bootstrap"
+		name="css/bootstrap-responsive.min.css" />
+	<h:outputStylesheet library="css" name="theme.css" />
+	<h:outputStylesheet library="css" name="corepymes.css" />
+	<h:outputStylesheet library="images" name="icons/css/font-awesome.css" />
+	<link
+		href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+		rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i>
+				</a> <a class="brand" href="index.html"> <span class="rojo">
+						CorePymes </span>- Sistema Integral Administración Empresarial
+				</a>
+
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav pull-right">
+						<h:form>
+							<li><h:commandLink value="Inicio" action="/login"
+									immediate="true">
+									<i class="icon-home" />
+								</h:commandLink></li>
+
+
+
+							<li><a href="#"> Olvidaste tu Contraseña? </a></li>
+
+						</h:form>
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</div>
+		<!-- /navbar-inner -->
+	</div>
+	<!-- /navbar -->
+
+	<div class="wrapper">
+		<div class="container">
+			<div class="row">
+
+				<div class="span6">
+					<div class="content">
+						<div class="panel panel-default">
+							<div class="panel-heading titulo">
+								El mejor sistema de gestión para su <span class="rojo">Empresa!</span>
+							</div>
+							<div class="panel-body">
+								<ul>
+									<li>Clientes</li>
+									<li>Proveedores</li>
+									<li>Compras</li>
+									<li>Impuestos</li>
+									<li>Emisión de Facturas</li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="span6">
+					<div class="content">
+						<div class="module">
+							<div class="module-head">
+								<h3>Registrarse en CorePymes</h3>
+							</div>
+
+							<div class="module-body">
+
+
+								<h:form>
+
+
+									<h:messages class="alert" errorClass="alert-error"
+										infoClass="alert-success" layout="table" />
+
+								</h:form>
+
+
+								<h:form class="form-horizontal row-fluid">
+
+
+
+
+
+
+
+
+
+									<div class="control-group">
+
+										<h:outputLabel value="Nombres" for="usuarionombre"
+											class="control-label" />
+
+										<p:inputText id="usuarionombre"
+											value="#{gestionMB.itemSeleccionado.usuarionombre}"
+											title="#{bundle.UsuarioTitle_usuarionombre}" required="true"
+											requiredMessage="#{bundle.UsuarioRequiredMessage_usuarionombre}"
+											class="form-control" />
+
+
+									</div>
+
+									<div class="control-group">
+										<h:outputLabel for="usuarioapellido" value="Apellidos"  class="control-label"/>
+										<h:inputText id="usuarioapellido"
+											value="#{gestionMB.itemSeleccionado.usuarioapellido}"
+											title="#{bundle.UsuarioTitle_usuarioapellido}"
+											required="true"
+											requiredMessage="#{bundle.UsuarioRequiredMessage_usuarioapellido}"
+											class="form-control" />
+									</div>
+
+									<div class="control-group">
+										<h:outputLabel for="usuarioemail" value="Correo Electrónico" class="control-label" />
+										<h:inputText id="usuarioemail"
+											value="#{gestionMB.itemSeleccionado.usuarioemail}"
+											title="#{bundle.UsuarioTitle_usuarioemail}" required="true"
+											requiredMessage="#{bundle.UsuarioRequiredMessage_usuarioemail}"
+											class="form-control" />
+
+									</div>
+
+									<div class="control-group">
+										<h:outputLabel for="usuarioclave1" value="Contraseña" class="control-label" />
+										<h:inputSecret id="usuarioclave1" value="#{gestionMB.clave1}"
+											title="#{bundle.UsuarioTitle_usuarioclave}" required="true"
+											requiredMessage="#{bundle.UsuarioRequiredMessage_usuarioclave1}"
+											class="form-control" />
+
+
+									</div>
+
+									<div class="control-group">
+										<h:outputLabel for="usuarioclave2" value="Confirmar Contraseña" class="control-label" />
+
+										<h:inputSecret id="usuarioclave2" value="#{gestionMB.clave2}"
+											title="#{bundle.UsuarioTitle_usuarioclave}" required="true"
+											requiredMessage="#{bundle.UsuarioRequiredMessage_usuarioclave2}"
+											class="form-control" />
+
+
+									</div>
+
+
+
+
+									<div class="control-group">
+										<div class="controls">
+
+											<label class="checkbox inline"> <h:selectBooleanCheckbox
+													value="#{gestionMB.aceptar}" /> Acepto las <a
+												href="politicascondiciones.html">Póliticas y Condiciones
+													del sitio corepymes.com</a>
+											</label>
+
+
+
+
+											<h:commandLink action="#{gestionMB.registrar}"
+												value="Registrarse" class="btn btn-large" />
+										</div>
+									</div>
+
+
+
+
+
+								</h:form>
+
+
+
+
+
+
+
+
+
+							</div>
+
+						</div>
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!--/.wrapper-->
+
+	<div class="footer">
+		<div class="container">
+
+			<b class="copyright"> 2016 Guandera</b> Todos los derechos
+			reservados.
+		</div>
+	</div>
+
+	<h:outputScript library="scripts" name="jquery-1.9.1.min.js" />
+	<h:outputScript library="scripts" name="jquery-ui-1.10.1.custom.min.js" />
+	<h:outputScript library="bootstrap" name="js/bootstrap.min.js" />
+</h:body>
+</html>

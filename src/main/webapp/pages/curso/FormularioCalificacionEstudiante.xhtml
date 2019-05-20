@@ -1,0 +1,185 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+
+
+    <ui:define name="modulos">
+
+        <div class="tab-content"> 
+            <div  class="container tab-pane fade" id=" Calificar Estudiante">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3>
+                            <h:outputText value="Calificar"></h:outputText>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+
+
+                                        <ul class="nav">
+                                            <li><h:commandLink action="#{cursoMB.prepararConsulta}"
+                                                               value="Regresar a Curso">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink
+                                                    action="#{cursoMB.imprimirEvaluacion}"
+                                                    value="Imprimir Evaluacion" target="_blank">
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </h:form>
+
+                        <h:form >
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true" 
+                                          value="#{cursoMB.listaEstudianteEvaluacionDetalleItems}"
+                                          var="item" 
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.EvaluacionTitle_dimensionid}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.dimension.dimensionnombre}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.EvaluacionTitle_indicadorid}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.indicador.indicadordescripcion}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.EstudianteEvaluacionDetalleTitle_calificacion}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.calificacion.descripcion}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararCalificacionEstudiante}"
+                                                value="Agragar Calificación">
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemEstudianteEvaluacionDetalle}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+
+                            </p:dataTable >
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Observaciones -->
+            <div  class="container tab-pane fade" id=" Observaciones calificación">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3>
+                            <h:outputText value="Añadir Observacion"></h:outputText>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+
+
+                                        <ul class="nav">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </h:form>
+
+                        <h:form >
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true" 
+                                          value="#{cursoMB.listaEstudianteEvaluacionObservacionItems}"
+                                          var="item" 
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.EvaluacionTitle_dimensionid}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.dimension.dimensionnombre}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.EstudianteEvaluacionEvaluacionObservacionTitle_Observacion}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.evaluacionobservaciontexto}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{cursoMB.prepararActualizacionEstudianteEvaluacionObservacion}"
+                                                value="Agragar Observación">
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{cursoMB.itemEstudianteEvaluacionObservacion}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+
+                            </p:dataTable >
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

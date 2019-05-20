@@ -1,0 +1,115 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.FacturaDetalleTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink
+                                        action="#{facturaMB.prepararConsulta}"
+                                        value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.FacturaDetalleLabel_cantidad}"
+                        for="cantidad"   />
+
+                    <div  >
+
+                        <p:inputText id="cantidad"
+                                     value="#{facturaMB.itemFacturaDetalle.cantidad}"
+                                     title="#{bundle.FacturaDetalleTitle_cantidad}"
+                                     required="true"
+                                     requiredMessage="#{bundle.FacturaDetalleRequiredMessage_cantidad}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.FacturaDetalleLabel_descripcion}"
+                        for="descripcion"   />
+
+                    <div  >
+
+                        <p:inputText id="descripcion"
+                                     value="#{facturaMB.itemFacturaDetalle.descripcion}"
+                                     title="#{bundle.FacturaDetalleTitle_descripcion}"
+                                     required="true"
+                                     requiredMessage="#{bundle.FacturaDetalleRequiredMessage_descripcion}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.FacturaDetalleLabel_valorUnitario}"
+                                   for="valorUnitario"   />
+
+                    <div  >
+
+                        <p:inputText id="valorUnitario"
+                                     value="#{facturaMB.itemFacturaDetalle.valorUnitario}"
+                                     title="#{bundle.FacturaDetalleTitle_valorUnitario}"
+                                     required="true"
+                                     requiredMessage="#{bundle.FacturaDetalleRequiredMessage_valorUnitario}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{facturaMB.crearFacturaDetalle}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

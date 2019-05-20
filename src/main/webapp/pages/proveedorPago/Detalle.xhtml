@@ -1,0 +1,256 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="modulos">
+
+        <div class="tab-content"> 
+            <div  class="container tab-pane fade" id="Pago Proveedor">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3>
+                            <h:outputText value="#{bundle.ProveedorPagoTitulo}"></h:outputText>
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{proveedorPagoMB.prepararCreacion}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="Editar"
+                                                               value="#{bundle.EditLink}"
+                                                               rendered="#{LoginMB.autModificar}">
+                                                    <i class="fa fa-edit" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{proveedorPagoMB.eliminar}"
+                                                               value="#{bundle.DestroyLink}"
+                                                               rendered="#{LoginMB.autEliminar}">
+                                                    <i class="fa fa-trash" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink
+                                                    action="#{proveedorPagoMB.prepararLista}"
+                                                    value="#{bundle.ShowAllLink}">
+                                                    <i class="fa fa-list" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink
+                                                    action="#{proveedorPagoMB.imprimirPagoProveedor}"
+                                                    value="Imprimir Pago" target="_blank">
+                                                    <i class="fa fa-print" />
+                                                    <i class="" />
+                                                </h:commandLink></li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+
+                                <h:outputText value="#{bundle.ProveedorPagoLabel_pagocodigo}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{proveedorPagoMB.itemSeleccionado.pagocodigo}"
+                                    title="#{bundle.ProveedorPagoTitle_pagocodigo}" />
+
+                                <h:outputText
+                                    value="#{bundle.ProveedorPagoLabel_numerocuentacobro}"
+                                    styleClass="titulo" />
+                                <h:outputText
+                                    value="#{proveedorPagoMB.itemSeleccionado.numerocuentacobro}"
+                                    title="#{bundle.ProveedorPagoTitle_numerocuentacobro}" />
+
+
+
+                                <h:outputText
+                                    value="#{bundle.ProveedorPagoLabel_pagovalortotal}"
+                                    styleClass="titulo" />
+                                <h:outputText
+                                    value="#{proveedorPagoMB.itemSeleccionado.pagovalortotal}"
+                                    title="#{bundle.ProveedorPagoTitle_pagovalortotal}" >
+                                    <f:convertNumber type="currency" currencySymbol="$" />
+                                </h:outputText>
+
+
+                                <h:outputText value="#{bundle.ProveedorPagoLabel_pagovalorneto}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{proveedorPagoMB.itemSeleccionado.pagovalorneto}"
+                                    title="#{bundle.ProveedorPagoTitle_pagovalorneto}" >
+                                    <f:convertNumber type="currency" currencySymbol="$" />
+                                </h:outputText>
+
+
+                                <h:outputText value="#{bundle.ProveedorPagoLabel_fecha}" styleClass="titulo" />
+
+                                <h:outputText value="#{proveedorPagoMB.itemSeleccionado.fecha}" title="#{bundle.ProveedorPagoTitle__fecha}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+
+
+
+
+                                <h:outputText value="#{bundle.ProveedorPagoLabel_pagoestado}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{proveedorPagoMB.itemSeleccionado.estado.estadoid} - #{proveedorPagoMB.itemSeleccionado.estado.nombre}"
+                                    title="#{bundle.ProveedorPagoTitle_pagoestado}" />
+
+
+                                <h:outputText value="#{bundle.ProveedorPagoLabel_pagoTipo}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{proveedorPagoMB.itemSeleccionado.pagoTipo.pagoTipoNumero}"
+                                    title="#{bundle.ProveedorPagoTitle_pagoTipo}" />
+
+
+
+                                <h:outputText value="#{bundle.ProveedorPagoLabel_proveedorid}"
+                                              styleClass="titulo" />
+                                <h:outputText
+                                    value="#{proveedorPagoMB.itemSeleccionado.proveedor.proveedornombre} - #{proveedorPagoMB.itemSeleccionado.proveedor.proveedoridentificacion}"
+                                    title="#{bundle.ProveedorPagoTitle_proveedorid}" />
+                            </h:panelGrid>
+
+
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+
+            <div  class="container tab-pane fade" id="Retención">
+                <div class="card">
+                    <div class="card-header">
+
+
+                        <h3>
+                            <h:outputText
+                                value="#{bundle.ProveedorPagoRetencionTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </h:form>
+
+
+                        <h:form>
+
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true" 
+                                          value="#{proveedorPagoMB.listaProveedorPagoRetencionItems}"
+                                          var="item" 
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.ProveedorPagoRetencionTitle_factor}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.factor}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.ProveedorPagoRetencionTitle_valor}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.valor}">
+                                        <f:convertNumber type="currency" currencySymbol="$" />
+                                    </h:outputText>
+                                </p:column>
+
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.ProveedorPagoRetencionTitle_impuestoConcepto}" />
+                                    </f:facet>
+                                    <h:outputText
+                                        value="#{item.impuestoConcepto.impuestoCodigo} - #{item.impuestoConcepto.impuestoconceptonombre}">
+                                    </h:outputText>
+                                </p:column>
+
+
+
+
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{proveedorPagoMB.prepararConsultaProveedorPagoRetencion}"
+                                                value="#{bundle.ViewLink}"
+                                                rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{proveedorPagoMB.itemProveedorPagoRetencion}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+
+
+                                    </ul>
+                                </p:column>
+                            </p:dataTable >
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+
+

@@ -1,0 +1,201 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.ClienteTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">
+
+        <h:form>
+
+            <div>
+                <div>
+                    <div  >
+                        <ul class="nav">
+
+                            <li><h:commandLink action="#{clienteMB.prepararLista}"
+                                               value="#{bundle.ShowAllLink}" immediate="true">
+                                    <i class="fa fa-list"></i>
+                                </h:commandLink></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home"></i>
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </h:form>
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+            <h:form>
+
+
+
+                <div  >
+                    <div  ></div>
+                </div>
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteLabel_clientenombre}"
+                                   for="clientenombre" />
+
+                    <div  >
+
+                        <p:inputText id="clientenombre"
+                                     value="#{clienteMB.itemSeleccionado.clientenombre}"
+                                     title="#{bundle.ClienteTitle_clientenombre}" class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteTitle_tipoIdentificacion}"
+                                   for="tipoIdentificacionid" />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="tipoIdentificacionid"
+                                          value="#{clienteMB.tipoidentificacionid}"
+                                          title="#{bundle.ClienteTitle_tipoIdentificacion}"
+                                          class="form-control">
+                            <f:selectItems value="#{clienteMB.tipoIdentificacionItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteLabel_clienteidentificacion}"
+                                   for="clienteidentificacion" />
+
+                    <div  >
+
+                        <p:inputText id="clienteidentificacion"
+                                     value="#{clienteMB.itemSeleccionado.clienteidentificacion}"
+                                     title="#{bundle.ClienteTitle_clienteidentificacion}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteLabel_digitoVerificacion}"
+                                   for="digitoVerificacion" />
+
+                    <div  >
+
+
+
+                        <p:selectOneMenu  id="digitoVerificacion"
+                                          value="#{clienteMB.itemSeleccionado.digitoVerificacion}"
+                                          title="#{bundle.ClienteTitle_digitoVerificacion}"
+                                          class="form-control">
+                            <f:selectItem itemLabel="--Seleccionar-- " />
+                            <f:selectItem itemLabel="0" itemValue="0" />
+                            <f:selectItem itemLabel="1" itemValue="1" />
+                            <f:selectItem itemLabel="2" itemValue="2" />
+                            <f:selectItem itemLabel="3" itemValue="3" />
+                            <f:selectItem itemLabel="4" itemValue="4" />
+                            <f:selectItem itemLabel="5" itemValue="5" />
+                            <f:selectItem itemLabel="5" itemValue="6" />
+                            <f:selectItem itemLabel="7" itemValue="7" />
+                            <f:selectItem itemLabel="8" itemValue="8" />
+                            <f:selectItem itemLabel="9" itemValue="9" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteLabel_clientepais}"
+                                   for="clientepais" />
+
+                    <div  >
+
+                        <p:inputText id="clientepais"
+                                     value="#{clienteMB.itemSeleccionado.clientepais}"
+                                     title="#{bundle.ClienteTitle_clientepais}" class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteLabel_clienteciudad}"
+                                   for="clienteciudad" />
+
+                    <div  >
+
+                        <p:inputText id="clienteciudad"
+                                     value="#{clienteMB.itemSeleccionado.clienteciudad}"
+                                     title="#{bundle.ClienteTitle_clienteciudad}" class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteLabel_clientedireccion}"
+                                   for="clientedireccion" />
+
+                    <div  >
+
+                        <p:inputText id="clientedireccion"
+                                     value="#{clienteMB.itemSeleccionado.clientedireccion}"
+                                     title="#{bundle.ClienteTitle_clientedireccion}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteLabel_clientetelefono}"
+                                   for="clientetelefono" />
+
+                    <div  >
+
+                        <p:inputText id="clientetelefono"
+                                     value="#{clienteMB.itemSeleccionado.clientetelefono}"
+                                     title="#{bundle.ClienteTitle_clientetelefono}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{clienteMB.crear}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

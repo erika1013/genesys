@@ -1,0 +1,118 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AsignacionEstadoTitulo}"></h:outputText>
+        </ui:define>
+        <ui:define name="barmenu">
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink
+                                        action="#{asignacionEstadoMB.prepararLista}"
+                                        value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>       
+        </ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+
+
+
+                <h:form >
+
+                    <div  >
+                        <div></div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AsignacionEstadoLabel_estadoid}"
+                            for="id"   />
+
+                        <div  >
+
+                            <p:inputText id="id"
+                                         value="#{asignacionEstadoMB.itemSeleccionado.estadoid}"
+                                         title="#{bundle.AsignacionEstadoTitle_estadoid}"
+                                         required="true"
+                                         requiredMessage="#{bundle.AsignacionEstadoRequiredMessage_estadoid}"
+                                         class="form-control"  readonly="true"/>
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AsignacionEstadoLabel_nombre}"
+                            for="nombre"   />
+
+                        <div  >
+
+                            <p:inputText id="nombre"
+                                         value="#{asignacionEstadoMB.itemSeleccionado.nombre}"
+                                         title="#{bundle.AsignacionEstadoTitle_nombre}"
+                                         required="true"
+                                         requiredMessage="#{bundle.AsignacionEstadoRequiredMessage_nombre}"
+                                         class="form-control"  />
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AsignacionEstadoLabel_descripcion}"
+                            for="descripcion"   />
+
+                        <div  >
+
+                            <p:inputTextarea id="descripcion"
+                                             value="#{asignacionEstadoMB.itemSeleccionado.descripcion}"
+                                             title="#{bundle.AsignacionEstadoTitle_descripcion}"
+                                             required="true"
+                                             requiredMessage="#{bundle.AsignacionEstadoRequiredMessage_descripcion}"
+                                             class="form-control"  />
+                        </div>
+                    </div>
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{asignacionEstadoMB.actualizar}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

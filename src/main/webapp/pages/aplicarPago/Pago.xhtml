@@ -1,0 +1,159 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.AplicarPagoTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">
+        <h:form>
+
+            <div >
+                <div>
+                    <div  >
+                        <ul class="nav">
+
+
+                            <li><h:commandLink
+                                    action="#{pagoReciboAbonoMB.prepararLista}"
+                                    value="#{bundle.ShowAllLink}" immediate="true">
+                                    <i class="fa fa-list"></i>
+                                </h:commandLink></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home"></i>
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </h:form>
+    </ui:define>
+
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+            <h:form >
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                    <h:outputText value="Saldo Ordinario: " />
+                    <h:outputText value="#{aplicarPagoMB.saldo}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+                    <h:outputText value="Saldo ExtraOrdinario: " />
+                    <h:outputText value="#{aplicarPagoMB.saldo2}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+
+                    <h:outputText value="Saldo Extemporaneo: " />
+                    <h:outputText value="#{aplicarPagoMB.saldo3}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+
+                </h:panelGrid>
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PagoReciboAbonoLabel_fechaAbono}"
+                                   for="fechaAbono"   />
+
+                    <div  >
+
+                        <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button" id="fechaAbono"
+                                      value="#{aplicarPagoMB.itemPago.fechaPago}"
+                                      title="#{bundle.PagoReciboAbonoTitle_fechaAbono}"
+                                      mask="true" />
+
+
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PagoReciboAbonoLabel_valorabono}"
+                                   for="valorAbono"   />
+
+                    <div  >
+
+
+                        <p:inputText id="valorAbono"
+                                     value="#{aplicarPagoMB.itemPago.valorPago}"
+                                     title="#{bundle.PagoReciboAbonoTitle_valorabono}" class="form-control"  />
+
+
+
+                    </div>
+                </div>
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PagoLabel_tipo}" for="tipoid"
+                                   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="tipoid" value="#{aplicarPagoMB.tipoid}"
+                                          title="#{bundle.PagoTitle_tipo}" class="form-control"  required="true"
+                                          requiredMessage="#{bundle.RutaRequiredMessage_estadoid}">
+                            <f:selectItem itemLabel="--Seleccionar--" />
+                            <f:selectItems value="#{aplicarPagoMB.tipoPagoItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PagoReciboAbonoLabel_observacion}"
+                                   for="observacion"   />
+
+                    <div  >
+
+                        <p:inputTextarea id="observacion"
+                                         value="#{aplicarPagoMB.itemPago.observacion}"
+                                         title="#{bundle.PagoReciboAbonoLabel_observacion}" class="form-control"  />
+                    </div>
+                </div>
+
+
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{aplicarPagoMB.pagar}" value="Pagar"
+                                       class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

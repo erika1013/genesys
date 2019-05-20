@@ -1,0 +1,174 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content"></ui:define>
+	<ui:define name="title">
+		<h:outputText value="#{bundle.ProyectoTitulo}"></h:outputText>
+	</ui:define>
+
+	<ui:define name="barmenu">
+
+
+		<h:form>
+
+			<div>
+				<div>
+					<div class="btn-toolbar">
+						<ul class="nav">
+
+							<li><h:commandLink action="#{proyectoMB.prepararLista}"
+									value="#{bundle.ShowAllLink}" immediate="true">
+									<i class="fa fa-list"></i>
+								</h:commandLink></li>
+							<li><h:commandLink value="#{bundle.IndexLink}"
+									action="/index" immediate="true">
+									<i class="fa fa-home"></i>
+								</h:commandLink></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+
+		</h:form>
+
+	</ui:define>
+
+
+	<ui:define name="body">
+		<div class="card-body">
+
+
+
+			<h:form>
+
+
+				<p:panelGrid columns="2" layout="grid"
+					styleClass="ui-panelgrid-blank"
+					columnClasses="ui-grid-col-3,ui-grid-col-9">
+
+
+
+
+
+					<p:outputLabel value="#{bundle.ProyectoLabel_nombre}" for="nombre" />
+
+
+					<p:inputText id="nombre"
+						value="#{proyectoMB.itemSeleccionado.nombre}"
+						title="#{bundle.ProyectoTitle_nombre}" required="true"
+						requiredMessage="#{bundle.ProyectoRequiredMessage_nombre}" />
+
+
+
+
+
+					<p:outputLabel value="#{bundle.ProyectoLabel_objetivo}"
+						for="objetivo" />
+
+
+					<p:inputTextarea id="objetivo"
+						value="#{proyectoMB.itemSeleccionado.objetivo}"
+						title="#{bundle.ProyectoTitle_objetivo}" required="true"
+						requiredMessage="#{bundle.ProyectoRequiredMessage_objetivo}" />
+
+
+
+
+
+
+
+					<p:outputLabel value="#{bundle.ProyectoLabel_compania}"
+						for="companiaid" />
+
+
+					<p:selectOneMenu id="companiaid" value="#{proyectoMB.companiaid}"
+						title="#{bundle.ProyectoTitle_compania}" required="true"
+						requiredMessage="#{bundle.ProyectoRequiredMessage_compania}">
+						<f:selectItem itemLabel="--Seleccionar-- " />
+						<f:selectItems value="#{proyectoMB.companiaItems}" />
+						<f:ajax listener="#{proyectoMB.cargarCentroCostos}"
+							render="centroCostosid" />
+
+					</p:selectOneMenu>
+
+
+
+
+					<p:outputLabel value="#{bundle.ProyectoLabel_centroCostos}"
+						for="centroCostosid" />
+
+
+					<p:selectOneMenu id="centroCostosid"
+						value="#{proyectoMB.centroCostosid}"
+						title="#{bundle.ProyectoTitle_centroCostos}" required="true"
+						requiredMessage="#{bundle.ProyectoRequiredMessage_centroCostos}">
+						<f:selectItem itemLabel="--Seleccionar-- " />
+						<f:selectItems value="#{proyectoMB.centroCostosItems}" />
+					</p:selectOneMenu>
+
+
+
+
+
+					<p:outputLabel value="#{bundle.ProyectoLabel_cliente}"
+						for="cliente" />
+
+
+					<p:selectOneMenu id="cliente" value="#{proyectoMB.clienteid}"
+						title="#{bundle.ProyectoTitle_cliente}" required="true"
+						requiredMessage="#{bundle.ProyectoRequiredMessage_cliente}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{proyectoMB.clienteItems}" />
+					</p:selectOneMenu>
+
+
+
+
+					<p:outputLabel value="#{bundle.ProyectoLabel_tipo}" for="tipo" />
+
+					<p:selectOneMenu id="tipo" value="#{proyectoMB.proyectoTipoid}"
+						title="#{bundle.ProyectoTitle_tipo}" required="true"
+						requiredMessage="#{bundle.ProyectoRequiredMessage_tipo}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{proyectoMB.proyectoTipoItems}" />
+					</p:selectOneMenu>
+					
+					
+						<p:outputLabel value="#{bundle.ProyectoLabel_etapa}" for="etapa" />
+
+					<p:selectOneMenu id="etapa" value="#{proyectoMB.proyectoEtapaid}"
+						title="#{bundle.ProyectoTitle_etapa}" required="true"
+						requiredMessage="#{bundle.ProyectoRequiredMessage_etapa}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{proyectoMB.proyectoEtapaItems}" />
+					</p:selectOneMenu>
+					
+					
+
+
+
+				</p:panelGrid>
+
+				<div>
+
+					<h:commandLink action="#{proyectoMB.crear}"
+						value="#{bundle.SaveLink}" class="btn btn-secondary" />
+				</div>
+
+
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+

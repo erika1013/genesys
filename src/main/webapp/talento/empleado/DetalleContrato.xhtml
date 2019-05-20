@@ -1,0 +1,209 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    
+        <ui:define name="modulos">
+
+            <div class="tab-content"> 
+                <div  class="container tab-pane fade" id="Contrato">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.EmpleadoContratoTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+                        <div class="card-body">
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+                                              
+                                               
+                                             
+                                                <li><h:commandLink
+                                                        action="#{EmpleadoMB.prepararLista}"
+                                                        value="#{bundle.ShowAllLink}">
+                                                        <i class="fa fa-list" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{EmpleadoMB.prepararListaDetalleContrato}"
+                                                        value="Detalle">
+                                                        <i class="fa fa-list" />
+                                                    </h:commandLink></li>
+
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                    <h:outputText value="#{bundle.PersonaLabel_nombreApellido}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{EmpleadoMB.itemContrato.empleado.nombreApellido}"
+                                        title="#{bundle.PersonaTitle_nombreApellido}" />
+
+
+                                    <h:outputText
+                                        value="#{bundle.EmpleadoContratoLabel_contratosalario}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{EmpleadoMB.itemContrato.contratosalario}"
+                                        title="#{bundle.EmpleadoContratoTitle_contratosalario}" />
+                                    <h:outputText
+                                        value="#{bundle.EmpleadoContratoLabel_empleadocontratofechainicial}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{EmpleadoMB.itemContrato.empleadocontratofechainicial}"
+                                        title="#{bundle.EmpleadoContratoTitle_empleadocontratofechainicial}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                                    </h:outputText>
+                                    <h:outputText
+                                        value="#{bundle.EmpleadoContratoLabel_empleadocontratofechafinal}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{EmpleadoMB.itemContrato.empleadocontratofechafinal}"
+                                        title="#{bundle.EmpleadoContratoTitle_empleadocontratofechafinal}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd" />
+                                    </h:outputText>
+                                    <h:outputText
+                                        value="#{bundle.TipoContratoLabel_tipocontratonombre}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{EmpleadoMB.itemContrato.tipoContrato.tipocontratonombre}"
+                                        title="#{bundle.TipoContratoTitle_tipocontratonombre}" />
+
+
+                                    <h:outputText
+                                        value="#{bundle.PersonaLabel_numeroidentificacion}"
+                                        styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{EmpleadoMB.itemContrato.empleado.numeroIdentificacion}"
+                                        title="#{bundle.PersonaTitle_numeroidentificacion}" />
+
+                                </h:panelGrid>
+
+                            </h:form>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Listas Adicionales-->
+
+                <div  class="container tab-pane fade" id="Detalle Contrato">
+                    <div class="card">
+                        <div class="card-header">
+
+
+                            <h3>
+                                <h:outputText value="#{bundle.DetalleContratoTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+
+                        <div class="card-body">
+
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+                                                <li><h:commandLink
+                                                        action="#{EmpleadoMB.prepararCreacionDetalleContrato}"
+                                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                        <i class="fa fa-plus" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </h:form>
+
+
+                            <h:form>
+
+
+
+                                <p:dataTable  paginator="true" rows="10" reflow="true" 
+                                              value="#{EmpleadoMB.listaDetalleContratoItems}"
+                                              var="item" 
+
+                                              >
+
+
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.DetalleContratoTitle_nominaconceptocodigo}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.nominaConcepto.nominaconceptocodigo}" />
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaPagoDetalleTitle_nominaConceptoNombre}" />
+                                        </f:facet>
+                                        <h:outputText
+                                            value="#{item.nominaConcepto.nominaconceptonombre}" />
+                                    </p:column>
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.DetalleContratoTitle_detallecontratovalor}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.valor}" />
+                                    </p:column>
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText
+                                                value="#{bundle.NominaConceptoTitle_conceptotipoid}" />
+                                        </f:facet>
+                                        <h:outputText
+                                            value="#{item.nominaConcepto.conceptoTipo.conceptotiponombre}" />
+                                    </p:column>
+
+
+
+                                    
+                                </p:dataTable >
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+           
+
+            </div>
+        </ui:define>
+</ui:composition>
+

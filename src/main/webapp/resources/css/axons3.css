@@ -1,0 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Maven+Pro:400,500);
+
+body {
+	background: #000;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+html {
+	height: 100%;
+}
+
+.wrapper {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.azul {
+	color: #51b795;
+}
+
+.navbar  .navbar-inner {
+	background: rgba(81, 183, 149, 0.5);
+}
+
+.navbar .brand {
+	text-shadow: 0 0px 0 #51b795;
+}
+
+.module-head {
+	background-color: rgba(81, 183, 149, 0.3);
+}
+
+module-foot {
+	background: rgba(81, 183, 149, 0.3);
+}
+
+ul li.ui-menuitem-active>a {
+	background-image: none !important;
+	background-color: rgba(164, 206, 143, 0.9) !important;
+}
+
+li ul li.ui-menuitem-active>a {
+	background-image: none !important;
+	background-color: rgba(164, 206, 143, 0.9) !important;
+}
+
+.ui-message-info, .ui-message-error, .ui-message-warn, .ui-message-fatal
+	{
+	border: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.ui-messages-error, .ui-message-error {
+	color: #D8000C;
+	background-color: #fff !important;
+}
+
+.banner--encounters {
+	background: rgba(0, 202, 168, 0.12);
+}
+
+.btn--encounters {
+	background: #00Caa8;
+}

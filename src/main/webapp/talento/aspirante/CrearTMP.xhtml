@@ -1,0 +1,41 @@
+
+private Long departamentoId;
+private List<SelectItem> departamentoItems;
+    private boolean listingDepartamento = false;
+
+    public Long getDepartamentoId() {
+    return departamentoId;
+    }
+
+    public void setDepartamentoId(Long departamentoId) {
+    this.departamentoId = departamentoId;
+    }
+
+    public List<SelectItem> getDepartamentoItems() {
+
+        if (!listingDepartamento) {
+        listingDepartamento = true;
+        departamentoItems = new ArrayList<SelectItem>();
+            List<Departamento> departamentoList = talentoServicio.listaDepartamento();
+
+                for (Departamento departamento : departamentoList) {
+                departamentoItems.add(new SelectItem(departamento.getDepartamentoId(),
+                departamento.getNombre()));
+
+                }
+                }
+
+                return departamentoItems;
+                }
+
+                public void setDepartamentoItems(List<SelectItem> departamentoItems) {
+                    this.departamentoItems = departamentoItems;
+                    }
+
+
+
+                    Departamento departamento = new Departamento();
+                    departamento.setDepartamentoId(departamentoId);
+                    itemSeleccionado.setDepartamento(departamento);
+
+

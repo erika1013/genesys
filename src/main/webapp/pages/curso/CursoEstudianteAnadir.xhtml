@@ -1,0 +1,72 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.CursoEstudianteTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.CursoEstudianteLabel_ingresarCodigo}"
+                        for="codigoestudiante"   />
+
+                    <div  >
+
+                        <p:inputText id="codigoestudiante" value="#{cursoMB.listacodigos}"
+                                     title="#{bundle.CursoEstudianteTitle_estudianteid}" class="form-control"  required="true" 
+                                     requiredMessage="#{bundle.CursoEstudianteRequiredMessage_listacodigos}" />
+                    </div>
+                </div>
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{cursoMB.anadirestudiante}"
+                                       value="Agregar Estudiantes" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

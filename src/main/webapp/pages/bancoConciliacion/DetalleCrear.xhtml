@@ -1,0 +1,136 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.BancoConciliacionDetalleTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink
+                                        action="#{bancoConciliacionMB.prepararConsulta}"
+                                        value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.BancoConciliacionDetalleLabel_numeroRecibo}"
+                        for="numeroRecibo"   />
+
+                    <div  >
+
+                        <p:inputText id="numeroRecibo"
+                                     value="#{bancoConciliacionMB.itemBancoConciliacionDetalle.numeroRecibo}"
+                                     title="#{bundle.BancoConciliacionDetalleTitle_numeroRecibo}"
+                                     required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionDetalleRequiredMessage_numeroRecibo}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.BancoConciliacionDetalleLabel_valorAplicado}"
+                        for="valorAplicado"   />
+
+                    <div  >
+
+                        <p:inputText id="valorAplicado"
+                                     value="#{bancoConciliacionMB.itemBancoConciliacionDetalle.valorAplicado}"
+                                     title="#{bundle.BancoConciliacionDetalleTitle_valorAplicado}"
+                                     required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionDetalleRequiredMessage_valorAplicado}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.BancoConciliacionDetalleLabel_fechaAplicacion}"
+                        for="fechaAplicacion"   />
+
+                    <div  >
+
+                        <p:inputText id="fechaAplicacion"
+                                     value="#{bancoConciliacionMB.itemBancoConciliacionDetalle.fechaAplicacion}"
+                                     title="#{bundle.BancoConciliacionDetalleTitle_fechaAplicacion}"
+                                     required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionDetalleRequiredMessage_fechaAplicacion}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.BancoConciliacionDetalleLabel_observacion}"
+                        for="observacion"   />
+
+                    <div  >
+
+                        <p:inputTextarea id="observacion"
+                                         value="#{bancoConciliacionMB.itemBancoConciliacionDetalle.observacion}"
+                                         title="#{bundle.BancoConciliacionDetalleTitle_observacion}"
+                                         required="true"
+                                         requiredMessage="#{bundle.BancoConciliacionDetalleRequiredMessage_observacion}"
+                                         class="form-control"  />
+                    </div>
+                </div>
+
+
+
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink
+                            action="#{bancoConciliacionMB.crearBancoConciliacionDetalle}"
+                            value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

@@ -1,0 +1,157 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.InformacionAcademicaTitulo }"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <div class="card-body">
+                <h:form >
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionAcademicaLabel_nivelEstudio}"
+                            for="nivelEstudio"   />
+
+                        <div  >
+
+                            <p:selectOneMenu  id="primernombre"
+                                              value="#{empleadoMB.itemInformacionAcademica.nivelEstudio}"
+                                              title="#{bundle.EmpleadoInformacionAcademicaTitle_nivelEstudio}"
+                                              class="form-control" 
+                                              required="true" 
+                                              requiredMessage="#{bundle.EmpleadoInformacionAcademicaRequiredMessage_nivelEstudio}">
+                                <f:selectItem itemLabel="--Seleccionar--" />
+                                <f:selectItem itemLabel="Básica primaria "
+                                              itemValue="Básica primaria" />
+                                <f:selectItem itemLabel="Básica secundaria "
+                                              itemValue="Básica secundaria" />
+                                <f:selectItem itemLabel="Educación media "
+                                              itemValue="Educación media" />
+                                <f:selectItem itemLabel="Técnico Profesional"
+                                              itemValue="Técnico Profesional" />
+                                <f:selectItem itemLabel="Tecnológico" itemValue="Tecnológico" />
+                                <f:selectItem itemLabel="Profesional" itemValue="Profesional" />
+                                <f:selectItem itemLabel="Especializacion"
+                                              itemValue="Especializacion" />
+                                <f:selectItem itemLabel="Maestría" itemValue="Maestría" />
+                                <f:selectItem itemLabel="Doctorado" itemValue="Doctorado" />
+                            </p:selectOneMenu >
+
+
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionAcademicaLabel_institucion }"
+                            for="institucion"   />
+
+                        <div  >
+
+                            <p:inputText id="institucion"
+                                         value="#{empleadoMB.itemInformacionAcademica.institucion}"
+                                         title="#{bundle.EmpleadoInformacionAcademicaTitle_institucion }"
+                                         class="form-control"  
+                                         required="true" 
+                                         requiredMessage="#{bundle.EmpleadoInformacionAcademicaRequiredMessage_institucion}"/>
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionAcademicaLabel_tituloObtenido}"
+                            for="tituloObtenido"   />
+
+                        <div  >
+
+                            <p:inputText id="tituloObtenido"
+                                         value="#{empleadoMB.itemInformacionAcademica.tituloObtenido}"
+                                         title="#{bundle.EmpleadoInformacionAcademicaLabel_tituloObtenido}"
+                                         class="form-control" 
+                                         required="true" 
+                                         requiredMessage="#{bundle.EmpleadoInformacionAcademicaRequiredMessage_tituloObtenido}" />
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionAcademicaLabel_fechaInicio}"
+                            for="fechaInicio"   />
+
+                        <div  >
+
+                           <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button" id="fechaInicio"
+                                          value="#{empleadoMB.itemInformacionAcademica.fechaInicio}"
+                                          required="true" 
+                                          requiredMessage="#{bundle.EmpleadoInformacionAcademicaRequiredMessage_fechaInicio}"/>
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionAcademicaLabel_fechaTerminacion}"
+                            for="fechaTerminacion"   />
+
+                        <div  >
+
+                            <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button" id="fechaTerminacion"
+                                          value="#{empleadoMB.itemInformacionAcademica.fechaTerminacion}"
+                                          />
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.EmpleadoInformacionAcademicaLabel_estado}"
+                            for="estado"   />
+
+
+                        <div  >
+                            <p:selectOneMenu  id="estado"
+                                              value="#{empleadoMB.itemInformacionAcademica.estado}"
+                                              title="#{bundle.EmpleadoInformacionAcademicaTitle_estado}"
+                                              class="form-control"  required="true" 
+                                              requiredMessage="#{bundle.EmpleadoInformacionAcademicaRequiredMessage_estado}">
+                                <f:selectItem itemLabel="--Seleccionar--" />
+                                <f:selectItem itemLabel="Aplazado" itemValue="Aplazado" />
+                                <f:selectItem itemLabel="Finalizado " itemValue="Finalizado" />
+                                <f:selectItem itemLabel="En Proceso" itemValue="En Proceso" />
+                            </p:selectOneMenu >
+
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{empleadoMB.crearInformacionAcademica}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

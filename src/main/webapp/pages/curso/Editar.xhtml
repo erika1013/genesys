@@ -1,0 +1,190 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.CursoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink action="#{cursoMB.prepararConsulta}"
+                                                   value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}"
+                                                   immediate="true">
+                                        <i class="fa fa-eye"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{cursoMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CursoLabel_sedeid}" for="sedeid"
+                                   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="sedeid" value="#{cursoMB.sedeid}"
+                                          title="#{bundle.CursoTitle_sedeid}" class="form-control"  required="true"
+                                          requiredMessage="#{bundle.CursoRequiredMessage_sede}">
+                            <f:selectItem itemLabel="--Seleccionar-- "  />
+                            <f:selectItems value="#{cursoMB.sedeItems}" />
+                            <f:ajax listener="#{cursoMB.cargarMaestros}"
+                                    render="directorid,codirectorid" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CursoLabel_gradoid}" for="gradoid"
+                                   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="gradoid" value="#{cursoMB.gradoid}"
+                                          title="#{bundle.CursoTitle_gradoid}" required="true"
+                                          requiredMessage="#{bundle.CursoRequiredMessage_gradoid}">
+                            <f:selectItem itemLabel="--Seleccionar-- "  />
+                            <f:selectItems value="#{cursoMB.gradoItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CursoLabel_cursonombre}"
+                                   for="cursonombre"   />
+
+                    <div  >
+
+                        <p:inputText id="cursonombre"
+                                     value="#{cursoMB.itemSeleccionado.cursonombre}"
+                                     title="#{bundle.CursoTitle_cursonombre}" class="form-control"  required="true"
+                                     requiredMessage="#{bundle.CursoRequiredMessage_cursonombre} " readonly="true"/>
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CursoLabel_fechaincial}"
+                                   for="fechaincial"   />
+
+                    <div  >
+
+
+                        <p:inputText  styleClass="form-control datepicker"id="fechaincial"
+                                      value="#{cursoMB.itemSeleccionado.fechaincial}"
+                                      mask="true" required="true"
+                                      requiredMessage="#{bundle.CursoRequiredMessage_fechainicial}"/>
+
+
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CursoLabel_directorid}"
+                                   for="directorid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="directorid" value="#{cursoMB.directorid}"
+                                          title="#{bundle.CursoTitle_directorid}" 
+                                          class="form-control"  required="true"
+                                          requiredMessage="#{bundle.CursoRequiredMessage_directorid}" >
+                            <f:selectItem itemLabel="--Seleccionar-- " />
+                            <f:selectItems value="#{cursoMB.maestroItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CursoLabel_codirectorid}"
+                                   for="codirectorid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="codirectorid" value="#{cursoMB.coDirectorid}"
+                                          title="#{bundle.CursoTitle_codirectorid}" required="true" 
+                                          requiredMessage="#{bundle.CursoRequiredMessage_coDirectorid}"
+                                          class="form-control" >
+                            <f:selectItem itemLabel="--Seleccionar-- "  />
+                            <f:selectItems value="#{cursoMB.maestroItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.CursoLabel_estadoid}" for="estadoid"
+                                   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="estadoid" value="#{cursoMB.estadoid}"
+                                          title="#{bundle.CursoTitle_estadoid}" class="form-control"  required="true"
+                                          requiredMessage="#{bundle.CursoRequiredMessage_estadoid}">
+                            <f:selectItem itemLabel="--Seleccionar--" />
+                            <f:selectItems value="#{cursoMB.cursoEstadoItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{cursoMB.actualizar}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

@@ -1,0 +1,170 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.GastoTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">
+        <h:form>
+            <div >
+                <div>
+                    <div  >
+                        <ul class="nav">
+                            <li><h:commandLink action="#{gastoMB.prepararCreacion}"
+                                               value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                    <i class="fa fa-plus" />
+                                </h:commandLink></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home" />
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </h:form>
+
+
+    </ui:define>
+
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+
+            <h:form>
+
+
+
+                <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{gastoMB.listaItems}" var="item"
+
+
+                              >
+
+
+                    <p:column  >
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.GastoTitle_descripcion}" />
+                        </f:facet>
+                        <h:outputText value="#{item.descripcion}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.GastoTitle_gastofecha}" />
+                        </f:facet>
+                        <h:outputText value="#{item.gastofecha}">
+                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.GastoTitle_valorUnitario}" />
+                        </f:facet>
+
+
+                        <h:outputText value="#{item.valorUnitario}">
+                            <f:convertNumber type="currency" currencySymbol="$" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.GastoTitle_cantidad}" />
+                        </f:facet>
+                        <h:outputText value="#{item.cantidad}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.GastoTitle_valorTotal}" />
+                        </f:facet>
+
+
+                        <h:outputText value="#{item.valorTotal}">
+                            <f:convertNumber type="currency" currencySymbol="$" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.GastoTitle_proveedorid}" />
+                        </f:facet>
+                        <h:outputText value="#{item.proveedor.proveedornombre}" />
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Operacion" />
+                        </f:facet>
+                        <ul class="nav">
+                            <li><h:commandLink action="#{gastoMB.prepararConsulta}"
+                                               value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}">
+                                    <i class="fa fa-eye" />
+                                    <f:setPropertyActionListener value="#{item}"
+                                                                 target="#{gastoMB.itemSeleccionado}" />
+                                </h:commandLink></li>
+                            <h:outputText value=" " />
+                            <li><h:commandLink action="#{gastoMB.prepararEdicion}"
+                                               value="#{bundle.EditLink}" rendered="#{LoginMB.autModificar}">
+                                    <i class="fa fa-edit" />
+                                    <f:setPropertyActionListener value="#{item}"
+                                                                 target="#{gastoMB.itemSeleccionado}" />
+                                </h:commandLink></li>
+                            <h:outputText value=" " />
+                            <li><h:commandLink action="#{gastoMB.eliminar}"
+                                               value="#{bundle.DestroyLink}" rendered="#{LoginMB.autEliminar}">
+                                    <i class="fa fa-trash" />
+                                    <f:setPropertyActionListener value="#{item}"
+                                                                 target="#{gastoMB.itemSeleccionado}" />
+                                </h:commandLink></li>
+                        </ul>
+                    </p:column>
+                </p:dataTable >
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+
+    <ui:define name="script1">
+        <script>
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </ui:define>
+</ui:composition>
+
+
+

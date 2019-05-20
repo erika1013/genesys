@@ -1,0 +1,234 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.ClienteContactoTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">
+
+        <h:form>
+
+            <div>
+                <div>
+                    <div  >
+                        <ul class="nav">
+
+                            <li><h:commandLink action="#{clienteMB.prepararLista}"
+                                               value="#{bundle.ShowAllLink}" immediate="true">
+                                    <i class="fa fa-list"></i>
+                                </h:commandLink></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                               action="/index" immediate="true">
+                                    <i class="fa fa-home"></i>
+                                </h:commandLink></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </h:form>
+
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+            <h:form>
+
+
+
+                <div  >
+                    <div  ></div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PersonaLabel_primernombre}"
+                                   for="primernombre" />
+
+                    <div  >
+
+                        <p:inputText id="primernombre"
+                                     value="#{clienteMB.itemClienteContacto.primernombre}"
+                                     title="#{bundle.PersonaTitle_primernombre}" class="form-control"
+                                     required="true"
+                                     requiredMessage="#{bundle.PersonaRequiredMessage_primernombre}" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PersonaLabel_segundonombre}"
+                                   for="segundonombre" />
+
+                    <div  >
+
+                        <p:inputText id="segundonombre"
+                                     value="#{clienteMB.itemClienteContacto.segundonombre}"
+                                     title="#{bundle.PersonaTitle_segundonombre}" class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PersonaLabel_primerapellido}"
+                                   for="primerapellido" />
+
+                    <div  >
+
+                        <p:inputText id="primerapellido"
+                                     value="#{clienteMB.itemClienteContacto.primerapellido}"
+                                     title="#{bundle.PersonaTitle_primerapellido}"
+                                     class="form-control" required="true"
+                                     requiredMessage="#{bundle.PersonaRequiredMessage_primerapellido}" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PersonaLabel_segundoapellido}"
+                                   for="segundoapellido" />
+
+                    <div  >
+
+                        <p:inputText id="segundoapellido"
+                                     value="#{clienteMB.itemClienteContacto.segundoapellido}"
+                                     title="#{bundle.PersonaTitle_segundoapellido}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.PersonaLabel_fechanacimiento}"
+                                   for="fechanacimiento" />
+
+                    <div  >
+
+                        <p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button"
+                                     id="fechanacimiento"
+                                     value="#{clienteMB.itemClienteContacto.fechanacimiento}" />
+
+
+                    </div>
+                </div>
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteContactoLabel_celular}"
+                                   for="celular" />
+
+                    <div  >
+
+                        <p:inputText id="celular"
+                                     value="#{clienteMB.itemClienteContacto.celular}"
+                                     title="#{bundle.ClienteContactoTitle_celular}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteContactoLabel_telefono}"
+                                   for="telefono" />
+
+                    <div  >
+
+                        <p:inputText id="telefono"
+                                     value="#{clienteMB.itemClienteContacto.telefono}"
+                                     title="#{bundle.ClienteContactoTitle_telefono}"
+                                     class="form-control" />
+                    </div>
+                </div>
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteContactoLabel_extension}"
+                                   for="extension" />
+
+                    <div  >
+
+                        <p:inputText id="extension"
+                                     value="#{clienteMB.itemClienteContacto.extension}"
+                                     title="#{bundle.ClienteContactoTitle_extension}"
+                                     class="form-control" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteContactoLabel_email}"
+                                   for="email" />
+
+                    <div  >
+
+                        <p:inputText id="email"
+                                     value="#{clienteMB.itemClienteContacto.email}"
+                                     title="#{bundle.ClienteContactoTitle_email}" class="form-control" />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="Area/Departamento/Dirección" for="area" />
+
+                    <div  >
+
+                        <p:inputText id="area"
+                                     value="#{clienteMB.itemClienteContacto.area}"
+                                     title="#{bundle.ClienteContactoTitle_area}" class="form-control" />
+                    </div>
+                </div>
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.ClienteContactoLabel_cargo}"
+                                   for="cargo" />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="cargo" value="#{clienteMB.clienteCargoid}"
+                                          title="#{bundle.ClienteContactoTitle_cargo}" class="form-control"
+                                          required="true"
+                                          requiredMessage="#{bundle.ClienteContactoRequiredMessage_cargo}">
+                            <f:selectItem itemLabel="--Seleccionar--" />
+                            <f:selectItems value="#{clienteMB.clienteCargoItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{clienteMB.crearClienteContacto}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

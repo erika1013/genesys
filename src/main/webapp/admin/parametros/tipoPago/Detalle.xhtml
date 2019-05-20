@@ -1,0 +1,71 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.TipoPagoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink action="#{tipoPagoMB.prepararCreacion}"
+                                                   value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                        <i class="fa fa-plus" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{tipoPagoMB.prepararEdicion}"
+                                                   value="#{bundle.EditLink}" rendered="#{LoginMB.autModificar}">
+                                        <i class="fa fa-edit" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{tipoPagoMB.eliminar}"
+                                                   value="#{bundle.DestroyLink}"
+                                                   rendered="#{LoginMB.autEliminar}">
+                                        <i class="fa fa-trash" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{tipoPagoMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}">
+                                        <i class="fa fa-list" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+                    <h:outputText value="#{bundle.TipoPagoLabel_tipoPagoid}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{tipoPagoMB.itemSeleccionado.tipoPagoid}"
+                                  title="#{bundle.TipoPagoTitle_tipoPagoid}" />
+                    <h:outputText value="#{bundle.TipoPagoLabel_tipoPagonombre}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{tipoPagoMB.itemSeleccionado.tipoPagonombre}"
+                        title="#{bundle.TipoPagoTitle_tipoPagonombre}" />
+                </h:panelGrid>
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

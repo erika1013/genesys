@@ -1,0 +1,210 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="Información Estudiante"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+                    <h:outputText value="#{bundle.EstudianteLabel_estudiantecodigo}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{aplicarPagoMB.itemEstudiante.estudiantecodigo}"
+                        title="#{bundle.EstudianteTitle_estudiantecodigo}" />
+
+                    <h:outputText value="#{bundle.PersonaLabel_nombreApellido}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{aplicarPagoMB.itemEstudiante.nombreApellido}"
+                        title="#{bundle.PersonaTitle_nombreApellido}" />
+
+
+                    <h:outputText
+                        value="#{bundle.EstudianteLabel_tipoidentificacionid}"
+                        styleClass="titulo" />
+                    <h:outputText
+                        value="#{aplicarPagoMB.itemEstudiante.tipoIdentificacion.tipoidentificacionalfa}"
+                        title="#{bundle.EstudianteTitle_tipoidentificacionid}" />
+
+                    <h:outputText value="#{bundle.PersonaLabel_numeroidentificacion}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{aplicarPagoMB.itemEstudiante.numeroidentificacion}"
+                        title="#{bundle.PersonaTitle_numeroidentificacion}" />
+
+
+
+                    <h:outputText value="#{bundle.EstudianteLabel_sedeid}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{aplicarPagoMB.itemEstudiante.sede.sedenombre}"
+                        title="#{bundle.EstudianteTitle_sedeid}" />
+
+
+                </h:panelGrid>
+
+            </h:form>
+
+        </div>
+    </ui:define>
+
+
+    <!-- cosas adicionales-->
+
+    <ui:define name="modulos">
+
+
+
+        <!-- Listas de Opciones-->
+
+        <div class="card">
+            <div class="card-header">
+                <h3>
+                    <h:outputText value="Recibos Pendientes de Pago"></h:outputText>
+                </h3>
+
+            </div>
+
+
+            <div class="card-body">
+
+                <h:form>
+
+
+
+                    <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{aplicarPagoMB.listaItems}" var="item"
+
+
+                                  >
+
+                        <p:column  >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoTitle_periodo}" />
+                            </f:facet>
+                            <h:outputText value="#{item.periodo}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoTitle_numero}" />
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoTitle_valor1}" />
+                            </f:facet>
+                            <h:outputText value="#{item.valor1}">
+                                <f:convertNumber type="currency" currencySymbol="$" />
+                            </h:outputText>
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoTitle_fecha1}" />
+                            </f:facet>
+                            <h:outputText value="#{item.fecha1}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </p:column>
+
+
+
+
+
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoTitle_valorAbonado}" />
+                            </f:facet>
+                            <h:outputText value="#{item.valorAbonado}">
+                                <f:convertNumber type="currency" currencySymbol="$" />
+                            </h:outputText>
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoTitle_fechaPago}" />
+                            </f:facet>
+                            <h:outputText value="#{item.fechaPago}">
+                                <f:convertDateTime pattern="yyyy-MM-dd" />
+                            </h:outputText>
+                        </p:column>
+
+
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoTitle_estado}" />
+                            </f:facet>
+                            <h:outputText value="#{item.estado.reciboEstadonombre}" />
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Operacion" />
+                            </f:facet>
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{aplicarPagoMB.prepararPago}"
+                                        value="Aplicar Pago" rendered="#{LoginMB.autConsultar}">
+                                        <i class="fa fa-money" />
+                                        <f:setPropertyActionListener value="#{item}"
+                                                                     target="#{aplicarPagoMB.itemSeleccionado}" />
+                                    </h:commandLink></li>
+                                <h:outputText value=" " />
+
+
+                            </ul>
+                        </p:column>
+                    </p:dataTable >
+
+
+
+                </h:form>
+
+            </div>
+        </div>
+
+    </ui:define>
+
+
+
+    <ui:define name="script1">
+        <script>
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </ui:define>
+</ui:composition>
+
+
+

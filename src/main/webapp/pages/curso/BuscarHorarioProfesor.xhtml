@@ -1,0 +1,53 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="Buscar horario profesor"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+            <h:form >
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.BuscarProfesorLabel_numeroIdentificacion}"
+                        for="maestroid"   />
+
+                    <div  >
+
+                        <p:inputText id="numeroIdentificacion"
+                                     value="#{cursoMB.numeroIdentificacion}"
+                                     title="#{bundle.BuscarProfesorTitle_numeroIdentificacion}"
+                                     class="form-control"  required="true" requiredMessage="#{bundle.BuscarHorarioProfesorRequiredMessage_numeroIdentificacion}"/>
+                    </div>
+                </div>
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{cursoMB.consultarHorarioPorProfesor}"
+                                       value="Consultar" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

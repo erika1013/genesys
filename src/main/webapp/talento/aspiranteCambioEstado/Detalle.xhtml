@@ -1,0 +1,63 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteCambioEstadoTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink action="#{AspiranteCambioEstadoMB.prepararEdicion}"   value="#{bundle.EditLink}" immediate="true">
+                                        <i class="fa fa-edit"></i>
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink action="#{AspiranteCambioEstadoMB.prepararLista}"   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}" 	action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form>
+                    <h:panelGrid columns="2">
+
+                        <h:outputText value="#{bundle.AspiranteCambioEstadoLabel_fechaCambio}"/>
+                        <h:outputText value="$#{AspiranteCambioEstadoMB.itemSeleccionado.fechaCambio}" title="#{bundle.AspiranteCambioEstadoTitle_fechaCambio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.AspiranteCambioEstadoLabel_aspirante}"/>
+                        <h:outputText value="#{AspiranteCambioEstadoMB.itemSeleccionado.aspirante}" title="#{bundle.AspiranteCambioEstadoTitle_aspirante}"/>
+                        <h:outputText value="#{bundle.AspiranteCambioEstadoLabel_estadoAnterior}"/>
+                        <h:outputText value="#{AspiranteCambioEstadoMB.itemSeleccionado.estadoAnterior}" title="#{bundle.AspiranteCambioEstadoTitle_estadoAnterior}"/>
+                        <h:outputText value="#{bundle.AspiranteCambioEstadoLabel_estadoActual}"/>
+                        <h:outputText value="#{AspiranteCambioEstadoMB.itemSeleccionado.estadoActual}" title="#{bundle.AspiranteCambioEstadoTitle_estadoActual}"/>
+                    </h:panelGrid>
+
+
+                </h:form>
+
+            </div>
+        </ui:define>
+</ui:composition>
+
+

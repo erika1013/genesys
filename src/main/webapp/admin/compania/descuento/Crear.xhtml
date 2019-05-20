@@ -1,0 +1,132 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.DescuentoTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{descuentoMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.DescuentoLabel_nombre}" for="nombre"
+                                   />
+
+                    <div  >
+
+                        <p:inputText id="nombre"
+                                     value="#{descuentoMB.itemSeleccionado.nombre}"
+                                     title="#{bundle.DescuentoTitle_nombre}" class="form-control"  
+                                     required="true"
+                                     requiredMessage="#{bundle.DescuentoRequiredMessage_nombre}"/>
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.DescuentoLabel_descuentovalor}"
+                                   for="descuentovalor"   />
+
+                    <div  >
+
+                        <p:inputText id="descuentovalor"
+                                     value="#{descuentoMB.itemSeleccionado.descuentovalor}"
+                                     title="#{bundle.DescuentoTitle_descuentovalor}" class="form-control" 
+                                     required="true"
+                                     requiredMessage="#{bundle.DescuentoRequiredMessage_descuentovalor}" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.DescuentoLabel_sedeid}" for="sedeid"
+                                   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="sedeid" value="#{descuentoMB.sedeid}"
+                                          title="#{bundle.DescuentoTitle_sedeid}" class="form-control" 
+                                          required="true"
+                                          requiredMessage="#{bundle.DescuentoRequiredMessage_sedeid}" >
+                            <f:selectItem itemLabel="--Seleccionar--"/>
+                            <f:selectItems value="#{descuentoMB.sedeItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.DescuentoLabel_tipoServicioid}"
+                                   for="tiposervicioid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="tiposervicioid"
+                                          value="#{descuentoMB.tipoServicioid}"
+                                          title="#{bundle.DescuentoTitle_tipoServicioid}" class="form-control" 
+                                          required="true"
+                                          requiredMessage="#{bundle.DescuentoRequiredMessage_tipoServicioid}" >
+                            <f:selectItem itemLabel="--Seleccionar--"/>
+                            <f:selectItems value="#{descuentoMB.tipoServicioItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{descuentoMB.crear}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

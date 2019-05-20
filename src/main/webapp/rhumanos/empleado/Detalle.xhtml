@@ -1,0 +1,682 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+	<ui:define name="modulos">
+
+		<ul class="nav nav-tabs">
+			<li class="nav-item"><a class="nav-link active"
+				data-toggle="tab" href="#empleado">Empleado</a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab"
+				href="#informacionAcademica">Información Académica</a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab"
+				href="#informacionLaboral">Información Laboral</a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab"
+				href="#acudiente">Acudiente</a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="tab"
+				href="#seguridadSocial">Seguridad Social</a></li>
+
+
+
+		</ul>
+
+
+
+		<div class="tab-content">
+			<!-- *****************************************-->
+			<!-- Informacion empleado-->
+			<div class="container tab-pane active" id="empleado">
+				<div class="card">
+					<div class="card-header">
+
+						<h3>
+							<h:outputText value="#{bundle.EmpleadoTitulo}"></h:outputText>
+						</h3>
+
+					</div>
+
+					<div class="card-body">
+						<h:form>
+							<div>
+								<div>
+									<div>
+										<ul class="nav">
+											<li><h:commandLink
+													action="#{empleadoMB.prepararCreacion}"
+													value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+													<i class="fa fa-plus" />
+												</h:commandLink></li>
+											<li><h:commandLink
+													action="#{empleadoMB.prepararEdicion}"
+													value="#{bundle.EditLink}"
+													rendered="#{LoginMB.autModificar}">
+													<i class="fa fa-edit" />
+												</h:commandLink></li>
+											<li><h:commandLink action="#{empleadoMB.eliminar}"
+													value="#{bundle.DestroyLink}"
+													rendered="#{LoginMB.autEliminar}">
+													<i class="fa fa-trash" />
+												</h:commandLink></li>
+											<li><h:commandLink action="#{empleadoMB.prepararLista}"
+													value="#{bundle.ShowAllLink}">
+													<i class="fa fa-list" />
+												</h:commandLink></li>
+											<li><h:commandLink value="#{bundle.IndexLink}"
+													action="/index" immediate="true">
+													<i class="fa fa-home" />
+												</h:commandLink></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<h:panelGrid columns="2" paginator="true" rows="10" reflow="true">
+
+
+								<h:outputText value="#{bundle.PersonaLabel_primernombre}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.primernombre}"
+									title="#{bundle.PersonaTitle_primernombre}" />
+								<h:outputText value="#{bundle.PersonaLabel_segundonombre}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.segundonombre}"
+									title="#{bundle.PersonaTitle_segundonombre}" />
+								<h:outputText value="#{bundle.PersonaLabel_primerapellido}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.primerapellido}"
+									title="#{bundle.PersonaTitle_primerapellido}" />
+								<h:outputText value="#{bundle.PersonaLabel_segundoapellido}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.segundoapellido}"
+									title="#{bundle.PersonaTitle_segundoapellido}" />
+
+								<h:outputText
+									value="#{bundle.EmpleadoLabel_tipoidentificacionid}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.tipoIdentificacion.tipoidentificacionalfa}"
+									title="#{bundle.EmpleadoTitle_tipoidentificacionid}" />
+
+								<h:outputText
+									value="#{bundle.EmpleadoLabel_numeroidentificacion}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.numeroidentificacion}"
+									title="#{bundle.EmpleadoTitle_numeroidentificacion}" />
+
+								<h:outputText value="#{bundle.PersonaLabel_fechanacimiento}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.fechanacimiento}"
+									title="#{bundle.PersonaTitle_fechanacimiento}">
+									<f:convertDateTime pattern="yyyy-MM-dd" />
+								</h:outputText>
+
+
+
+								<h:outputText value="#{bundle.EmpleadoLabel_fechaingreso}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.fechaingreso}"
+									title="#{bundle.EmpleadoTitle_fechaingreso}">
+									<f:convertDateTime pattern="yyyy-MM-dd" />
+								</h:outputText>
+
+								<h:outputText value="#{bundle.EmpleadoLabel_fecharetiro}"
+									styleClass="titulo" />
+								<h:outputText value="#{empleadoMB.itemSeleccionado.fecharetiro}"
+									title="#{bundle.EmpleadoTitle_fecharetiro}">
+									<f:convertDateTime pattern="yyyy-MM-dd" />
+								</h:outputText>
+
+								<h:outputText value="#{bundle.EmpleadoLabel_empleadoemail}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.empleadoemail}"
+									title="#{bundle.EmpleadoTitle_empleadoemail}" />
+								<h:outputText value="#{bundle.EmpleadoLabel_empleadocelular}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.empleadocelular}"
+									title="#{bundle.EmpleadoTitle_empleadocelular}" />
+								<h:outputText value="#{bundle.EmpleadoLabel_empleadotelefono}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.empleadotelefono}"
+									title="#{bundle.EmpleadoTitle_empleadotelefono}" />
+								<h:outputText value="#{bundle.EmpleadoLabel_companiacargoid}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.companiaCargo.companiacargonombre}"
+									title="#{bundle.EmpleadoTitle_companiacargoid}" />
+
+								<h:outputText value="#{bundle.EmpleadoLabel_sedeid}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.sede.sedenombre}"
+									title="#{bundle.EmpleadoTitle_sedeid}" />
+
+
+								<h:outputText value="#{bundle.EmpleadoLabel_tipoEmpleadoid}"
+									styleClass="titulo" />
+								<h:outputText
+									value="#{empleadoMB.itemSeleccionado.tipoEmpleado.nombre}"
+									title="#{bundle.EmpleadoTitle_tipoEmpleadoid}" />
+							</h:panelGrid>
+
+
+
+
+						</h:form>
+					</div>
+				</div>
+			</div>
+			<!-- *****************************************-->
+			<!-- INFORMACION ACADEMICA  -->
+			<div class="container tab-pane fade" id="informacionAcademica">
+				<div class="card">
+					<div class="card-header">
+
+						<h3>
+							<h:outputText value="#{bundle.InformacionAcademicaTitulo}"></h:outputText>
+						</h3>
+
+					</div>
+					<div class="card-body">
+						<h:form>
+							<div>
+								<div>
+									<div>
+										<ul class="nav">
+											<li><h:commandLink
+													action="#{empleadoMB.prepararCreacionInformacionAcademica}"
+													value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+													<i class="fa fa-plus" />
+												</h:commandLink></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+						</h:form>
+						<h:form>
+							<p:dataTable paginator="true" rows="10" reflow="true"
+								value="#{empleadoMB.listaInformacionAcademica}" var="item">
+
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionAcademicaTitle_nivelEstudio}" />
+									</f:facet>
+									<h:outputText value="#{item.nivelEstudio}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionAcademicaTitle_institucion}" />
+									</f:facet>
+									<h:outputText value="#{item.institucion}" />
+								</p:column>
+
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionAcademicaTitle_tituloObtenido}" />
+									</f:facet>
+									<h:outputText value="#{item.tituloObtenido}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionAcademicaTitle_fechaInicio}" />
+									</f:facet>
+									<h:outputText value="#{item.fechaInicio}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:outputText>
+
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionAcademicaTitle_fechaTerminacion}" />
+									</f:facet>
+									<h:outputText value="#{item.fechaTerminacion}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:outputText>
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionAcademicaTitle_estado}" />
+									</f:facet>
+									<h:outputText value="#{item.estado}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<ul class="nav">
+										<li><h:commandLink
+												action="#{empleadoMB.prepararConsultaInformacionAcademica}"
+												value="#{bundle.ViewLink}"
+												rendered="#{LoginMB.autConsultar}">
+												<i class="fa fa-eye" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemInformacionAcademica}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.prepararEdicionInformacionAcademica}"
+												value="#{bundle.EditLink}"
+												rendered="#{LoginMB.autModificar}">
+												<i class="fa fa-edit" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemInformacionAcademica}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.eliminarInformacionAcademica}"
+												value="#{bundle.DestroyLink}"
+												rendered="#{LoginMB.autEliminar}">
+												<i class="fa fa-trash" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemInformacionAcademica}" />
+											</h:commandLink></li>
+									</ul>
+
+
+								</p:column>
+
+							</p:dataTable>
+						</h:form>
+					</div>
+
+
+
+				</div>
+			</div>
+			<!-- *****************************************-->
+			<!-- informacion laboral  -->
+
+			<div class="container tab-pane fade" id="informacionLaboral">
+				<div class="card">
+					<div class="card-header">
+
+						<h3>
+							<h:outputText value="#{bundle.InformacionLaboralTitulo}"></h:outputText>
+						</h3>
+
+					</div>
+					<div class="card-body">
+						<h:form>
+							<div>
+								<div>
+									<div>
+										<ul class="nav">
+											<li><h:commandLink
+													action="#{empleadoMB.prepararCreacionInformacionLaboral}"
+													value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+													<i class="fa fa-plus" />
+												</h:commandLink></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+						</h:form>
+						<h:form>
+							<p:dataTable paginator="true" rows="10" reflow="true"
+								value="#{empleadoMB.listaInformacionLaboral}" var="item">
+
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionLaboralTitle_cargo}" />
+									</f:facet>
+									<h:outputText value="#{item.cargo}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionLaboralTitle_empresa}" />
+									</f:facet>
+									<h:outputText value="#{item.empresa}" />
+								</p:column>
+
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionLaboralTitle_fechaInicio}" />
+									</f:facet>
+									<h:outputText value="#{item.fechaInicio}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:outputText>
+
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionLaboralTitle_fechaRetiro}" />
+									</f:facet>
+									<h:outputText value="#{item.fechaRetiro}">
+										<f:convertDateTime pattern="yyyy-MM-dd" />
+									</h:outputText>
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.EmpleadoInformacionLaboralTitle_jefe}" />
+									</f:facet>
+									<h:outputText value="#{item.jefe}" />
+								</p:column>
+
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<ul class="nav">
+										<li><h:commandLink
+												action="#{empleadoMB.prepararConsultaInformacionLaboral}"
+												value="#{bundle.ViewLink}"
+												rendered="#{LoginMB.autConsultar}">
+												<i class="fa fa-eye" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemInformacionLaboral}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.prepararEdicionInformacionLaboral}"
+												value="#{bundle.EditLink}"
+												rendered="#{LoginMB.autModificar}">
+												<i class="fa fa-edit" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemInformacionLaboral}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.eliminarInformacionLaboral}"
+												value="#{bundle.DestroyLink}"
+												rendered="#{LoginMB.autEliminar}">
+												<i class="fa fa-trash" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemInformacionLaboral}" />
+											</h:commandLink></li>
+									</ul>
+
+
+								</p:column>
+
+							</p:dataTable>
+						</h:form>
+					</div>
+
+
+
+				</div>
+			</div>
+			<!-- *****************************************-->
+			<!--Empleado Acudiente-->
+			<div class="container tab-pane fade" id="acudiente">
+				<div class="card">
+					<div class="card-header">
+
+						<h3>
+							<h:outputText value="#{bundle.EmpleadoAcudienteTitulo}"></h:outputText>
+						</h3>
+
+					</div>
+					<div class="card-body">
+						<h:form>
+							<div>
+								<div>
+									<div>
+										<ul class="nav">
+											<li><h:commandLink
+													action="#{empleadoMB.prepararCreacionEmpleadoAcudiente}"
+													value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+													<i class="fa fa-plus" />
+												</h:commandLink></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+						</h:form>
+						<h:form>
+							<p:dataTable paginator="true" rows="10" reflow="true"
+								value="#{empleadoMB.listaEmpleadoAcudiente}" var="item">
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="#{bundle.PersonaTitle_Nombres}" />
+									</f:facet>
+									<h:outputText value="#{item.nombreApellido}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText
+											value="#{bundle.PersonaTitle_numeroidentificacion}" />
+									</f:facet>
+									<h:outputText value="#{item.numeroidentificacion}" />
+								</p:column>
+
+
+
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="#{bundle.AcudienteTitle_telefono1}" />
+									</f:facet>
+									<h:outputText value="#{item.telefono1}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="#{bundle.AcudienteTitle_extension1}" />
+									</f:facet>
+									<h:outputText value="#{item.extension1}" />
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<ul class="nav">
+										<li><h:commandLink
+												action="#{empleadoMB.prepararConsultaEmpleadoAcudiente}"
+												value="#{bundle.ViewLink}"
+												rendered="#{LoginMB.autConsultar}">
+												<i class="fa fa-eye" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemEmpleadoAcudiente}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.prepararEdicionEmpleadoAcudiente}"
+												value="#{bundle.EditLink}"
+												rendered="#{LoginMB.autModificar}">
+												<i class="fa fa-edit" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemEmpleadoAcudiente}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.eliminarEmpleadoAcudiente}"
+												value="#{bundle.DestroyLink}"
+												rendered="#{LoginMB.autEliminar}">
+												<i class="fa fa-trash" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemEmpleadoAcudiente}" />
+											</h:commandLink></li>
+									</ul>
+
+
+								</p:column>
+
+							</p:dataTable>
+						</h:form>
+					</div>
+
+
+
+				</div>
+			</div>
+			<!-- *****************************************-->
+			<!-- empleado seguridad social -->
+
+			<div class="container tab-pane fade" id="seguridadSocial">
+				<div class="card">
+					<div class="card-header">
+
+						<h3>
+							<h:outputText value="#{bundle.EmpleadoSeguridadSocialTitulo}"></h:outputText>
+						</h3>
+
+					</div>
+					<div class="card-body">
+						<h:form>
+							<div>
+								<div>
+									<div>
+										<ul class="nav">
+											<li><h:commandLink
+													action="#{empleadoMB.prepararCreacionEmpleadoSeguridadSocial}"
+													value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+													<i class="fa fa-plus" />
+												</h:commandLink></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+						</h:form>
+						<h:form>
+							<p:dataTable paginator="true" rows="10" reflow="true"
+								value="#{empleadoMB.listaEmpleadoSeguridadSocial}" var="item">
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="#{bundle.PersonaTitle_Nombres}" />
+									</f:facet>
+									<h:outputText
+										value="#{item.empresaseguridadSocial.empresaseguridadsocialnombre}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="#{bundle.PersonaTitle_Nombres}" />
+									</f:facet>
+									<h:outputText value="#{item.empresaseguridadSocial.telefono}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="#{bundle.PersonaTitle_Nombres}" />
+									</f:facet>
+									<h:outputText value="#{item.empresaseguridadSocial.web}" />
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="#{bundle.PersonaTitle_Nombres}" />
+									</f:facet>
+									<h:outputText value="#{item.concepto}" />
+								</p:column>
+
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Operacion" />
+									</f:facet>
+									<ul class="nav">
+										<li><h:commandLink
+												action="#{empleadoMB.prepararConsultaEmpresaSeguridadSocial}"
+												value="#{bundle.ViewLink}"
+												rendered="#{LoginMB.autConsultar}">
+												<i class="fa fa-eye" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemEmpresaSeguridadSocial}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.prepararEdicionEmpresaSeguridadSocial}"
+												value="#{bundle.EditLink}"
+												rendered="#{LoginMB.autModificar}">
+												<i class="fa fa-edit" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemEmpresaSeguridadSocial}" />
+											</h:commandLink></li>
+										<h:outputText value=" " />
+										<li><h:commandLink
+												action="#{empleadoMB.eliminarEmpresaSeguridadSocial}"
+												value="#{bundle.DestroyLink}"
+												rendered="#{LoginMB.autEliminar}">
+												<i class="fa fa-trash" />
+												<f:setPropertyActionListener value="#{item}"
+													target="#{empleadoMB.itemEmpresaSeguridadSocial}" />
+											</h:commandLink></li>
+									</ul>
+
+
+								</p:column>
+
+							</p:dataTable>
+						</h:form>
+					</div>
+
+
+
+				</div>
+			</div>
+			<!-- ************************ -->
+
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+

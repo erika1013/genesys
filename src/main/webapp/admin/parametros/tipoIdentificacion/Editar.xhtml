@@ -1,0 +1,141 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.TipoIdentificacionTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{tipoIdentificacionMB.prepararConsulta}"
+                                        value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}"
+                                        immediate="true">
+                                        <i class="fa fa-eye"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink
+                                        action="#{tipoIdentificacionMB.prepararLista}"
+                                        value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.TipoIdentificacionLabel_tipoidentificacionid}"
+                        for="tipoidentificacionid"   />
+
+                    <div  >
+
+                        <p:inputText id="tipoidentificacionid"
+                                     value="#{tipoIdentificacionMB.itemSeleccionado.tipoidentificacionid}"
+                                     title="#{bundle.TipoIdentificacionTitle_tipoidentificacionid}"
+                                     required="true"
+                                     requiredMessage="#{bundle.TipoIdentificacionRequiredMessage_tipoidentificacionid}"
+                                     class="form-control"  
+                                     readonly="true"/>
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.TipoIdentificacionLabel_tipoidentificacionnumero}"
+                        for="tipoidentificacionnumero"   />
+
+                    <div  >
+
+                        <p:inputText id="tipoidentificacionnumero"
+                                     value="#{tipoIdentificacionMB.itemSeleccionado.tipoidentificacionnumero}"
+                                     title="#{bundle.TipoIdentificacionTitle_tipoidentificacionnumero}"
+
+                                     required="true"
+                                     requiredMessage="#{bundle.TipoIdentificacionRequiredMessage_tipoidentificacionnumero}"
+                                     class="form-control"  
+                                     readonly="true"/>
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.TipoIdentificacionLabel_tipoidentificacionalfa}"
+                        for="tipoidentificacionalfa"   />
+
+                    <div  >
+
+                        <p:inputText id="tipoidentificacionalfa"
+                                     value="#{tipoIdentificacionMB.itemSeleccionado.tipoidentificacionalfa}"
+                                     title="#{bundle.TipoIdentificacionTitle_tipoidentificacionalfa}"
+                                     class="form-control"   readonly="true"
+                                     required="true"
+                                     requiredMessage="#{bundle.TipoIdentificacionRequiredMessage_tipoidentificacionalfa}"
+                                     />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.TipoIdentificacionLabel_tipoidentificacionnombre}"
+                        for="tipoidentificacionnombre"   />
+
+                    <div  >
+
+                        <p:inputText id="tipoidentificacionnombre"
+                                     value="#{tipoIdentificacionMB.itemSeleccionado.tipoidentificacionnombre}"
+                                     title="#{bundle.TipoIdentificacionTitle_tipoidentificacionnombre}"
+                                     class="form-control" 
+                                     required="true"
+                                     requiredMessage="#{bundle.TipoIdentificacionRequiredMessage_tipoidentificacionnombre}"
+                                     />
+                    </div>
+                </div>
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{tipoIdentificacionMB.actualizar}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

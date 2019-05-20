@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>#{bundle.NombreAplicacion}</title>
+</h:head>
+
+<h:body styleClass="containerLogin">
+	<div class="logo-container">
+		<h:graphicImage name="images/logo.png" id="PageLogo"
+			library="icarus-layout" />
+	</div>
+
+	<h:form>
+		<div class="ui-g">
+			<p:panel header="Login" styleClass="panel-login">
+				<div class="ui-g-12" style="padding-top: 35px;">
+					<p:inputText placeholder="Usuario" style="width:60%;"
+						value="#{LoginMB.usuario.usuariousuario}" />
+					<br />
+				</div>
+				<div class="ui-g-12" style="padding-top: 10px;">
+					<p:password placeholder="Password" style="width:60%"
+						value="#{LoginMB.usuario.usuarioclave}" />
+				</div>
+				<div class="ui-g-2"></div>
+				<div class="ui-g-8 login-input-container"></div>
+				<div class="ui-g-2"></div>
+				
+
+				<div class="ui-g-12" style="padding-top: 10px;">
+
+					<h:commandLink action="#{LoginMB.login}"
+						value="Ingresar" class="btn btn-primary" />
+
+				</div>
+
+
+
+			</p:panel>
+			<div class="ui-g-12 footer-login">
+				<span>Sistema Integral de Administración Empresarial</span><br /> <span>Guandera
+					- All rights reserved.</span>
+			</div>
+		</div>
+	</h:form>
+
+	<style type="text/css">
+html {
+	height: 100%;
+}
+
+.ui-button-text, .ui-button-text-only .ui-button-text {
+	padding: 8px !important;
+	transition: none !important;
+}
+
+.ui-panel .ui-panel-title {
+	font-size: 17px;
+}
+</style>
+
+	<h:outputStylesheet name="css/layout-green.css" library="icarus-layout" />
+	<h:outputStylesheet name="genesys.css" library="css" />
+</h:body>
+
+</html>

@@ -1,0 +1,114 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ReciboPagoTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">       
+        </ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+
+                <h:form>
+
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+
+                                    <li><h:commandLink action="#{reciboPagoMB.prepararLista}"
+                                                       value="#{bundle.ShowAllLink}" immediate="true">
+                                            <i class="fa fa-list"></i>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink value="#{bundle.IndexLink}"
+                                                       action="/index" immediate="true">
+                                            <i class="fa fa-home"></i>
+                                        </h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+
+                <h:form >
+
+
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.ReciboPagoLabel_reciboPagoid}"
+                                       for="reciboPagoid"   />
+
+                        <div  >
+
+                            <p:inputText id="reciboPagoid"
+                                         value="#{reciboPagoMB.itemSeleccionado.reciboPagoid}"
+                                         title="#{bundle.ReciboPagoTitle_reciboPagoid}" required="true"
+                                         requiredMessage="#{bundle.ReciboPagoRequiredMessage_reciboPagoid}"
+                                         class="form-control"  />
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.ReciboPagoLabel_reciboPagonombre}"
+                                       for="reciboPagonombre"   />
+
+                        <div  >
+
+                            <p:inputText id="reciboPagonombre"
+                                         value="#{reciboPagoMB.itemSeleccionado.reciboPagonombre}"
+                                         title="#{bundle.ReciboPagoTitle_reciboPagonombre}" class="form-control"  
+                                         required="true"
+                                         requiredMessage="#{bundle.ReciboPagoRequiredMessage_reciboPagonombre}"/>
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.ReciboPagoLabel_tipoReciboPagoid}"
+                                       for="tipoReciboPagoid"   />
+
+                        <div  >
+
+                            <p:selectOneMenu  id="tipoReciboPagoid"
+                                              value="#{reciboPagoMB.tipoReciboPagoid}"
+                                              title="#{bundle.ReciboPagoTitle_tipoReciboPagoid}" class="form-control" 
+                                              required="true"
+                                              requiredMessage="#{bundle.ReciboPagoRequiredMessage_tipoReciboPagoid}">
+                                <f:selectItem itemLabel="--Seleccionar--"/>
+                                <f:selectItems value="#{reciboPagoMB.tipoReciboPagoItems}" />
+                            </p:selectOneMenu >
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{reciboPagoMB.crear}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+

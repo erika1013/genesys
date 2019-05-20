@@ -1,0 +1,82 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="Recibos Pendientes"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+
+            <h:form >
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.AplicarPagoLabel_numeroIdentificacion}"
+                        for="numeroIdentificacion"   />
+
+                    <div  >
+
+                        <p:inputText id="numeroIdentificacion"
+                                     value="#{aplicarPagoMB.numeroIdentificacion}"
+                                     title="#{bundle.AplicarPagoTitle_numeroIdentificacion}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.AplicarPagoLabel_codigoEstudiante}"
+                                   for="codigoEstudiante"   />
+
+                    <div  >
+
+                        <p:inputText id="codigoEstudiante"
+                                     value="#{aplicarPagoMB.codigoEstudiante}"
+                                     title="#{bundle.AplicarPagoTitle_codigoEstudiante}" class="form-control"  />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.AplicarPagoLabel_IdentificacionAcudiente}"
+                        for="numeroIdentificacionAcudiente"   />
+
+                    <div  >
+
+                        <p:inputText id="numeroIdentificacionAcudiente"
+                                     value="#{aplicarPagoMB.numeroIdentificacionAcudiente}"
+                                     title="#{bundle.AplicarPagoTitle_IdentificacionAcudiente}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{aplicarPagoMB.buscarEstudiante}"
+                                       value="Buscar" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

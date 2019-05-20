@@ -1,0 +1,430 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+
+
+
+
+	<ui:define name="title">
+		<h:outputText value="#{bundle.EmpleadoTitulo}"></h:outputText>
+	</ui:define>
+
+	<ui:define name="barmenu">
+
+		<h:form>
+
+			<ul class="nav">
+
+				<li><h:commandLink action="#{EmpleadoMB.prepararLista}"
+						value="#{bundle.ShowAllLink}" immediate="true"
+						class="btn btn-outline-primary">
+						<i class="fa fa-list"></i>
+					</h:commandLink></li>
+				<li><h:commandLink value="#{bundle.IndexLink}" action="/index"
+						immediate="true" class="btn btn-outline-primary">
+						<i class="fa fa-home verde"></i>
+					</h:commandLink></li>
+			</ul>
+		</h:form>
+	</ui:define>
+
+
+	<ui:define name="body">
+
+
+		<div class="card-body ">
+
+			<h:form>
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_sedeid}" for="sedeid" />
+
+
+					<p:selectOneMenu id="sedeid" value="#{EmpleadoMB.sedeid}"
+						title="#{bundle.EmpleadoTitle_sedeid}" class="form-control"
+						required="true"
+						requiredMessage="#{bundle.EmpleadoRequiredMessage_sedeid}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{EmpleadoMB.sedeItems}" />
+					</p:selectOneMenu>
+				</div>
+
+
+
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_primernombre}"
+						for="primernombre" />
+
+
+					<p:inputText id="primernombre"
+						value="#{EmpleadoMB.itemSeleccionado.primerNombre}"
+						title="#{bundle.PersonaTitle_primernombre}" class="form-control"
+						required="true"
+						requiredMessage="#{bundle.EmpleadoRequiredMessage_primernombre}" />
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_segundonombre}"
+						for="segundonombre" />
+
+
+					<p:inputText id="segundonombre"
+						value="#{EmpleadoMB.itemSeleccionado.segundoNombre}"
+						title="#{bundle.PersonaTitle_segundonombre}" class="form-control"
+						required="true"
+						requiredMessage="#{bundle.EmpleadoRequiredMessage_segundonombre}" />
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_primerapellido}"
+						for="primerapellido" />
+
+
+					<p:inputText id="primerapellido"
+						value="#{EmpleadoMB.itemSeleccionado.primerApellido}"
+						title="#{bundle.PersonaTitle_primerapellido}" class="form-control"
+						required="true"
+						requiredMessage="#{bundle.EmpleadoRequiredMessage_primerapellido}" />
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_segundoapellido}"
+						for="segundoapellido" />
+
+
+					<p:inputText id="segundoapellido"
+						value="#{EmpleadoMB.itemSeleccionado.segundoApellido}"
+						title="#{bundle.PersonaTitle_segundoapellido}"
+						class="form-control" required="true"
+						requiredMessage="#{bundle.EmpleadoRequiredMessage_segundoapellido}" />
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_tipoidentificacionid}"
+						for="tipoidentificacionid" />
+
+
+					<p:selectOneMenu id="tipoidentificacionid"
+						value="#{EmpleadoMB.tipoidentificacionid}"
+						title="#{bundle.PersonaTitle_tipoidentificacionid}"
+						class="form-control" required="true"
+						requiredMessage="#{bundle.EmpleadoRequiredMessage_tipoidentificacionid}">
+						<f:selectItem itemLabel="--Seleccionar--" />
+						<f:selectItems value="#{EmpleadoMB.tipoIdentificacionItems}" />
+					</p:selectOneMenu>
+				</div>
+
+				<div>
+
+					<p:outputLabel value="#{bundle.PersonaLabel_numeroidentificacion}"
+						for="numeroidentificacion" />
+
+					<div>
+
+						<p:inputText id="numeroidentificacion"
+							value="#{EmpleadoMB.itemSeleccionado.numeroIdentificacion}"
+							title="#{bundle.PersonaTitle_numeroidentificacion}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_numeroidentificacion}" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_ciudadIdentificacion}"
+						for="ciudadIdentificacion" />
+					<div>
+
+						<p:selectOneMenu id="departamentoIdentificacion"
+							value="#{EmpleadoMB.departamentoIdentificacionId}"
+							title="#{bundle.EmpleadoTitle_departamento}">
+							<f:selectItems value="#{EmpleadoMB.departamentoItems}" />
+							<f:ajax render="ciudadIdentificacion"
+								listener="#{EmpleadoMB.cargarCiudadesDepartamentoIdentificacion}" />
+
+						</p:selectOneMenu>
+
+
+						<p:selectOneMenu id="ciudadIdentificacion"
+							value="#{EmpleadoMB.ciudadIdentificacionId}"
+							title="#{bundle.EmpleadoTitle_ciudadIdentificacion}">
+							<f:selectItems value="#{EmpleadoMB.ciudadItems1}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_fechaNacimiento}"
+						for="fechaNacimiento" />
+					<div>
+
+						<p:calendar pattern="yyyy-MM-dd" navigator="true" showOn="button"
+							id="fechaNacimiento"
+							value="#{EmpleadoMB.itemSeleccionado.fechaNacimiento}" />
+
+
+
+					</div>
+
+
+				</div>
+
+
+
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_lugarNacimiento}"
+						for="lugarNacimiento" />
+					<div>
+
+						<p:selectOneMenu id="departamentoNacimiento"
+							value="#{EmpleadoMB.departamentoNacimientoId}"
+							title="#{bundle.EmpleadoTitle_departamento}">
+							<f:selectItems value="#{EmpleadoMB.departamentoItems}" />
+							<f:ajax render="lugarNacimiento"
+								listener="#{EmpleadoMB.cargarCiudadesDepartamentoNacimiento}" />
+
+						</p:selectOneMenu>
+
+						<p:selectOneMenu id="lugarNacimiento"
+							value="#{EmpleadoMB.lugarNacimientoId}"
+							title="#{bundle.EmpleadoTitle_lugarNacimiento}">
+							<f:selectItems value="#{EmpleadoMB.ciudadItems2}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_sexo}" for="sexo" />
+					<div>
+
+
+						<p:selectOneMenu id="sexo"
+							value="#{EmpleadoMB.itemSeleccionado.sexo}" required="true"
+							class="form-control"
+							requiredMessage="!Seleccione el sexo de el estudiante¡">
+							<f:selectItem itemLabel="--Seleccionar-- " />
+							<f:selectItem itemLabel="M" itemValue="M" />
+							<f:selectItem itemLabel="F" itemValue="F" />
+						</p:selectOneMenu>
+
+
+					</div>
+
+				</div>
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_estadoCivil}"
+						for="estadoCivil" />
+					<div>
+						<p:selectOneMenu id="estadoCivil"
+							value="#{EmpleadoMB.estadoCivilId}"
+							title="#{bundle.EmpleadoTitle_estadoCivil}">
+							<f:selectItems value="#{EmpleadoMB.estadoCivilItems}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_telefono}"
+						for="telefono" />
+					<div>
+						<p:inputText id="telefono"
+							value="#{EmpleadoMB.itemSeleccionado.telefono}"
+							title="#{bundle.EmpleadoTitle_telefono}" />
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_celular}"
+						for="celular" />
+					<div>
+						<p:inputText id="celular"
+							value="#{EmpleadoMB.itemSeleccionado.celular}"
+							title="#{bundle.EmpleadoTitle_celular}" />
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_correo}" for="correo" />
+					<div>
+						<p:inputText id="correo"
+							value="#{EmpleadoMB.itemSeleccionado.correo}"
+							title="#{bundle.EmpleadoTitle_correo}" />
+					</div>
+
+				</div>
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_direccion}"
+						for="direccion" />
+					<div>
+						<p:inputText id="direccion"
+							value="#{EmpleadoMB.itemSeleccionado.direccion}"
+							title="#{bundle.EmpleadoTitle_direccion}" />
+					</div>
+
+				</div>
+
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_ciudadResidencia}"
+						for="ciudadResidencia" />
+					<div>
+
+						<p:selectOneMenu id="departamentoResidencia"
+							value="#{EmpleadoMB.departamentoResidenciaId}"
+							title="#{bundle.EmpleadoTitle_departamento}">
+							<f:selectItems value="#{EmpleadoMB.departamentoItems}" />
+							<f:ajax render="ciudadResidencia"
+								listener="#{EmpleadoMB.cargarCiudadesDepartamentoResidencia}" />
+
+						</p:selectOneMenu>
+
+
+						<p:selectOneMenu id="ciudadResidencia"
+							value="#{EmpleadoMB.ciudadResidenciaId}"
+							title="#{bundle.EmpleadoTitle_ciudadResidencia}">
+							<f:selectItems value="#{EmpleadoMB.ciudadItems3}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+
+
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_companiacargoid}"
+						for="companiacargoid" />
+
+					<div>
+
+						<p:selectOneMenu id="companiacargoid"
+							value="#{EmpleadoMB.cargoid}"
+							title="#{bundle.EmpleadoTitle_companiacargoid}" required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_cargoid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{EmpleadoMB.cargoItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_fechaingreso}"
+						for="fechaingreso" />
+
+					<div>
+
+						<p:calendar id="fechaingreso"
+							value="#{EmpleadoMB.itemSeleccionado.fechaIngreso}"
+							pattern="yyyy-MM-dd" navigator="true" showOn="button"
+							required="true"
+							requiredMessage="#{bundle.EmpleadoRequiredMessage_fechaingreso}" />
+
+
+					</div>
+				</div>
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_fecharetiro}"
+						for="fecharetiro" />
+
+					<div>
+
+						<p:calendar id="fecharetiro" pattern="yyyy-MM-dd" navigator="true"
+							showOn="button"
+							value="#{EmpleadoMB.itemSeleccionado.fechaRetiro}" />
+
+					</div>
+				</div>
+
+
+
+
+				<div class="form-group">
+
+					<p:outputLabel value="#{bundle.EmpleadoLabel_estado}" for="estado" />
+					<div>
+						<p:selectOneMenu id="estado" value="#{EmpleadoMB.estadoId}"
+							title="#{bundle.EmpleadoTitle_estado}">
+							<f:selectItems value="#{EmpleadoMB.empleadoEstadoItems}" />
+						</p:selectOneMenu>
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+				<div class="form-group">
+
+
+					<h:commandLink action="#{EmpleadoMB.crear}"
+						value="#{bundle.SaveLink}" class="btn btn-primary" />
+
+				</div>
+
+
+
+			</h:form>
+		</div>
+
+
+	</ui:define>
+</ui:composition>
+
+

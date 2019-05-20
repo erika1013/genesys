@@ -1,0 +1,116 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EmpresaSeguridadSocialTitulo}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+                <h:form>
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{empresaSeguridadSocialMB.prepararCreacion}"
+                                            value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                            <i class="fa fa-plus" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink
+                                            action="#{empresaSeguridadSocialMB.prepararEdicion}"
+                                            value="#{bundle.EditLink}" rendered="#{LoginMB.autModificar}">
+                                            <i class="fa fa-edit" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink
+                                            action="#{empresaSeguridadSocialMB.eliminar}"
+                                            value="#{bundle.DestroyLink}"
+                                            rendered="#{LoginMB.autEliminar}">
+                                            <i class="fa fa-trash" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink
+                                            action="#{empresaSeguridadSocialMB.prepararLista}"
+                                            value="#{bundle.ShowAllLink}">
+                                            <i class="fa fa-list" />
+                                        </h:commandLink></li>
+                                    <li><h:commandLink value="#{bundle.IndexLink}"
+                                                       action="/index" immediate="true">
+                                            <i class="fa fa-home" />
+                                        </h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+                        <h:outputText
+                            value="#{bundle.EmpresaSeguridadSocialLabel_empresaseguridadsocialid}"
+                            styleClass="titulo" />
+                        <h:outputText
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.empresaseguridadsocialid}"
+                            title="#{bundle.EmpresaSeguridadSocialTitle_empresaseguridadsocialid}" />
+                        <h:outputText
+                            value="#{bundle.EmpresaSeguridadSocialLabel_empresaseguridadsocialnombre}"
+                            styleClass="titulo" />
+                        <h:outputText
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.empresaseguridadsocialnombre}"
+                            title="#{bundle.EmpresaSeguridadSocialTitle_empresaseguridadsocialnombre}" />
+
+
+                        <p:outputLabel
+                            value="#{bundle.EmpresaSeguridadSocialLabel_contacto}"
+                            />
+                        <h:outputText 
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.contacto}"
+                            title="#{bundle.EmpresaSeguridadSocialTitle_contacto}"
+                            class="form-control"  />
+                        <p:outputLabel
+                            value="#{bundle.EmpresaSeguridadSocialLabel_telefono}"
+                            />
+                        <h:outputText 
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.telefono}"
+                            title="#{bundle.EmpresaSeguridadSocialTitle_telefono}"
+                            class="form-control"  />
+                        <p:outputLabel value="#{bundle.EmpresaSeguridadSocialLabel_email}"
+                                       />
+                        <h:outputText 
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.email}"
+                            title="#{bundle.EmpresaSeguridadSocialTitle_email}" class="form-control"  />
+                        <p:outputLabel
+                            value="#{bundle.EmpresaSeguridadSocialLabel_direccion}"
+                            />
+                        <h:outputText 
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.direccion}"
+                            title="#{bundle.EmpresaSeguridadSocialTitle_direccion}"
+                            class="form-control"  />
+                        <p:outputLabel value="#{bundle.EmpresaSeguridadSocialLabel_web}"
+                                       />
+                        <h:outputText 
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.web}"
+                            title="#{bundle.EmpresaSeguridadSocialTitle_web}" class="form-control"  />
+                        <p:outputLabel value="#{bundle.EmpresaSeguridadSocialLabel_online}"
+                                       />
+                        <h:outputText
+                            value="#{empresaSeguridadSocialMB.itemSeleccionado.online}"
+                            class="form-control"  />
+
+
+                    </h:panelGrid>
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+
+

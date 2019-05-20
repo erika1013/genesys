@@ -1,0 +1,126 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.HorarioTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{cursoMB.prepararConsulta}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.HorarioLabel_horariodia}"
+                                   for="diaid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="diaid" value="#{cursoMB.diaid}"
+                                          title="#{bundle.HorarioTitle_diaid}" class="form-control"  
+                                          required="true" requiredMessage="#{bundle.HorarioRequiredMessage_horariodia}">
+                            <f:selectItem itemLabel="--Seleccionar-- "/>
+                            <f:selectItems value="#{cursoMB.diaItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.HorarioLabel_horainicial}"
+                                   for="horainicial"   />
+
+                    <div  >
+                        <p:inputText  styleClass="form-control datepicker"id="horainicial"
+                                      value="#{cursoMB.itemHorario.horainicial}"
+                                      pattern="HH:mm" 
+                                      requiredMessage="#{bundle.HorarioRequiredMessage_horainicial}" timeOnly="true"  />
+
+
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.HorarioLabel_horafinal}"
+                                   for="horafinal"   />
+
+                    <div  >
+
+                        <p:inputText  styleClass="form-control datepicker"id="horafinal"
+                                      value="#{cursoMB.itemHorario.horafinal}"
+                                      pattern="HH:mm" timeonly="true"
+                                      requiredMessage="#{bundle.HorarioRequiredMessage_horafinal}"/>
+
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.HorarioLabel_materiaid}"
+                                   for="materiaid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="materiaid" value="#{cursoMB.materiaid}"
+                                          title="#{bundle.HorarioTitle_materiaid}" class="form-control"  
+                                          required="true" requiredMessage="#{bundle.HorarioRequiredMessage_materiaid}">
+                            <f:selectItem itemLabel="--Seleccionar-- "/>
+                            <f:selectItems value="#{cursoMB.materiaItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{cursoMB.crearHorario}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

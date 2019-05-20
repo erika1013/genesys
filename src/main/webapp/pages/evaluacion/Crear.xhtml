@@ -1,0 +1,177 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.EvaluacionTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{evaluacionMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.EvaluacionLabel_codigo}"
+                                   for="codigo"   />
+
+
+                    <div  >
+
+                        <p:inputText id="codigo"
+                                     value="#{evaluacionMB.itemSeleccionado.codigo}"
+                                     title="#{bundle.EvaluacionTitle_codigo}" navigator="true"
+                                     mask="true"
+                                     required="true"
+                                     requiredMessage="#{bundle.EvaluacionRequiredMessage_codigo}" />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.EvaluacionLabel_year}" for="year"
+                                   />
+
+
+                    <div  >
+
+                        <p:inputText id="year"
+                                     value="#{evaluacionMB.itemSeleccionado.year}"
+                                     title="#{bundle.EvaluacionTitle_year}" navigator="true"
+                                     mask="true"
+                                     required="true"
+                                     requiredMessage="#{bundle.EvaluacionRequiredMessage_year}"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.EvaluacionLabel_mes}" for="mes"
+                                   />
+
+
+                    <div  >
+
+                        <p:selectOneMenu  id="mes"
+                                          value="#{evaluacionMB.itemSeleccionado.mes}" required="true"
+                                          class="form-control" 
+
+                                          requiredMessage="#{bundle.EvaluacionRequiredMessage_mes}">
+                            <f:selectItem itemLabel="--Seleccionar-- " />
+                            <f:selectItem itemLabel="Enero" itemValue="Enero" />
+                            <f:selectItem itemLabel="Febrero" itemValue="Febrero" />
+                            <f:selectItem itemLabel="Marzo" itemValue="Marzo" />
+                            <f:selectItem itemLabel="Abril" itemValue="Abril" />
+                            <f:selectItem itemLabel="Mayo" itemValue="Mayo" />
+                            <f:selectItem itemLabel="Junio" itemValue="Junio" />
+                            <f:selectItem itemLabel="Julio" itemValue="Julio" />
+                            <f:selectItem itemLabel="Agosto" itemValue="Agosto" />
+                            <f:selectItem itemLabel="Septiembre" itemValue="Septiembre" />
+                            <f:selectItem itemLabel="Octubre" itemValue="Octubre" />
+                            <f:selectItem itemLabel="Noviembre" itemValue="Noviembre" />
+                            <f:selectItem itemLabel="Diciembre" itemValue="Diciembre" />
+                        </p:selectOneMenu >
+
+                    </div>
+                </div>
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.EvaluacionLabel_periodo}"
+                                   for="periodo"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="periodo"
+                                          value="#{evaluacionMB.itemSeleccionado.periodo}"
+                                          title="#{bundle.EvaluacionTitle_periodo}" class="form-control" 
+                                          required="true"
+                                          requiredMessage="#{bundle.EvaluacionRequiredMessage_periodo}">
+                            <f:selectItem itemLabel="--Seleccionar-- " />
+                            <f:selectItem itemLabel="01" itemValue="1" />
+                            <f:selectItem itemLabel="02" itemValue="2" />
+                            <f:selectItem itemLabel="03" itemValue="3" />
+                            <f:selectItem itemLabel="04" itemValue="4" />
+                            <f:selectItem itemLabel="05" itemValue="5" />
+                            <f:selectItem itemLabel="06" itemValue="6" />
+                            <f:selectItem itemLabel="07" itemValue="7" />
+                            <f:selectItem itemLabel="08" itemValue="8" />
+                            <f:selectItem itemLabel="09" itemValue="9" />
+                            <f:selectItem itemLabel="10" itemValue="10" />
+
+                        </p:selectOneMenu >
+
+                    </div>
+                </div>
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.EvaluacionLabel_gradoid}"
+                                   for="gradoid"   />
+
+                    <div  >
+
+                        <p:selectOneMenu  id="gradoid" value="#{evaluacionMB.gradoid}"
+                                          title="#{bundle.EvaluacionTitle_gradoid}" class="form-control" 
+                                          required="true"
+                                          requiredMessage="#{bundle.EvaluacionRequiredMessage_gradoid}">
+                            <f:selectItem itemLabel="--Seleccionar-- " />
+                            <f:selectItems value="#{evaluacionMB.gradoItems}" />
+                        </p:selectOneMenu >
+                    </div>
+                </div>
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{evaluacionMB.crear}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

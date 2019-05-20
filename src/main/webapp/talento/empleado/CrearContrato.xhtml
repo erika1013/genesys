@@ -1,0 +1,156 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+
+	<ui:define name="content"></ui:define>
+	<ui:define name="title">
+		<h:outputText value="#{bundle.EmpleadoContratoTitulo}"></h:outputText>
+	</ui:define>
+
+	<ui:define name="body">
+		<div class="card-body">
+
+			<h:form>
+
+				<div>
+					<div>
+						<div>
+							<ul class="nav">
+
+								<li><h:commandLink
+										action="#{EmpleadoMB.prepararLista}"
+										value="#{bundle.ShowAllLink}" immediate="true">
+										<i class="fa fa-list"></i>
+									</h:commandLink></li>
+								<li><h:commandLink value="#{bundle.IndexLink}"
+										action="/index" immediate="true">
+										<i class="fa fa-home"></i>
+									</h:commandLink></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+			</h:form>
+
+			<h:form>
+
+
+
+				<div>
+
+					<p:outputLabel value="#{bundle.EmpleadoContratoLabel_empleado}"
+						for="empleado" />
+
+					<div>
+
+						<h:outputText id="empleado"
+							value="#{EmpleadoMB.itemSeleccionado.nombreApellido}"
+							class="form-control" />
+					</div>
+				</div>
+
+				<div>
+
+					<p:outputLabel
+						value="#{bundle.EmpleadoContratoLabel_contratosalario}"
+						for="contratosalario" />
+
+					<div>
+
+						<p:inputText id="contratosalario"
+							value="#{EmpleadoMB.itemContrato.contratosalario}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoContratoRequiredMessage_contratosalario}" />
+					</div>
+				</div>
+
+
+
+				<div>
+
+					<p:outputLabel
+						value="#{bundle.EmpleadoContratoLabel_empleadocontratofechainicial}"
+						for="empleadocontratofechainicial" />
+
+					<div>
+
+						<p:calendar
+							id="empleadocontratofechainicial"
+							value="#{EmpleadoMB.itemContrato.empleadocontratofechainicial}"
+							pattern="yyyy-MM-dd" navigator="true" showOn="button"
+							title="#{bundle.EmpleadoContratoTitle_empleadocontratofechainicial}"
+							required="true"
+							requiredMessage="#{bundle.EmpleadoContratoRequiredMessage_empleadocontratofechainicial}" />
+
+						
+
+					</div>
+				</div>
+
+
+				<div>
+
+					<p:outputLabel
+						value="#{bundle.EmpleadoContratoLabel_empleadocontratofechafinal}"
+						for="empleadocontratofechafinal" />
+
+					<div>
+
+						<p:calendar
+							id="empleadocontratofechafinal"
+							value="#{EmpleadoMB.itemContrato.empleadocontratofechafinal}"
+							pattern="yyyy-MM-dd" navigator="true" showOn="button"
+							title="#{bundle.EmpleadoContratoTitle_empleadocontratofechafinal}" />
+
+					</div>
+				</div>
+
+
+				<div>
+
+					<p:outputLabel
+						value="#{bundle.EmpleadoContratoLabel_tipocontratoid}"
+						for="tipoContratoid" />
+
+					<div>
+
+						<p:selectOneMenu id="tipoContratoid"
+							value="#{EmpleadoMB.tipoContratoid}"
+							title="#{bundle.EmpleadoContratoTitle_tipocontratoid}"
+							class="form-control" required="true"
+							requiredMessage="#{bundle.EmpleadoContratoRequiredMessage_tipocontratoid}">
+							<f:selectItem itemLabel="--Seleccionar--" />
+							<f:selectItems value="#{EmpleadoMB.tipoContratoItems}" />
+						</p:selectOneMenu>
+					</div>
+				</div>
+
+
+
+
+
+				<div>
+					<div>
+						<h:commandLink action="#{EmpleadoMB.crearContrato}"
+							value="#{bundle.SaveLink}" class="btn btn-secondary" />
+					</div>
+				</div>
+
+
+
+
+
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+

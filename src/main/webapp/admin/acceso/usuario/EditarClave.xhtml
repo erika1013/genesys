@@ -1,0 +1,64 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="Cambiar Clave Ingreso"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+
+            <h:form>
+
+
+                <div  >
+
+                    <p:outputLabel value="Nueva #{bundle.UsuarioLabel_usuarioclave}"
+                                   for="usuarioclave" />
+                    <div  >
+
+                        <h:inputSecret id="usuarioclave"
+                                       value="#{usuarioMB.usuarioclaveNueva}" 
+                                       label="Password " required="true"
+                                       />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="Repita la clave:" for="usuarioclave1" />
+                    <div  >
+
+                        <h:inputSecret id="usuarioclave1"
+                                       value="#{usuarioMB.usuarioclaveNueva}" label="Password 2"
+                                       required="true" />
+                    </div>
+                </div>
+
+
+
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{usuarioMB.actualizarClave}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

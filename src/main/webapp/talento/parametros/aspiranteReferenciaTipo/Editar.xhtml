@@ -1,0 +1,81 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"   
+                >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteRefenciaTipoTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{AspiranteReferenciaTipoMB.prepararLista}"   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}" 	action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form >
+
+
+
+
+
+                    <div  > 
+
+                        <p:outputLabel value="#{bundle.AspiranteRefenciaTipoLabel_codigo}" for="codigo"   />
+                        <div  > 
+                            <p:inputText id="codigo" value="#{AspiranteReferenciaTipoMB.itemSeleccionado.codigo}" title="#{bundle.AspiranteRefenciaTipoTitle_codigo}" />
+                        </div>   
+
+                    </div>
+
+
+                    <div  > 
+
+                        <p:outputLabel value="#{bundle.AspiranteRefenciaTipoLabel_nombre}" for="nombre"   />
+                        <div  > 
+                            <p:inputText id="nombre" value="#{AspiranteReferenciaTipoMB.itemSeleccionado.nombre}" title="#{bundle.AspiranteRefenciaTipoTitle_nombre}" />
+                        </div>   
+
+                    </div>
+
+
+                    <div  >
+                        <div  >
+
+                            <h:commandLink action="#{AspiranteReferenciaTipoMB.actualizar}" value="#{bundle.AspiranteRefenciaTipoUpdateLink}"  class="btn btn-secondary"  />
+
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+            </div>
+
+
+        </ui:define>
+</ui:composition>
+

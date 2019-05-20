@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pi="http://primefaces.org/icarus">
+
+
+	<h:form id="menuform">
+
+
+		<pi:menu widgetVar="IcarusMenu">
+			<p:menuitem id="im_dashboard" value="Hoja de Vida"
+				action="#{AspiranteAccesoMB.cargarAspirante}" icon="fa fa-graduation-cap" />
+
+		
+		</pi:menu>
+
+	</h:form>
+
+</ui:composition>

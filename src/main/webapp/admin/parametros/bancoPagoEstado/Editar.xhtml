@@ -1,0 +1,101 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.BancoPagoEstadoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{bancoPagoEstadoMB.prepararConsulta}"
+                                        value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}"
+                                        immediate="true">
+                                        <i class="fa fa-eye"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{bancoPagoEstadoMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoPagoEstadoLabel_bancoPagoEstadoid}"
+                                   for="bancoPagoEstadoid"   />
+                    <div  >
+
+                        <p:inputText id="bancoPagoEstadoid"
+                                     value="#{bancoPagoEstadoMB.itemSeleccionado.bancoPagoEstadoid}"
+                                     title="#{bundle.BancoPagoEstadoTitle_bancoPagoEstadoid}"
+                                     required="true"
+                                     requiredMessage="#{bundle.BancoPagoEstadoRequiredMessage_bancoPagoEstadoid}"
+                                     class="form-control"  readonly="true" />
+                    </div>
+                </div>
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.BancoPagoEstadoLabel_bancoPagoEstadonombre}"
+                        for="bancoPagoEstadonombre"   />
+
+                    <div  >
+
+                        <p:inputText id="bancoPagoEstadonombre"
+                                     value="#{bancoPagoEstadoMB.itemSeleccionado.bancoPagoEstadonombre}"
+                                     title="#{bundle.BancoPagoEstadoTitle_bancoPagoEstadonombre}"
+                                     class="form-control"  
+                                     required="true"
+                                     requiredMessage="#{bundle.BancoPagoEstadoRequiredMessage_bancoPagoEstadonombre}"/>
+                    </div>
+                </div>
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{bancoPagoEstadoMB.actualizar}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

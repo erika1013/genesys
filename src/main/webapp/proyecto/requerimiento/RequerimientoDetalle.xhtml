@@ -1,0 +1,258 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+                <h:form>
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+                                    <li><h:commandLink
+                                            action="#{proyectoMB.prepararConsulta}"
+                                            value="Regresar"
+                                            rendered="#{LoginMB.autConsultar}">
+                                            <i class="fa fa-reply" />
+                                        </h:commandLink></li>
+                                </ul>
+                            </div></div></div></h:form></div></ui:define>
+        <ui:define name="modulos">
+
+            <div class="tab-content"> 
+                <div  class="container tab-pane fade" id="Requerimiento">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>
+                                <h:outputText value="#{bundle.RequerimientoTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+                        <div class="card-body">
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.prepararCreacionRequerimiento}"
+                                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                        <i class="fa fa-plus" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.prepararEdicionRequerimiento}"
+                                                        value="#{bundle.EditLink}"
+                                                        rendered="#{LoginMB.autModificar}">
+                                                        <i class="fa fa-edit" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.eliminarRequerimiento}"
+                                                        value="#{bundle.DestroyLink}"
+                                                        rendered="#{LoginMB.autEliminar}">
+                                                        <i class="fa fa-trash" />
+                                                    </h:commandLink></li>
+
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_numero}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemRequerimiento.numero}"
+                                                  title="#{bundle.RequerimientoTitle_numero}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_prioridad}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemRequerimiento.prioridad}"
+                                                  title="#{bundle.RequerimientoTitle_prioridad}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_nombre}"
+                                                  styleClass="titulo" />
+                                    <h:outputText value="#{proyectoMB.itemRequerimiento.nombre}"
+                                                  title="#{bundle.RequerimientoTitle_nombre}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_descripcion}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{proyectoMB.itemRequerimiento.descripcion}"
+                                        title="#{bundle.RequerimientoTitle_descripcion}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_estadoFecha}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{proyectoMB.itemRequerimiento.estadoFecha}"
+                                        title="#{bundle.RequerimientoTitle_estadoFecha}">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:outputText>
+
+
+
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_estado}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{proyectoMB.itemRequerimiento.estado.nombre} / Código: #{proyectoMB.itemRequerimiento.estado.estadoid}"
+                                        title="#{bundle.RequerimientoTitle_estado}" />
+
+                                    <h:outputText value="#{bundle.RequerimientoLabel_tipo}"
+                                                  styleClass="titulo" />
+                                    <h:outputText
+                                        value="#{proyectoMB.itemRequerimiento.tipo.nombre} / Código: #{proyectoMB.itemRequerimiento.tipo.tipoid}"
+                                        title="#{bundle.RequerimientoTitle_tipo}" />
+
+                                </h:panelGrid>
+
+
+
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tareas -->
+
+
+
+
+
+                <div  class="container tab-pane fade" id="Tareas">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>
+                                <h:outputText value="#{bundle.TareaTitulo}"></h:outputText>
+                            </h3>
+
+                        </div>
+
+
+                        <div class="card-body">
+
+                            <h:form>
+                                <div >
+                                    <div>
+                                        <div  >
+                                            <ul class="nav">
+                                                <li><h:commandLink
+                                                        action="#{proyectoMB.prepararCreacionTarea}"
+                                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                        <i class="fa fa-plus" />
+                                                    </h:commandLink></li>
+                                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                                   action="/index" immediate="true">
+                                                        <i class="fa fa-home" />
+                                                    </h:commandLink></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </h:form>
+
+
+                            <h:form>
+
+
+
+                                <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{proyectoMB.listaTarea}" var="item"
+
+
+                                              >
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.TareaTitle_detalle}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.detalle}" />
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.TareaTitle_estado}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.estado.nombre}" />
+                                    </p:column>
+
+
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.TareaTitle_prioridad}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.prioridad}" />
+                                    </p:column>
+
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{bundle.TareaTitle_tiempo}" />
+                                        </f:facet>
+                                        <h:outputText value="#{item.tiempo.nombre}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Operacion" />
+                                        </f:facet>
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{proyectoMB.prepararConsultaTarea}"
+                                                    value="#{bundle.ViewLink}"
+                                                    rendered="#{LoginMB.autConsultar}">
+                                                    <i class="fa fa-eye" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{proyectoMB.itemTarea}" />
+                                                </h:commandLink></li>
+                                            <h:outputText value=" " />
+                                            <li><h:commandLink
+                                                    action="#{proyectoMB.prepararEdicionTarea}"
+                                                    value="#{bundle.EditLink}"
+                                                    rendered="#{LoginMB.autModificar}">
+                                                    <i class="fa fa-edit" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{proyectoMB.itemTarea}" />
+                                                </h:commandLink></li>
+                                            <h:outputText value=" " />
+                                            <li><h:commandLink action="#{proyectoMB.eliminarTarea}"
+                                                               value="#{bundle.DestroyLink}"
+                                                               rendered="#{LoginMB.autEliminar}">
+                                                    <i class="fa fa-trash" />
+                                                    <f:setPropertyActionListener value="#{item}"
+                                                                                 target="#{proyectoMB.itemTarea}" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </p:column>
+                                </p:dataTable >
+                            </h:form>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!-- ************************ -->
+
+            </div>
+        </ui:define>
+</ui:composition>
+

@@ -1,0 +1,103 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.CuentaCobroEstadoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{cuentaCobroEstadoMB.prepararConsulta}"
+                                        value="#{bundle.ViewLink}" rendered="#{LoginMB.autConsultar}"
+                                        immediate="true">
+                                        <i class="fa fa-eye"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink
+                                        action="#{cuentaCobroEstadoMB.prepararLista}"
+                                        value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.CuentaCobroEstadoLabel_cuentaCobroEstadoid}"
+                        for="cuentaCobroEstadoid"   />
+
+                    <div  >
+
+                        <p:inputText id="cuentaCobroEstadoid"
+                                     value="#{cuentaCobroEstadoMB.itemSeleccionado.cuentaCobroEstadoid}"
+                                     title="#{bundle.CuentaCobroEstadoTitle_cuentaCobroEstadoid}"
+                                     required="true"
+                                     requiredMessage="#{bundle.CuentaCobroEstadoRequiredMessage_cuentaCobroEstadoid}"
+                                     class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel
+                        value="#{bundle.CuentaCobroEstadoLabel_cuentaCobroEstadonombre}"
+                        for="cuentaCobroEstadonombre"   />
+
+                    <div  >
+
+                        <p:inputText id="cuentaCobroEstadonombre"
+                                     value="#{cuentaCobroEstadoMB.itemSeleccionado.cuentaCobroEstadoNombre}"
+                                     title="#{bundle.CuentaCobroEstadoTitle_cuentaCobroEstadonombre}"
+                                     class="form-control"  required="true"
+                                     requiredMessage="#{bundle.CuentaCobroEstadoRequiredMessage_cuentaCobroEstadonombre}"/>
+                    </div>
+                </div>
+
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{cuentaCobroEstadoMB.actualizar}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

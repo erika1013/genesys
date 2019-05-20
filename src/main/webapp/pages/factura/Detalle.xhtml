@@ -1,0 +1,279 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="modulos">
+
+        <div class="tab-content"> 
+            <div  class="container tab-pane fade" id="Factura">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3>
+                            <h:outputText value="#{bundle.FacturaTitulo}"></h:outputText>
+                        </h3>
+
+                    </div>
+                    <div class="card-body">
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{facturaMB.prepararCreacion}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="Editar"
+                                                               value="#{bundle.EditLink}"
+                                                               rendered="#{LoginMB.autModificar}">
+                                                    <i class="fa fa-edit" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{facturaMB.eliminar}"
+                                                               value="#{bundle.DestroyLink}"
+                                                               rendered="#{LoginMB.autEliminar}">
+                                                    <i class="fa fa-trash" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink action="#{facturaMB.prepararLista}"
+                                                               value="#{bundle.ShowAllLink}">
+                                                    <i class="fa fa-list" />
+                                                </h:commandLink></li>
+
+                                            <li><h:commandLink action="#{facturaMB.imprimirFactura}"
+                                                               value="Imprimir Factura" target="_blank">
+                                                    <i class="fa fa-print" />
+                                                    <i class="" />
+                                                </h:commandLink></li>
+
+
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                                <h:outputText value="#{bundle.FacturaLabel_faturacodigo}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{facturaMB.itemSeleccionado.faturacodigo}"
+                                              title="#{bundle.FacturaTitle_faturacodigo}" />
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_facturafecha}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{facturaMB.itemSeleccionado.facturafecha}"
+                                              title="#{bundle.FacturaTitle_facturafecha}">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:outputText>
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_facturavalor}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{facturaMB.itemSeleccionado.subtotal}"
+                                              title="#{bundle.FacturaTitle_facturavalor}" />
+
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_ivavalor}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{facturaMB.itemSeleccionado.valorIva}"
+                                              title="#{bundle.FacturaTitle_ivavalor}" />
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_facturavalortotal}"
+                                              styleClass="titulo" />
+                                <h:outputText value="#{facturaMB.itemSeleccionado.valorTotal}"
+                                              title="#{bundle.FacturaTitle_facturavalortotal}" />
+
+
+
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_compania}"
+                                              styleClass="titulo" />
+
+                                <h:outputText
+                                    value="#{facturaMB.itemSeleccionado.compania.companianombre} - #{facturaMB.itemSeleccionado.compania.companianit}"
+                                    title="#{bundle.FacturaTitle_compania}" />
+
+                                <h:outputText value="#{bundle.FacturaLabel_centroCostos}"
+                                              styleClass="titulo" />
+
+                                <h:outputText value="#{facturaMB.itemSeleccionado.centroCostos.nombre}"
+                                              title="#{bundle.FacturaTitle_centroCostos}" />
+
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_clientenombre}"
+                                              styleClass="titulo" />
+
+                                <h:outputText value="#{facturaMB.itemSeleccionado.cliente.clientenombre}"
+                                              title="#{bundle.FacturaTitle_clientenombre}" />
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_contacto}"
+                                              styleClass="titulo" />
+
+                                <h:outputText
+                                    value="#{facturaMB.itemSeleccionado.contacto.nombreApellido}"
+                                    title="#{bundle.FacturaTitle_contacto}" />
+
+
+                                <h:outputText value="#{bundle.FacturaLabel_facturaEstado}"
+                                              styleClass="titulo" />
+
+                                <h:outputText
+                                    value=" #{facturaMB.itemSeleccionado.estado.facturaEstadoNombre}"
+                                    title="#{bundle.FacturaTitle_facturaEstado}" />
+
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div  class="container tab-pane fade" id="Conceptos">
+                <div class="card">
+                    <div class="card-header">
+
+
+                        <h3>
+                            <h:outputText value="Lista: Conceptos de Factura"></h:outputText>
+                        </h3>
+
+
+                        <h:form>
+                            <div >
+                                <div>
+                                    <div  >
+                                        <ul class="nav">
+                                            <li><h:commandLink
+                                                    action="#{facturaMB.prepararCreacionFacturaDetalle}"
+                                                    value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                                    <i class="fa fa-plus" />
+                                                </h:commandLink></li>
+                                            <li><h:commandLink value="#{bundle.IndexLink}"
+                                                               action="/index" immediate="true">
+                                                    <i class="fa fa-home" />
+                                                </h:commandLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </h:form>
+
+
+                        <h:form>
+
+
+
+                            <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{facturaMB.listaFacturaDetalleItems}"
+                                          var="item" 
+
+                                          >
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.FacturaDetalleTitle_cantidad}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.cantidad}" />
+                                </p:column>
+
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.FacturaDetalleTitle_descripcion}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.descripcion}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText
+                                            value="#{bundle.FacturaDetalleTitle_valorUnitario}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.valorUnitario}" />
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.FacturaDetalleTitle_valorTotal}" />
+                                    </f:facet>
+                                    <h:outputText value="#{item.valorTotal}" />
+                                </p:column>
+                                <p:column>
+
+
+
+
+                                    <f:facet name="header">
+                                        <h:outputText value="Operacion" />
+                                    </f:facet>
+                                    <ul class="nav">
+                                        <li><h:commandLink
+                                                action="#{facturaMB.prepararConsultaFacturaDetalle}"
+                                                value="#{bundle.ViewLink}"
+                                                rendered="#{LoginMB.autConsultar}">
+                                                <i class="fa fa-eye" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{facturaMB.itemFacturaDetalle}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{facturaMB.prepararEdicionFacturaDetalle}"
+                                                value="#{bundle.EditLink}"
+                                                rendered="#{LoginMB.autModificar}">
+                                                <i class="fa fa-edit" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{facturaMB.itemFacturaDetalle}" />
+                                            </h:commandLink></li>
+                                        <h:outputText value=" " />
+                                        <li><h:commandLink
+                                                action="#{facturaMB.eliminarFacturaDetalle}"
+                                                value="#{bundle.DestroyLink}"
+                                                rendered="#{LoginMB.autEliminar}">
+                                                <i class="fa fa-trash" />
+                                                <f:setPropertyActionListener value="#{item}"
+                                                                             target="#{facturaMB.itemFacturaDetalle}" />
+                                            </h:commandLink></li>
+                                    </ul>
+                                </p:column>
+                            </p:dataTable >
+
+
+
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </ui:define>
+</ui:composition>
+
+

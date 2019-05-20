@@ -1,0 +1,70 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="Cargar Menus"></h:outputText>
+    </ui:define>
+
+    <ui:define name="panelerror">
+        <h:panelGroup id="messagePanel" layout="block">
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+        </h:panelGroup>
+    </ui:define>
+
+    <ui:define name="content"></ui:define>
+    <div class="cl"></div>
+
+    <div class="box">
+        <!-- Box Head -->
+        <div class="box-head">
+            <h2>
+                <h:outputText value="Cargar Menus"></h:outputText>
+            </h2>
+        </div>
+        <!-- End Box Head -->
+        <h:form>
+            <!-- Form -->
+            <div class="form">
+                <h:panelGrid columns="1">
+
+                    <p:inputTextarea  id="textoCSV"
+                                      value="#{configurarMB.textoCSV}"
+                                      />
+
+
+
+
+
+
+                </h:panelGrid>
+            </div>
+            <!-- End Form -->
+            <!-- Form Buttons -->
+            <div class="buttons">
+
+                <h:commandLink action="#{configurarMB.cargarMenus}"
+                               value="Cargar" styleClass="button" />
+
+
+            </div>
+            <!-- End Form Buttons -->
+        </h:form>
+    </div>
+
+
+    <div class="cl"></div>
+
+
+</ui:define>
+
+
+
+</ui:composition>
+
+

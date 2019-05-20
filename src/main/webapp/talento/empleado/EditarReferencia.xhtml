@@ -1,0 +1,195 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"
+                >
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EmpleadoReferenciaTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink action="#{EmpleadoMB.prepararConsulta}"
+                                                   value="#{bundle.BackLink}" immediate="true">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form >
+
+
+
+
+
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_nombres}"
+                                       for="nombres"   />
+                        <div  >
+                            <p:inputText id="nombres"
+                                         value="#{EmpleadoMB.itemReferencia.nombres}"
+                                         title="#{bundle.EmpleadoReferenciaTitle_nombres}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_apellidos}"
+                                       for="apellidos"   />
+                        <div  >
+                            <p:inputText id="apellidos"
+                                         value="#{EmpleadoMB.itemReferencia.apellidos}"
+                                         title="#{bundle.EmpleadoReferenciaTitle_apellidos}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_profesion}"
+                                       for="profesion"   />
+                        <div  >
+                            <p:inputText id="profesion"
+                                         value="#{EmpleadoMB.itemReferencia.profesion}"
+                                         title="#{bundle.EmpleadoReferenciaTitle_profesion}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_cargo}"
+                                       for="cargo"   />
+                        <div  >
+                            <p:inputText id="cargo"
+                                         value="#{EmpleadoMB.itemReferencia.cargo}"
+                                         title="#{bundle.EmpleadoReferenciaTitle_cargo}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_celular}"
+                                       for="celular"   />
+                        <div  >
+                            <p:inputText id="celular"
+                                         value="#{EmpleadoMB.itemReferencia.celular}"
+                                         title="#{bundle.EmpleadoReferenciaTitle_celular}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_telefono}"
+                                       for="telefono"   />
+                        <div  >
+                            <p:inputText id="telefono"
+                                         value="#{EmpleadoMB.itemReferencia.telefono}"
+                                         title="#{bundle.EmpleadoReferenciaTitle_telefono}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_extension}"
+                                       for="extension"   />
+                        <div  >
+                            <p:inputText id="extension"
+                                         value="#{EmpleadoMB.itemReferencia.extension}"
+                                         title="#{bundle.EmpleadoReferenciaTitle_extension}" />
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_ciudad}"
+                                       for="ciudad"   />
+                        <div  >
+
+                            <p:selectOneMenu  id="departamentoExperiencia"
+                                              value="#{EmpleadoMB.departamentoId}"
+                                              title="#{bundle.EmpleadoTitle_departamento}">
+                                <f:selectItems value="#{EmpleadoMB.departamentoItems}" />
+                                <f:ajax render="ciudad"
+                                        listener="#{EmpleadoMB.cargarCiudadesDepartamento}" />
+                            </p:selectOneMenu >
+
+
+                            <p:selectOneMenu  id="ciudad" value="#{EmpleadoMB.ciudadId}"
+                                              title="#{bundle.EmpleadoReferenciaTitle_ciudad}">
+                                <f:selectItems value="#{EmpleadoMB.ciudadItems}" />
+                            </p:selectOneMenu >
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.EmpleadoReferenciaLabel_tipo}"
+                                       for="tipo"   />
+                        <div  >
+                            <p:selectOneMenu  id="tipo" value="#{EmpleadoMB.referenciaTipoId}"
+                                              title="#{bundle.EmpleadoReferenciaTitle_tipo}">
+                                <f:selectItems value="#{EmpleadoMB.referenciaTipoItems}" />
+                            </p:selectOneMenu >
+                        </div>
+
+                    </div>
+
+
+                    <div  >
+                        <div  >
+
+                            <h:commandLink action="#{EmpleadoMB.actualizarReferencia}"
+                                           value="#{bundle.EmpleadoReferenciaUpdateLink}"
+                                           class="btn btn-secondary" />
+
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+            </div>
+
+
+        </ui:define>
+</ui:composition>
+

@@ -1,0 +1,82 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.CursoComunicadoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{cursoMB.prepararCreacionCursoComunicado}"
+                                        value="#{bundle.CreateLink}" rendered="#{LoginMB.autCrear}">
+                                        <i class="fa fa-plus" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink
+                                        action="#{cursoMB.prepararEdicionCursoComunicado}"
+                                        value="#{bundle.EditLink}" rendered="#{LoginMB.autModificar}">
+                                        <i class="fa fa-edit" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink
+                                        action="#{cursoMB.eliminarCursoComunicado}"
+                                        value="#{bundle.DestroyLink}"
+                                        rendered="#{LoginMB.autEliminar}">
+                                        <i class="fa fa-trash" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink action="#{cursoMB.prepararConsulta}"
+                                                   value="Regresar a Curso">
+                                        <i class="fa fa-home" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                    <h:outputText value="#{bundle.CursoComunicadoLabel_asunto}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{cursoMB.itemCursoComunicado.asunto}"
+                                  title="#{bundle.CursoComunicadoTile_asunto}" />
+
+
+                    <h:outputText
+                        value="#{bundle.CursoComunicadoLabel_contenidoComunicado}"
+                        styleClass="titulo" />
+                    <h:outputText
+                        value="#{cursoMB.itemCursoComunicado.contenidoComunicado}"
+                        title="#{bundle.CursoComunicadoTile_contenidoComunicado}" />
+
+                    <h:outputText value="#{bundle.CursoComunicadoLabel_fechaCreacion}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{cursoMB.itemCursoComunicado.fechaCreacion}"
+                                  title="#{bundle.CursoComunicadoTitle_fechaCreacion}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+
+
+                </h:panelGrid>
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

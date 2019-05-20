@@ -1,0 +1,57 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CompetenciaTipoTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+                                <li><h:commandLink action="#{CompetenciaTipoMB.prepararEdicion}"   value="#{bundle.EditLink}" immediate="true">
+                                        <i class="fa fa-edit"></i>
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink action="#{CompetenciaTipoMB.prepararLista}"   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}" 	action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form>
+                    <h:panelGrid columns="2">
+
+                        <h:outputText value="#{bundle.CompetenciaTipoLabel_codigo}"/>
+                        <h:outputText value="#{CompetenciaTipoMB.itemSeleccionado.codigo}" title="#{bundle.CompetenciaTipoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.CompetenciaTipoLabel_nombre}"/>
+                        <h:outputText value="#{CompetenciaTipoMB.itemSeleccionado.nombre}" title="#{bundle.CompetenciaTipoTitle_nombre}"/>
+                    </h:panelGrid>
+
+
+                </h:form>
+
+            </div>
+        </ui:define>
+</ui:composition>
+
+

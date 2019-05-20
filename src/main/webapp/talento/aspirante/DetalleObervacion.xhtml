@@ -1,0 +1,72 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteObservacionTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink
+                                        action="#{AspiranteMB.prepararConsulta}"
+                                        value="#{bundle.BackLink}" immediate="true">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink
+                                        action="#{AspiranteMB.prepararEdicionObservacion}"
+                                        value="#{bundle.EditLink}" rendered="#{ LoginMB.autModificar}">
+                                        <i class="fa fa-edit" />
+
+                                    </h:commandLink></li>
+
+                                <li><h:commandLink
+                                        action="#{AspiranteMB.eliminarObservacion}"
+                                        value="#{bundle.DestroyLink}"
+                                        rendered="#{ LoginMB.autEliminar}">
+                                        <i class="fa fa-trash" />
+
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form>
+                    <h:panelGrid columns="2">
+
+
+                        <h:outputText value="#{bundle.AspiranteObservacionLabel_observacion}"/>
+                        <h:outputText value="#{AspiranteMB.itemObservacion.observacion}" title="#{bundle.AspiranteObservacionTitle_observacion}"/>
+
+                        <h:outputText value="#{bundle.AspiranteObservacionLabel_fecha}"/>
+                        <h:outputText value="$#{AspiranteMB.itemObservacion.fecha}" title="#{bundle.AspiranteObservacionTitle_fecha}">
+                            <f:convertDateTime pattern="yyyy/MM/dd" />
+                        </h:outputText>
+
+                    </h:panelGrid>
+
+
+                </h:form>
+
+            </div>
+        </ui:define>
+</ui:composition>
+
+

@@ -1,0 +1,123 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/templateAspirante.xhtml">
+    
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.AspiranteIdiomaTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="barmenu">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+
+
+                                <li><h:commandLink action="#{AspiranteAccesoMB.prepararConsulta}"
+                                                   value="#{bundle.BackLink}" immediate="true">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+
+
+        <ui:define name="body">
+
+            <div class="card-body">
+
+                <h:form >
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteIdiomaLabel_idioma}"
+                                       for="idioma"   />
+                        <div  >
+                            <p:selectOneMenu  id="idioma" value="#{AspiranteAccesoMB.idiomaId}"
+                                              title="#{bundle.AspiranteIdiomaTitle_idioma}">
+                                <f:selectItems value="#{AspiranteAccesoMB.idiomaItems}" />
+                            </p:selectOneMenu >
+                        </div>
+
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteIdiomaLabel_nivel}"
+                                       for="nivel"   />
+                        <div  >
+
+
+                            <p:selectOneMenu  id="nivel"
+                                              value="#{AspiranteAccesoMB.itemIdioma.nivel}" required="true"
+                                              class="span4" requiredMessage="!Seleccione nivel ¡">
+                                <f:selectItem itemLabel="--Seleccionar-- " />
+                                <f:selectItem itemLabel="1" itemValue="1" />
+                                <f:selectItem itemLabel="2" itemValue="2" />
+                                <f:selectItem itemLabel="3" itemValue="3" />
+                                <f:selectItem itemLabel="4" itemValue="4" />
+                                <f:selectItem itemLabel="5" itemValue="5" />
+                            </p:selectOneMenu >
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.AspiranteIdiomaLabel_observacion}"
+                                       for="observacion"   />
+                        <div  >
+                            <p:inputText id="nombre"
+                                         value="#{AspiranteAccesoMB.itemIdioma.observacion}"
+                                         title="#{bundle.DepartamentoTitle_observacion}" />
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div  >
+                        <div  >
+
+                            <h:commandLink action="#{AspiranteAccesoMB.crearIdioma}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+            </div>
+
+
+        </ui:define>
+</ui:composition>
+
+

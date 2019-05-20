@@ -1,0 +1,166 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.BancoPagoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{bancoPagoMB.prepararLista}"
+                                                   value="Regresar">
+                                        <i class="fa fa-arrow-left" />
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                    <h:outputText value="#{bundle.BancoPagoLabel_tipo}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.tipo}"
+                                  title="#{bundle.BancoPagoTitle_tipo}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_fechaProceso}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.fechaProceso}"
+                                  title="#{bundle.BancoPagoTitle_fechaProceso}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_numeroCuenta}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.numeroCuenta}"
+                                  title="#{bundle.BancoPagoTitle_numeroCuenta}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_fechaSistema}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.fechaSistema}"
+                                  title="#{bundle.BancoPagoTitle_fechaSistema}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_horaSistema}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.horaSistema}"
+                                  title="#{bundle.BancoPagoTitle_horaSistema}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_terminal}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.terminal}"
+                                  title="#{bundle.BancoPagoTitle_terminal}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_talon}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.talon}"
+                                  title="#{bundle.BancoPagoTitle_talon}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_valorChequeSigno}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoPagoMB.itemSeleccionado.valorChequeSigno}"
+                        title="#{bundle.BancoPagoTitle_valorChequeSigno}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_valorCheque}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.valorCheque}"
+                                  title="#{bundle.BancoPagoTitle_valorCheque}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_valorTotalSigno}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoPagoMB.itemSeleccionado.valorTotalSigno}"
+                        title="#{bundle.BancoPagoTitle_valorTotalSigno}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_valorTotal}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.valorTotal}"
+                                  title="#{bundle.BancoPagoTitle_valorTotal}" >
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.BancoPagoLabel_valorBlancoSigno}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoPagoMB.itemSeleccionado.valorBlancoSigno}"
+                        title="#{bundle.BancoPagoTitle_valorBlancoSigno}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_valorBlanco}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.valorBlanco}"
+                                  title="#{bundle.BancoPagoTitle_valorBlanco}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_oficinaRecaudo}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoPagoMB.itemSeleccionado.oficinaRecaudo}"
+                        title="#{bundle.BancoPagoTitle_oficinaRecaudo}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_motivo}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.motivo}"
+                                  title="#{bundle.BancoPagoTitle_motivo}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_referencia1}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.referencia1}"
+                                  title="#{bundle.BancoPagoTitle_referencia1}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_referencia2}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.referencia2}"
+                                  title="#{bundle.BancoPagoTitle_referencia2}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_saldoSigno}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.saldoSigno}"
+                                  title="#{bundle.BancoPagoTitle_saldoSigno}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_saldo}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.saldo}"
+                                  title="#{bundle.BancoPagoTitle_saldo}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_indicadorExento}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoPagoMB.itemSeleccionado.indicadorExento}"
+                        title="#{bundle.BancoPagoTitle_indicadorExento}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_valorExento}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.valorExento}"
+                                  title="#{bundle.BancoPagoTitle_valorExento}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_canal}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.canal}"
+                                  title="#{bundle.BancoPagoTitle_canal}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_causalDevolucion}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{bancoPagoMB.itemSeleccionado.causalDevolucion}"
+                        title="#{bundle.BancoPagoTitle_causalDevolucion}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_jornada}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.jornada}"
+                                  title="#{bundle.BancoPagoTitle_jornada}" />
+                    <h:outputText value="#{bundle.BancoPagoLabel_fechaCarge}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.fechaCarge}"
+                                  title="#{bundle.BancoPagoTitle_fechaCarge}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.BancoPagoLabel_estado}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{bancoPagoMB.itemSeleccionado.estado.bancoPagoEstadonombre}"
+                                  title="#{bundle.BancoPagoTitle_estado}" />
+
+                </h:panelGrid>
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+

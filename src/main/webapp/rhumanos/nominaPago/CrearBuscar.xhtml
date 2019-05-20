@@ -1,0 +1,88 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EmpleadoTitulo}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <div class="card-body">
+
+
+
+
+                <h:form>
+
+
+
+                    <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{nominaPagoMB.listaEmpleadoContrato}" var="item"
+
+
+                                  >
+
+
+
+
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText
+                                    value="#{bundle.EmpleadoTitle_numeroidentificacion}" />
+                            </f:facet>
+                            <h:outputText value="#{item.empleado.numeroIdentificacion}" />
+                        </p:column>
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.EmpleadoTitle_nombreApellido}" />
+                            </f:facet>
+                            <h:outputText value="#{item.empleado.nombreApellido}" />
+                        </p:column>
+
+
+
+
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Operacion" />
+                            </f:facet>
+                            <ul class="nav">
+                                <li><h:commandLink
+                                        action="#{nominaPagoMB.prepararCreacion}"
+                                        value="Crear Contrato" rendered="#{LoginMB.autCrear}">
+                                        <i class="fa fa-edit" />
+                                        <f:setPropertyActionListener value="#{item}"
+                                                                     target="#{nominaPagoMB.empleadoSeleccionado}" />
+                                    </h:commandLink></li>
+                                <h:outputText value=" " />
+
+                            </ul>
+                        </p:column>
+                    </p:dataTable >
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+
+        <ui:define name="script1">
+            <script>
+
+
+
+
+
+
+
+            </script>
+        </ui:define>
+</ui:composition>
+
+
+

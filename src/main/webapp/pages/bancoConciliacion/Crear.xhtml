@@ -1,0 +1,148 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.BancoConciliacionTitulo}"></h:outputText>
+    </ui:define>
+
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+        <div class="card-body">
+
+            <h:form>
+
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink action="#{bancoConciliacionMB.prepararLista}"
+                                                   value="#{bundle.ShowAllLink}" immediate="true">
+                                        <i class="fa fa-list"></i>
+                                    </h:commandLink></li>
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home"></i>
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </h:form>
+
+            <h:form >
+
+
+
+
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoConciliacionLabel_nombreOrigen}"
+                                   for="nombreOrigen"   />
+
+                    <div  >
+
+                        <p:inputText id="nombreOrigen"
+                                     value="#{bancoConciliacionMB.itemSeleccionado.nombreOrigen}"
+                                     title="#{bundle.BancoConciliacionTitle_nombreOrigen}" class="form-control"  
+                                     required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionRequiredMessage_nombreOrigen}"/>
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoConciliacionLabel_fechaPago}"
+                                   for="fechaPago"   />
+
+                    <div  >
+
+                        <p:inputText id="fechaPago"
+                                     value="#{bancoConciliacionMB.itemSeleccionado.fechaPago}"
+                                     title="#{bundle.BancoConciliacionTitle_fechaPago}" required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionRequiredMessage_nit}" class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoConciliacionLabel_bancoConciliaciondv}"
+                                   for="bancoConciliaciondv"   />
+
+                    <div  >
+
+                        <p:inputText id="bancoConciliaciondv"
+                                     value="#{bancoConciliacionMB.itemSeleccionado.bancoConciliaciondv}"
+                                     title="#{bundle.BancoConciliacionTitle_bancoConciliaciondv}" 
+                                     required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionRequiredMessage_adv}" class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoConciliacionLabel_bancoConciliacionpais}"
+                                   for="bancoConciliacionpais"   />
+
+                    <div  >
+
+                        <p:inputText id="bancoConciliacionpais"
+                                     value="#{bancoConciliacionMB.itemSeleccionado.bancoConciliacionpais}"
+                                     title="#{bundle.BancoConciliacionTitle_bancoConciliacionpais}" required="true"
+                                     requiredMessage="#{bundle.BancoConciliacionRequiredMessage_pais}" class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoConciliacionLabel_estudianteCodigo}"
+                                   for="estudianteCodigo"   />
+
+                    <div  >
+
+                        <p:inputText id="estudianteCodigo"
+                                     value="#{bancoConciliacionMB.itemSeleccionado.estudianteCodigo}"
+                                     title="#{bundle.BancoConciliacionTitle_estudianteCodigo}" class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+
+                    <p:outputLabel value="#{bundle.BancoConciliacionLabel_valorTotal}"
+                                   for="valorTotal"   />
+
+                    <div  >
+
+                        <p:inputText id="valorTotal"
+                                     value="#{bancoConciliacionMB.itemSeleccionado.valorTotal}"
+                                     title="#{bundle.BancoConciliacionTitle_valorTotal}" class="form-control"  />
+                    </div>
+                </div>
+
+                <div  >
+                    <div  >
+                        <h:commandLink action="#{bancoConciliacionMB.crear}"
+                                       value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                    </div>
+                </div>
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
+

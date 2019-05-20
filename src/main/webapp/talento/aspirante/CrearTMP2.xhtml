@@ -1,0 +1,41 @@
+
+private Long tipoId;
+private List<SelectItem> tipoItems;
+    private boolean listingTipo = false;
+
+    public Long getTipoId() {
+    return tipoId;
+    }
+
+    public void setTipoId(Long tipoId) {
+    this.tipoId = tipoId;
+    }
+
+    public List<SelectItem> getTipoItems() {
+
+        if (!listingTipo) {
+        listingTipo = true;
+        tipoItems = new ArrayList<SelectItem>();
+            List<CompetenciaTipo> tipoList = talentoServicio.listaCompetenciaTipo();
+
+                for (CompetenciaTipo tipo : tipoList) {
+                tipoItems.add(new SelectItem(tipo.getTipoId(),
+                tipo.getNombre()));
+
+                }
+                }
+
+                return tipoItems;
+                }
+
+                public void setTipoItems(List<SelectItem> tipoItems) {
+                    this.tipoItems = tipoItems;
+                    }
+
+
+
+                    CompetenciaTipo tipo = new CompetenciaTipo();
+                    tipo.setTipoId(tipoId);
+                    itemSeleccionado.setTipo(tipo);
+
+

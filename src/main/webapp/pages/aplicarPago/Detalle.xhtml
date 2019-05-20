@@ -1,0 +1,256 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"  
+                >
+
+    <ui:define name="content"></ui:define>
+    <ui:define name="title">
+        <h:outputText value="#{bundle.ReciboPagoTitulo}"></h:outputText>
+    </ui:define>
+    <ui:define name="barmenu">       
+    </ui:define>
+    <ui:define name="body">
+
+
+        <div class="module-option clearfix">
+            <h:form>
+                <div >
+                    <div>
+                        <div  >
+                            <ul class="nav">
+
+                                <li><h:commandLink value="#{bundle.IndexLink}"
+                                                   action="/index" immediate="true">
+                                        <i class="fa fa-home" />
+                                    </h:commandLink></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+
+        </div>
+
+
+
+        <div class="card-body">
+            <h:form>
+
+
+
+
+
+
+
+                <h:panelGrid columns="2" paginator="true" rows="10" reflow="true" >
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_periodo}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.periodo}"
+                                  title="#{bundle.ReciboPagoTitle_periodo}" />
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_estudiantecodigo}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{aplicarPagoMB.itemSeleccionado.estudiante.estudiantecodigo}"
+                        title="#{bundle.ReciboPagoTitle_estudiantecodigo}" />
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_nombreApellido}"
+                                  styleClass="titulo" />
+                    <h:outputText
+                        value="#{aplicarPagoMB.itemSeleccionado.estudiante.nombreApellido}"
+                        title="#{bundle.ReciboPagoTitle_nombreApellido}" />
+
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_referencia1}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.referencia1}"
+                                  title="#{bundle.ReciboPagoTitle_referencia1}" />
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_referencia2}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.referencia2}"
+                                  title="#{bundle.ReciboPagoTitle_referencia2}" />
+
+
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_valor1}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.valor1}"
+                                  title="#{bundle.ReciboPagoTitle_valor1}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_fecha1}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.fecha1}"
+                                  title="#{bundle.ReciboPagoTitle_fecha1}">
+
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_valor2}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.valor2}"
+                                  title="#{bundle.ReciboPagoTitle_valor2}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_fecha2}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.fecha2}"
+                                  title="#{bundle.ReciboPagoTitle_fecha2}">
+
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_valor3}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.valor3}"
+                                  title="#{bundle.ReciboPagoTitle_valor3}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+                    <h:outputText value="#{bundle.ReciboPagoLabel_fecha3}"
+                                  styleClass="titulo" />
+                    <h:outputText value="#{aplicarPagoMB.itemSeleccionado.fecha3}"
+                                  title="#{bundle.ReciboPagoTitle_fecha3}">
+
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+
+
+
+                    <h:outputText value="#{bundle.ReciboPagoTitle_valorAbonado}" />
+
+                    <h:outputText value="#{item.valorAbonado}">
+                        <f:convertNumber type="currency" currencySymbol="$" />
+                    </h:outputText>
+
+
+                    <h:outputText value="#{bundle.ReciboPagoTitle_fechaPago}" />
+
+                    <h:outputText value="#{item.fechaPago}">
+                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                    </h:outputText>
+
+
+                    <h:outputText value="#{bundle.ReciboPagoTitle_estado}" />
+                    <h:outputText value="#{item.estado.reciboEstadonombre}" />
+
+
+
+                </h:panelGrid>
+
+
+
+
+
+
+            </h:form>
+        </div>
+    </ui:define>
+
+    <!-- cosas adicionales-->
+
+    <ui:define name="modulos">
+
+        <div class="card">
+            <div class="card-body">
+                <h:form>
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{aplicarPagoMB.aplicarPago}"
+                                           value="Aplicar Abono" class="btn btn-inverse btn-large" />
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+            </div>
+
+        </div>
+
+
+
+        <!-- Listas de Opciones-->
+
+        <div class="card">
+            <div class="card-header">
+                <h3>
+                    <h:outputText value="#{bundle.ReciboPagoDetalleTitulo}"></h:outputText>
+                </h3>
+
+            </div>
+
+
+            <div class="card-body">
+
+
+
+
+                <h:form>
+
+
+
+                    <p:dataTable  paginator="true" rows="10" reflow="true"  value="#{aplicarPagoMB.listaDetalle}" var="item">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoDetalleTitle_periodo}" />
+                            </f:facet>
+                            <h:outputText value="#{item.cobro.periodo}" />
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoDetalleTitle_concepto}" />
+                            </f:facet>
+                            <h:outputText
+                                value="#{item.cobro.servicio.tipoServicio.tiposervicionombre}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ReciboPagoDetalleTitle_tarifa}" />
+                            </f:facet>
+                            <h:outputText value="#{item.cobro.servicio.codigoTarifa}" />
+                        </p:column>
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText
+                                    value="#{bundle.ReciboPagoDetalleTitle_cobroValor}" />
+                            </f:facet>
+                            <h:outputText value="#{item.cobrovalor}">
+                                <f:convertNumber type="currency" currencySymbol="$" />
+                            </h:outputText>
+                        </p:column>
+
+
+                    </p:dataTable >
+
+
+
+                </h:form>
+
+
+            </div>
+        </div>
+
+    </ui:define>
+
+
+</ui:composition>
+
+
+

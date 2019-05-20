@@ -1,0 +1,290 @@
+ 
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+      <ui:define name="content"></ui:define>
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EmpleadoAcudienteTitulo}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <div class="card-body">
+
+                <h:form>
+
+                    <div >
+                        <div>
+                            <div  >
+                                <ul class="nav">
+
+                                    <li><h:commandLink
+                                            action="#{empleadoMB.prepararConsulta}"
+                                            value="#{bundle.ShowAllLink}" immediate="true">
+                                            <i class="fa fa-list"></i>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink value="#{bundle.IndexLink}"
+                                                       action="/index" immediate="true">
+                                            <i class="fa fa-home"></i>
+                                        </h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </h:form>
+
+                <h:form >
+
+                    <div>
+                    </div>
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.PersonaLabel_primernombre}"
+                                       for="primernombre"   />
+
+                        <div  >
+
+                            <p:inputText id="primernombre"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.primernombre}"
+                                         title="#{bundle.PersonaTitle_primernombre}" class="form-control"  
+                                         required="true"
+                                         requiredMessage="#{bundle.AcudienteRequiredMessage_primernombre}"/>
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.PersonaLabel_segundonombre}"
+                                       for="segundonombre"   />
+
+                        <div  >
+
+                            <p:inputText id="segundonombre"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.segundonombre}"
+                                         title="#{bundle.PersonaTitle_segundonombre}" class="form-control"  
+                                         required ="true"
+                                         requiredMessage="#{bundle.AcudienteRequiredMessage_Segundonombre}"/>
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.PersonaLabel_primerapellido}"
+                                       for="primerapellido"   />
+
+                        <div  >
+
+                            <p:inputText id="primerapellido"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.primerapellido}"
+                                         title="#{bundle.PersonaTitle_primerapellido}" class="form-control"  
+                                         required="true"
+                                         requiredMessage="#{bundle.AcudienteRequiredMessage_primerapellido}"/>
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.PersonaLabel_segundoapellido}"
+                                       for="segundoapellido"   />
+
+                        <div  >
+
+                            <p:inputText id="segundoapellido"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.segundoapellido}"
+                                         title="#{bundle.PersonaTitle_segundoapellido}" class="form-control"  
+                                         required ="true"
+                                         requiredMessage="#{bundle.AcudienteRequiredMessage_Segundoapellido}"/>
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.PersonaLabel_tipoidentificacionid}"
+                                       for="tipoidentificacionid"   />
+
+                        <div  >
+
+                            <p:selectOneMenu  id="tipoidentificacionid"
+                                              value="#{empleadoMB.tipoidentificacionid}"
+                                              title="#{bundle.PersonaTitle_tipoidentificacionid}" class="form-control" 
+                                              required="true"
+                                              requiredMessage="#{bundle.AcudienteRequiredMessage_tipoidentificacionid}">
+                                <f:selectItem itemLabel ="--Seleccionar--"/>
+                                <f:selectItems value="#{empleadoMB.tipoIdentificacionItems}" />
+                            </p:selectOneMenu >
+                        </div>
+                    </div>
+
+                    <div  >
+
+                        <p:outputLabel value="#{bundle.PersonaLabel_numeroidentificacion}"
+                                       for="numeroidentificacion"   />
+
+                        <div  >
+
+                            <p:inputText id="numeroidentificacion"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.numeroidentificacion}"
+                                         title="#{bundle.PersonaTitle_numeroidentificacion}" class="form-control"  required="true"
+                                         requiredMessage="#{bundle.AcudienteRequiredMessage_numeroidentificacion}" />
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_telefono1}"
+                            for="clientecontactocelular"   />
+
+                        <div  >
+
+                            <p:inputText id="clientecontactocelular"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.telefono1}"
+                                         title="#{bundle.AcudienteTitle_telefono1}"
+                                         class="form-control"  required="true"
+                                         requiredMessage="#{bundle.AcudienteRequiredMessage_telefono1}"/>
+                        </div>
+                    </div>
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_extension1}"
+                            for="extension1"   />
+
+                        <div  >
+
+                            <p:inputText id="extension1"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.extension1}"
+                                         title="#{bundle.AcudienteTitle_extension1}"
+                                         class="form-control"  required="false"
+                                         />
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_telefono2}"
+                            for="telefono2"   />
+
+                        <div  >
+
+                            <p:inputText id="telefono2"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.telefono2}"
+                                         title="#{bundle.AcudienteTitle_telefono2}"
+                                         class="form-control"  required="false"
+                                         />
+                        </div>
+                    </div>
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_extension2}"
+                            for="extension2"   />
+
+                        <div  >
+
+                            <p:inputText id="extension2"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.extension2}"
+                                         title="#{bundle.AcudienteTitle_extension2}"
+                                         class="form-control"  required="false"
+                                         />
+                        </div>
+                    </div>
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_telefono3}"
+                            for="telefono3"   />
+
+                        <div  >
+
+                            <p:inputText id="telefono3"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.telefono3}"
+                                         title="#{bundle.AcudienteTitle_telefono3}"
+                                         class="form-control"  required="false"
+                                         />
+                        </div>
+                    </div>
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_extension3}"
+                            for="extension3"   />
+
+                        <div  >
+
+                            <p:inputText id="extension3"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.extension3}"
+                                         title="#{bundle.AcudienteTitle_extension3}"
+                                         class="form-control"  required="false"
+                                         />
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_direccion}"
+                            for="direccion"   />
+
+                        <div  >
+
+                            <p:inputText id="direccion"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.direccion}"
+                                         title="#{bundle.AcudienteTitle_direccion}"
+                                         class="form-control"  />
+                        </div>
+                    </div>
+
+
+
+                    <div  >
+
+                        <p:outputLabel
+                            value="#{bundle.AcudienteLabel_email}"
+                            for="email"   />
+
+                        <div  >
+
+                            <p:inputText id="email"
+                                         value="#{empleadoMB.itemEmpleadoAcudiente.email}"
+                                         title="#{bundle.AcudienteTitle_email}"
+                                         class="form-control"  />
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div  >
+                        <div  >
+                            <h:commandLink action="#{empleadoMB.crearEmpleadoAcudiente}"
+                                           value="#{bundle.SaveLink}" class="btn btn-secondary" />
+                        </div>
+                    </div>
+
+
+
+
+
+                </h:form>
+            </div>
+        </ui:define>
+</ui:composition>
+
+
